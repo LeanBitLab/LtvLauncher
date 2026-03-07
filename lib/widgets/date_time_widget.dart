@@ -53,7 +53,15 @@ class _DateTimeWidgetState extends State<DateTimeWidget> {
 
     _dateFormat = DateFormat(widget._dateTimeFormatString, Platform.localeName);
     _now = DateTime.now();
-    _timer = Timer.periodic(widget.updateInterval ?? const Duration(seconds: 1), (_) => _refreshTime());
+    _timer = Timer.periodic(widget.updateInterval ?? _defaultInterval(), (_) => _refreshTime());
+  }
+
+  /// Returns 1-second interval if format contains seconds, otherwise 1-minute.
+  Duration _defaultInterval() {
+    final fmt = widget._dateTimeFormatString;
+    return (fmt.contains('s') || fmt.contains('S'))
+        ? const Duration(seconds: 1)
+        : const Duration(minutes: 1);
   }
 
   @override

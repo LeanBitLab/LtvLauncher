@@ -40,6 +40,8 @@ class Apps extends Table
 
   BoolColumn get hidden => boolean().withDefault(const Constant(false))();
 
+  DateTimeColumn get lastLaunchedAt => dateTime().nullable()();
+
   @override
   Set<Column> get primaryKey => {packageName};
 }
@@ -95,7 +97,7 @@ class FLauncherDatabase extends _$FLauncherDatabase
   FLauncherDatabase.inMemory() : super(LazyDatabase(() => NativeDatabase.memory()));
 
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -124,6 +126,9 @@ class FLauncherDatabase extends _$FLauncherDatabase
           if (from < 7) {
             await migrator.createTable(launcherSpacers);
             await migrator.dropColumn(apps, "sideloaded");
+          }
+          if (from < 8) {
+            await migrator.addColumn(apps, apps.lastLaunchedAt);
           }
         },
         beforeOpen: (openingDetails) async {

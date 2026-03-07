@@ -281,6 +281,13 @@ class AppsService extends ChangeNotifier
       category.applications.sortBy(
               (application) => application.name);
     }
+    else if (category.sort == CategorySort.lastUsed) {
+      category.applications.sort((a, b) {
+        final aTime = a.lastLaunchedAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+        final bTime = b.lastLaunchedAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+        return bTime.compareTo(aTime); // Descending (newest first)
+      });
+    }
     else {
       category.applications.sortBy<num>(
               (application) => application.categoryOrders[category.id]!);
@@ -309,7 +316,11 @@ class AppsService extends ChangeNotifier
     return bytes;
   }
 
-  Future<void> launchApp(App app) {
+  Future<void> launchApp(App app) async {
+    app.lastLaunchedAt = DateTime.now();
+    await _database.updateApp(app.packageName, AppsCompanion(lastLaunchedAt: Value(app.lastLaunchedAt)));
+    notifyListeners();
+
     Future<void> future;
     if (app.action == null) {
       future = _fLauncherChannel.launchApp(app.packageName);

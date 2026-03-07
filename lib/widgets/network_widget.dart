@@ -8,15 +8,18 @@ class NetworkWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<NetworkService>(
-      builder: (context, networkService, _) {
+    return Selector<NetworkService, (NetworkType, CellularNetworkType, int)>(
+      selector: (_, ns) => (ns.networkType, ns.cellularNetworkType, ns.wirelessNetworkSignalLevel),
+      builder: (context, state, _) {
+        final (networkType, cellularNetworkType, wirelessSignalLevel) = state;
+        final networkService = context.read<NetworkService>();
         IconData iconData;
         Color? iconColor;
 
-        switch (networkService.networkType)
+        switch (networkType)
         {
           case NetworkType.Cellular:
-            switch (networkService.cellularNetworkType)
+            switch (cellularNetworkType)
             {
               case CellularNetworkType.Cdma || CellularNetworkType.Gsm || CellularNetworkType.Gprs:
                 iconData = Icons.g_mobiledata;
@@ -38,17 +41,16 @@ class NetworkWidget extends StatelessWidget
             }
             break;
           case NetworkType.Wifi:
-            int signalLevel = networkService.wirelessNetworkSignalLevel;
-            if (signalLevel == 0) {
+            if (wirelessSignalLevel == 0) {
               iconData = Icons.signal_wifi_0_bar;
             }
-            else if (signalLevel == 1) {
+            else if (wirelessSignalLevel == 1) {
               iconData = Icons.network_wifi_1_bar;
             }
-            else if (signalLevel == 2) {
+            else if (wirelessSignalLevel == 2) {
               iconData = Icons.network_wifi_2_bar;
             }
-            else if (signalLevel == 3) {
+            else if (wirelessSignalLevel == 3) {
               iconData = Icons.network_wifi_3_bar;
             }
             else {

@@ -38,6 +38,7 @@ public class ClockScreensaverService extends DreamService {
 
     private List<TextView> timeCharViews = new ArrayList<>();
     private List<TextView> dateCharViews = new ArrayList<>();
+    private List<TextView> amPmCharViews = new ArrayList<>();
 
     private float currentCenterX;
     private float currentCenterY;
@@ -45,7 +46,8 @@ public class ClockScreensaverService extends DreamService {
     private float targetCenterY;
 
     private static final int TIME_FONT_SIZE = 80; // sp
-    private static final int DATE_FONT_SIZE = 24; // sp
+    private static final int DATE_FONT_SIZE = 32; // sp
+    private static final int AMPM_FONT_SIZE = 32; // sp (~40% of TIME_FONT_SIZE)
     private static final int CHAR_ANIMATION_DURATION = 800; // ms per character
     private static final int CHAR_STAGGER_DELAY = 100; // ms between characters
 
@@ -112,14 +114,40 @@ public class ClockScreensaverService extends DreamService {
         container.removeAllViews();
         timeCharViews.clear();
         dateCharViews.clear();
+        amPmCharViews.clear();
 
-        // Create time character views
+        // Detect AM/PM in time string
+        String amPmSuffix = "";
+        String timeDigits = timeStr;
+        if (timeStr.toUpperCase().endsWith("AM") || timeStr.toUpperCase().endsWith("PM")) {
+            amPmSuffix = timeStr.substring(timeStr.length() - 2);
+            timeDigits = timeStr.substring(0, timeStr.length() - 2).trim();
+        }
+
+        // Create time character views (digits at full size)
         float timeWidth = 0;
-        for (int i = 0; i < timeStr.length(); i++) {
-            TextView charView = createCharView(String.valueOf(timeStr.charAt(i)), TIME_FONT_SIZE);
+        for (int i = 0; i < timeDigits.length(); i++) {
+            TextView charView = createCharView(String.valueOf(timeDigits.charAt(i)), TIME_FONT_SIZE);
             timeCharViews.add(charView);
             container.addView(charView);
             timeWidth += getCharWidth(charView);
+        }
+
+        // Create AM/PM characters at smaller size (tracked separately for
+        // bottom-alignment)
+        if (!amPmSuffix.isEmpty()) {
+            // Add a small space (counted in time width for centering)
+            TextView spaceView = createCharView(" ", AMPM_FONT_SIZE);
+            amPmCharViews.add(spaceView);
+            container.addView(spaceView);
+            timeWidth += getCharWidth(spaceView);
+
+            for (int i = 0; i < amPmSuffix.length(); i++) {
+                TextView charView = createCharView(String.valueOf(amPmSuffix.charAt(i)), AMPM_FONT_SIZE);
+                amPmCharViews.add(charView);
+                container.addView(charView);
+                timeWidth += getCharWidth(charView);
+            }
         }
 
         // Create date character views
@@ -136,11 +164,38 @@ public class ClockScreensaverService extends DreamService {
     }
 
     private TextView createCharView(String character, int fontSize) {
+        SharedPreferences prefs = getSharedPreferences("FlutterSharedPreferences", MODE_PRIVATE);
+        String clockStyle = prefs.getString("flutter.screensaver_clock_style", "minimal");
+
         TextView tv = new TextView(this);
         tv.setText(character);
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
-        tv.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+
+        switch (clockStyle) {
+            case "bold":
+                tv.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                break;
+            case "retro":
+                tv.setTypeface(Typeface.create("monospace", Typeface.NORMAL));
+                break;
+            case "elegant":
+                tv.setTypeface(Typeface.create("serif", Typeface.NORMAL));
+                break;
+            case "neon":
+                tv.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                break;
+            case "pixel":
+                tv.setTypeface(Typeface.create("monospace", Typeface.BOLD));
+                break;
+            case "digital":
+                tv.setTypeface(Typeface.create("monospace", Typeface.NORMAL));
+                break;
+            default: // "minimal"
+                tv.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+                break;
+        }
+
         tv.setGravity(Gravity.CENTER);
         tv.setShadowLayer(15, 0, 0, 0x60FFFFFF);
         tv.setLayoutParams(new FrameLayout.LayoutParams(
@@ -175,8 +230,14 @@ public class ClockScreensaverService extends DreamService {
         float dateHeight = dateCharViews.isEmpty() ? 0 : getCharHeight(dateCharViews.get(0));
         float totalHeight = timeHeight + dateHeight + 20; // 20px gap
 
-        // Position time characters
-        float timeStartX = centerX - timeWidth / 2;
+        // Calculate total width including AM/PM for centering
+        float totalTimeWidth = timeWidth;
+        for (TextView tv : amPmCharViews) {
+            totalTimeWidth += getCharWidth(tv);
+        }
+
+        // Position time characters (digits only)
+        float timeStartX = centerX - totalTimeWidth / 2;
         float timeY = centerY - totalHeight / 2;
         float currentX = timeStartX;
 
@@ -187,6 +248,20 @@ public class ClockScreensaverService extends DreamService {
             } else {
                 tv.setX(currentX);
                 tv.setY(timeY);
+            }
+            currentX += charWidth;
+        }
+
+        // Position AM/PM characters at the BOTTOM of the time row
+        float amPmHeight = amPmCharViews.isEmpty() ? 0 : getCharHeight(amPmCharViews.get(0));
+        float amPmY = timeY + timeHeight - amPmHeight;
+        for (TextView tv : amPmCharViews) {
+            float charWidth = getCharWidth(tv);
+            if (animate) {
+                tv.setTag(new float[] { currentX, amPmY });
+            } else {
+                tv.setX(currentX);
+                tv.setY(amPmY);
             }
             currentX += charWidth;
         }
@@ -219,13 +294,30 @@ public class ClockScreensaverService extends DreamService {
         String timeStr = timeFormat.format(new Date());
         String dateStr = dateFormat.format(new Date());
 
-        // Update time characters
-        for (int i = 0; i < timeCharViews.size() && i < timeStr.length(); i++) {
-            timeCharViews.get(i).setText(String.valueOf(timeStr.charAt(i)));
+        // Detect AM/PM in time string
+        String amPmSuffix = "";
+        String timeDigits = timeStr;
+        if (timeStr.toUpperCase().endsWith("AM") || timeStr.toUpperCase().endsWith("PM")) {
+            amPmSuffix = timeStr.substring(timeStr.length() - 2);
+            timeDigits = timeStr.substring(0, timeStr.length() - 2).trim();
+        }
+
+        // Update time digit characters
+        for (int i = 0; i < timeCharViews.size() && i < timeDigits.length(); i++) {
+            timeCharViews.get(i).setText(String.valueOf(timeDigits.charAt(i)));
+        }
+
+        // Update AM/PM characters (index 0=space, 1=A/P, 2=M)
+        if (!amPmSuffix.isEmpty() && amPmCharViews.size() >= 3) {
+            amPmCharViews.get(1).setText(String.valueOf(amPmSuffix.charAt(0)));
+            amPmCharViews.get(2).setText(String.valueOf(amPmSuffix.charAt(1)));
         }
 
         // Check if we need to recreate views (text length changed)
-        if (timeStr.length() != timeCharViews.size() || dateStr.length() != dateCharViews.size()) {
+        int expectedAmPmCount = amPmSuffix.isEmpty() ? 0 : 3; // space + 2 chars
+        if (timeDigits.length() != timeCharViews.size()
+                || expectedAmPmCount != amPmCharViews.size()
+                || dateStr.length() != dateCharViews.size()) {
             createCharacterViews();
         } else {
             // Update date characters
@@ -240,6 +332,9 @@ public class ClockScreensaverService extends DreamService {
         float margin = 150;
         float maxWidth = 0;
         for (TextView tv : timeCharViews) {
+            maxWidth += getCharWidth(tv);
+        }
+        for (TextView tv : amPmCharViews) {
             maxWidth += getCharWidth(tv);
         }
         float totalHeight = (timeCharViews.isEmpty() ? 0 : getCharHeight(timeCharViews.get(0))) +
@@ -262,6 +357,7 @@ public class ClockScreensaverService extends DreamService {
         // Combine all character views
         List<TextView> allChars = new ArrayList<>();
         allChars.addAll(timeCharViews);
+        allChars.addAll(amPmCharViews);
         allChars.addAll(dateCharViews);
 
         // Shuffle to randomize animation order

@@ -58,6 +58,7 @@ class AppCard extends StatefulWidget
 
 class _AppCardState extends State<AppCard> with SingleTickerProviderStateMixin {
   bool _moving = false;
+  bool _clicked = false;
   late FocusNode _focusNode;
 
   late Future<(AppImageType, ImageProvider)> _appImageLoadFuture;
@@ -130,15 +131,22 @@ class _AppCardState extends State<AppCard> with SingleTickerProviderStateMixin {
       builder: (context) {
         final bool shouldHighlight = _shouldHighlight(context);
 
-        return AspectRatio(
-          aspectRatio: 16 / 9,
-          child: RepaintBoundary(
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeInOut,
-              transformAlignment: Alignment.center,
-              transform: _scaleTransform(context),
-              child: Material(
+        return AnimatedScale(
+          scale: _clicked ? 0.9 : 1.0,
+          duration: const Duration(milliseconds: 150),
+          curve: Curves.easeOutCubic,
+          child: AnimatedOpacity(
+            opacity: _clicked ? 0.5 : 1.0,
+            duration: const Duration(milliseconds: 150),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: RepaintBoundary(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeInOut,
+                  transformAlignment: Alignment.center,
+                  transform: _scaleTransform(context),
+                  child: Material(
                 borderRadius: BorderRadius.circular(8),
                 clipBehavior: Clip.antiAlias,
                 elevation: shouldHighlight ? 16 : 0,
@@ -266,8 +274,10 @@ class _AppCardState extends State<AppCard> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
+    );
+},
   );
 
   Future<(AppImageType, ImageProvider)> _loadAppBannerOrIcon(AppsService service) async {
@@ -444,7 +454,19 @@ class _AppCardState extends State<AppCard> with SingleTickerProviderStateMixin {
 
       return KeyEventResult.handled;
     } else if (_validationKeys.contains(key)) {
-      context.read<AppsService>().launchApp(widget.application);
+      if (!_clicked) {
+        setState(() => _clicked = true);
+        Future.delayed(const Duration(milliseconds: 150), () {
+          if (!mounted) return;
+          context.read<AppsService>().launchApp(widget.application);
+          // Reset after a short delay so it looks normal when user returns
+          Future.delayed(const Duration(milliseconds: 500), () {
+            if (mounted) {
+              setState(() => _clicked = false);
+            }
+          });
+        });
+      }
       return KeyEventResult.handled;
     } else if (key == LogicalKeyboardKey.arrowUp && widget.handleUpNavigationToSettings) {
       Actions.invoke(context, const MoveFocusToSettingsIntent());

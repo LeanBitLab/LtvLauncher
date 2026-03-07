@@ -30,6 +30,7 @@ enum CategorySort
 {
   manual,
   alphabetical,
+  lastUsed,
 }
 
 enum CategoryType

@@ -32,6 +32,8 @@ class App
 
   String? action;
 
+  DateTime? lastLaunchedAt; // For "Last Used" category sorting
+
   App({
     required this.packageName,
     required this.name,

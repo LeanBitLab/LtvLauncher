@@ -467,6 +467,10 @@ class _CategorySettingsState extends State<_CategorySettings>
                 DropdownMenuItem(
                   value: CategorySort.manual,
                   child: Text(localizations.manual, style: Theme.of(context).textTheme.bodySmall),
+                ),
+                DropdownMenuItem(
+                  value: CategorySort.lastUsed,
+                  child: Text('Last Used', style: Theme.of(context).textTheme.bodySmall),
                 )
               ]
             )

@@ -32,8 +32,15 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, App> {
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('CHECK ("hidden" IN (0, 1))'),
       defaultValue: const Constant(false));
+  static const VerificationMeta _lastLaunchedAtMeta =
+      const VerificationMeta('lastLaunchedAt');
   @override
-  List<GeneratedColumn> get $columns => [packageName, name, version, hidden];
+  late final GeneratedColumn<DateTime> lastLaunchedAt =
+      GeneratedColumn<DateTime>('last_launched_at', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [packageName, name, version, hidden, lastLaunchedAt];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -68,6 +75,12 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, App> {
       context.handle(_hiddenMeta,
           hidden.isAcceptableOrUnknown(data['hidden']!, _hiddenMeta));
     }
+    if (data.containsKey('last_launched_at')) {
+      context.handle(
+          _lastLaunchedAtMeta,
+          lastLaunchedAt.isAcceptableOrUnknown(
+              data['last_launched_at']!, _lastLaunchedAtMeta));
+    }
     return context;
   }
 
@@ -99,12 +112,14 @@ class AppsCompanion extends UpdateCompanion<App> {
   final Value<String> name;
   final Value<String> version;
   final Value<bool> hidden;
+  final Value<DateTime?> lastLaunchedAt;
   final Value<int> rowid;
   const AppsCompanion({
     this.packageName = const Value.absent(),
     this.name = const Value.absent(),
     this.version = const Value.absent(),
     this.hidden = const Value.absent(),
+    this.lastLaunchedAt = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   AppsCompanion.insert({
@@ -112,6 +127,7 @@ class AppsCompanion extends UpdateCompanion<App> {
     required String name,
     required String version,
     this.hidden = const Value.absent(),
+    this.lastLaunchedAt = const Value.absent(),
     this.rowid = const Value.absent(),
   })  : packageName = Value(packageName),
         name = Value(name),
@@ -121,6 +137,7 @@ class AppsCompanion extends UpdateCompanion<App> {
     Expression<String>? name,
     Expression<String>? version,
     Expression<bool>? hidden,
+    Expression<DateTime>? lastLaunchedAt,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -128,6 +145,7 @@ class AppsCompanion extends UpdateCompanion<App> {
       if (name != null) 'name': name,
       if (version != null) 'version': version,
       if (hidden != null) 'hidden': hidden,
+      if (lastLaunchedAt != null) 'last_launched_at': lastLaunchedAt,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -137,12 +155,14 @@ class AppsCompanion extends UpdateCompanion<App> {
       Value<String>? name,
       Value<String>? version,
       Value<bool>? hidden,
+      Value<DateTime?>? lastLaunchedAt,
       Value<int>? rowid}) {
     return AppsCompanion(
       packageName: packageName ?? this.packageName,
       name: name ?? this.name,
       version: version ?? this.version,
       hidden: hidden ?? this.hidden,
+      lastLaunchedAt: lastLaunchedAt ?? this.lastLaunchedAt,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -162,6 +182,9 @@ class AppsCompanion extends UpdateCompanion<App> {
     if (hidden.present) {
       map['hidden'] = Variable<bool>(hidden.value);
     }
+    if (lastLaunchedAt.present) {
+      map['last_launched_at'] = Variable<DateTime>(lastLaunchedAt.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -175,6 +198,7 @@ class AppsCompanion extends UpdateCompanion<App> {
           ..write('name: $name, ')
           ..write('version: $version, ')
           ..write('hidden: $hidden, ')
+          ..write('lastLaunchedAt: $lastLaunchedAt, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -846,6 +870,7 @@ typedef $$AppsTableCreateCompanionBuilder = AppsCompanion Function({
   required String name,
   required String version,
   Value<bool> hidden,
+  Value<DateTime?> lastLaunchedAt,
   Value<int> rowid,
 });
 typedef $$AppsTableUpdateCompanionBuilder = AppsCompanion Function({
@@ -853,6 +878,7 @@ typedef $$AppsTableUpdateCompanionBuilder = AppsCompanion Function({
   Value<String> name,
   Value<String> version,
   Value<bool> hidden,
+  Value<DateTime?> lastLaunchedAt,
   Value<int> rowid,
 });
 
@@ -877,6 +903,7 @@ class $$AppsTableTableManager extends RootTableManager<
             Value<String> name = const Value.absent(),
             Value<String> version = const Value.absent(),
             Value<bool> hidden = const Value.absent(),
+            Value<DateTime?> lastLaunchedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
           }) =>
               AppsCompanion(
@@ -884,6 +911,7 @@ class $$AppsTableTableManager extends RootTableManager<
             name: name,
             version: version,
             hidden: hidden,
+            lastLaunchedAt: lastLaunchedAt,
             rowid: rowid,
           ),
           createCompanionCallback: ({
@@ -891,6 +919,7 @@ class $$AppsTableTableManager extends RootTableManager<
             required String name,
             required String version,
             Value<bool> hidden = const Value.absent(),
+            Value<DateTime?> lastLaunchedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
           }) =>
               AppsCompanion.insert(
@@ -898,6 +927,7 @@ class $$AppsTableTableManager extends RootTableManager<
             name: name,
             version: version,
             hidden: hidden,
+            lastLaunchedAt: lastLaunchedAt,
             rowid: rowid,
           ),
         ));
@@ -923,6 +953,11 @@ class $$AppsTableFilterComposer
 
   ColumnFilters<bool> get hidden => $state.composableBuilder(
       column: $state.table.hidden,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastLaunchedAt => $state.composableBuilder(
+      column: $state.table.lastLaunchedAt,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -960,6 +995,11 @@ class $$AppsTableOrderingComposer
 
   ColumnOrderings<bool> get hidden => $state.composableBuilder(
       column: $state.table.hidden,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastLaunchedAt => $state.composableBuilder(
+      column: $state.table.lastLaunchedAt,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }

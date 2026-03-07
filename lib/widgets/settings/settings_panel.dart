@@ -33,6 +33,7 @@ import 'package:flauncher/widgets/settings/brightness_settings_page.dart';
 import 'package:flauncher/widgets/settings/misc_panel_page.dart';
 import 'package:flauncher/widgets/settings/interface_settings_page.dart';
 import 'package:flauncher/widgets/settings/general_settings_page.dart';
+import 'package:flauncher/widgets/settings/screensaver_clock_style_page.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flutter/material.dart';
 
@@ -71,38 +72,40 @@ class _SettingsPanelState extends State<SettingsPanel> {
                 onGenerateRoute: (settings) {
                   switch (settings.name) {
                     case SettingsPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => SettingsPanelPage());
+                      return _FastPageRoute(builder: (_) => SettingsPanelPage());
                     case GeneralSettingsPage.routeName:
-                      return MaterialPageRoute(builder: (_) => GeneralSettingsPage());
+                      return _FastPageRoute(builder: (_) => GeneralSettingsPage());
                     case InterfaceSettingsPage.routeName:
-                      return MaterialPageRoute(builder: (_) => InterfaceSettingsPage());
+                      return _FastPageRoute(builder: (_) => InterfaceSettingsPage());
                     case WallpaperPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => WallpaperPanelPage());
+                      return _FastPageRoute(builder: (_) => WallpaperPanelPage());
                     case StatusBarPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => StatusBarPanelPage());
+                      return _FastPageRoute(builder: (_) => StatusBarPanelPage());
                     case GradientPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => GradientPanelPage());
+                      return _FastPageRoute(builder: (_) => GradientPanelPage());
                     case ApplicationsPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => ApplicationsPanelPage());
+                      return _FastPageRoute(builder: (_) => ApplicationsPanelPage());
                     case LauncherSectionsPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => LauncherSectionsPanelPage());
+                      return _FastPageRoute(builder: (_) => LauncherSectionsPanelPage());
                     case LauncherSectionPanelPage.routeName:
-                      return MaterialPageRoute(
+                      return _FastPageRoute(
                           builder: (_) => LauncherSectionPanelPage(sectionIndex: settings.arguments as int?));
                     case WifiUsagePeriodPage.routeName:
-                      return MaterialPageRoute(builder: (_) => WifiUsagePeriodPage());
+                      return _FastPageRoute(builder: (_) => WifiUsagePeriodPage());
                     case BackButtonActionPage.routeName:
-                      return MaterialPageRoute(builder: (_) => BackButtonActionPage());
+                      return _FastPageRoute(builder: (_) => BackButtonActionPage());
                     case DateTimeFormatPage.routeName:
-                      return MaterialPageRoute(builder: (_) => DateTimeFormatPage());
+                      return _FastPageRoute(builder: (_) => DateTimeFormatPage());
                     case MiscPanelPage.routeName:
-                      return MaterialPageRoute(builder: (_) => MiscPanelPage());
+                      return _FastPageRoute(builder: (_) => MiscPanelPage());
+                    case ScreensaverClockStylePage.routeName:
+                      return _FastPageRoute(builder: (_) => const ScreensaverClockStylePage());
                     case AccentColorPage.routeName:
-                      return MaterialPageRoute(builder: (_) => AccentColorPage());
+                      return _FastPageRoute(builder: (_) => AccentColorPage());
                     case BrightnessSettingsPage.routeName:
-                      return MaterialPageRoute(builder: (_) => BrightnessSettingsPage());
+                      return _FastPageRoute(builder: (_) => BrightnessSettingsPage());
                     case AppDetailsPage.routeName:
-                      return MaterialPageRoute(
+                      return _FastPageRoute(
                           builder: (_) => AppDetailsPage(application: settings.arguments as App));
                     default:
                       throw ArgumentError.value(settings.name, "settings.name", "Route not supported.");
@@ -115,4 +118,16 @@ class _SettingsPanelState extends State<SettingsPanel> {
       ),
     );
   }
+}
+
+/// A faster page route with a 150ms slide transition instead of
+/// the default 300ms Material transition.
+class _FastPageRoute<T> extends MaterialPageRoute<T> {
+  _FastPageRoute({required super.builder});
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 150);
+
+  @override
+  Duration get reverseTransitionDuration => const Duration(milliseconds: 120);
 }

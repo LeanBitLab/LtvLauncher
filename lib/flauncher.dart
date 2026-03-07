@@ -53,8 +53,10 @@ class _FLauncherState extends State<FLauncher> {
       policy: RowByRowTraversalPolicy(),
       child: Stack(
         children: [
-          Consumer<WallpaperService>(
-            builder: (_, wallpaperService, __) => _wallpaper(context, wallpaperService)
+          RepaintBoundary(
+            child: Consumer<WallpaperService>(
+              builder: (_, wallpaperService, __) => _wallpaper(context, wallpaperService)
+            ),
           ),
           Consumer<LauncherState>(
             builder: (_, state, child) => Visibility(

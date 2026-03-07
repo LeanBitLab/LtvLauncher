@@ -35,8 +35,9 @@ const _showTimeInStatusBar = "show_time_in_status_bar";
 const _timeFormat = "time_format";
 const _wifiUsagePeriod = "wifi_usage_period";
 const _showWifiWidgetInStatusBar = "show_wifi_widget_in_status_bar";
-const _showNetworkIndicatorInStatusBar = "show_network_indicator_in_status_bar";
-const _accentColor = "accent_color";
+const String _showNetworkIndicatorInStatusBar = "show_network_indicator_in_status_bar";
+const String _accentColor = "accent_color";
+const String _screensaverClockStyle = "screensaver_clock_style";
 
 // WiFi usage period options
 const String WIFI_USAGE_DAILY = "daily";
@@ -53,6 +54,12 @@ const String ACCENT_COLOR_GREEN = "00C853";
 const String ACCENT_COLOR_WHITE = "FFFFFF";
 const String ACCENT_COLOR_YELLOW = "FFD600";
 const String ACCENT_COLOR_RED = "D50000";
+const String ACCENT_COLOR_CYAN = "00E5FF";
+const String ACCENT_COLOR_INDIGO = "536DFE";
+const String ACCENT_COLOR_LIME = "AEEA00";
+const String ACCENT_COLOR_AMBER = "FFAB00";
+const String ACCENT_COLOR_ROSE = "FF4081";
+const String ACCENT_COLOR_ICE_BLUE = "80D8FF";
 
 class SettingsService extends ChangeNotifier {
   static final defaultDateFormat = "EEEE d";
@@ -87,6 +94,8 @@ class SettingsService extends ChangeNotifier {
   bool get showNetworkIndicatorInStatusBar => _sharedPreferences.getBool(_showNetworkIndicatorInStatusBar) ?? true;
 
   String get accentColorHex => _sharedPreferences.getString(_accentColor) ?? ACCENT_COLOR_PURPLE;
+
+  String get screensaverClockStyle => _sharedPreferences.getString(_screensaverClockStyle) ?? "minimal";
 
   Color get accentColor {
     final hex = accentColorHex;
@@ -159,6 +168,11 @@ class SettingsService extends ChangeNotifier {
 
   Future<void> setAccentColor(String colorHex) async {
     await _sharedPreferences.setString(_accentColor, colorHex);
+    notifyListeners();
+  }
+
+  Future<void> setScreensaverClockStyle(String style) async {
+    await _sharedPreferences.setString(_screensaverClockStyle, style);
     notifyListeners();
   }
 

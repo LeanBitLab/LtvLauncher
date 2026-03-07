@@ -1,6 +1,5 @@
 import 'package:flauncher/widgets/settings/settings_panel.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/settings_service.dart';
@@ -52,7 +51,7 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
             canRequestFocus: false,
             child: AnimatedContainer(
               curve: Curves.decelerate,
-              duration: Duration(milliseconds: 250),
+              duration: Duration(milliseconds: 150),
               height: focused ? kToolbarHeight : 0,
               child: widget!
             ),

@@ -35,6 +35,12 @@ class AccentColorPage extends StatelessWidget {
     (ACCENT_COLOR_WHITE, 'White'),
     (ACCENT_COLOR_YELLOW, 'Yellow'),
     (ACCENT_COLOR_RED, 'Red'),
+    (ACCENT_COLOR_CYAN, 'Cyan'),
+    (ACCENT_COLOR_INDIGO, 'Indigo'),
+    (ACCENT_COLOR_LIME, 'Lime'),
+    (ACCENT_COLOR_AMBER, 'Amber'),
+    (ACCENT_COLOR_ROSE, 'Rose'),
+    (ACCENT_COLOR_ICE_BLUE, 'Ice Blue'),
   ];
 
   const AccentColorPage({super.key});
@@ -153,7 +159,7 @@ class _ColorTileState extends State<_ColorTile> {
         child: GestureDetector(
           onTap: widget.onTap,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 50),
             decoration: BoxDecoration(
               color: widget.color,
               borderRadius: BorderRadius.circular(12),

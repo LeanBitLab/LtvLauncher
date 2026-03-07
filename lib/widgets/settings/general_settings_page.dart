@@ -24,6 +24,7 @@ import 'brightness_settings_page.dart';
 import 'date_time_format_page.dart';
 import 'back_button_action_page.dart';
 import 'wifi_usage_period_page.dart';
+import 'screensaver_clock_style_page.dart';
 
 
 class GeneralSettingsPage extends StatelessWidget {
@@ -53,6 +54,11 @@ class GeneralSettingsPage extends StatelessWidget {
                   leading: const Icon(Icons.screenshot_monitor),
                   title: Text('Screensaver Settings', style: Theme.of(context).textTheme.bodyMedium),
                   onPressed: () => _openScreensaverSettings(),
+                ),
+                FocusableSettingsTile(
+                  leading: const Icon(Icons.watch_later_outlined),
+                  title: Text('Screensaver Clock Style', style: Theme.of(context).textTheme.bodyMedium),
+                  onPressed: () => Navigator.of(context).pushNamed(ScreensaverClockStylePage.routeName),
                 ),
                 FocusableSettingsTile(
                   leading: const Icon(Icons.date_range),

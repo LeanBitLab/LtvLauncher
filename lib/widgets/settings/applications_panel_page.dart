@@ -132,7 +132,7 @@ class _ApplicationsPanelPageState extends State<ApplicationsPanelPage> {
 
       _tabFocusNodes[newIndex].requestFocus();
       
-      Future.delayed(const Duration(milliseconds: 300), () {
+      Future.delayed(const Duration(milliseconds: 150), () {
         if (mounted) {
            _isSwitchingViaKeyboard = false;
         }
