@@ -62,10 +62,12 @@ build_log.txt
 release_build_log.txt
 
 # Gemini
+.geminiignore
 GEMINI.md
 
 # Qwen
 .qwenignore
+QWEN.md
 
 # Local Project Docs & Tools
 pdocs/
