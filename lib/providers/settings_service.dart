@@ -31,6 +31,9 @@ const _backButtonAction = "back_button_action";
 const _dateFormat = "date_format";
 const _showCategoryTitles = "show_category_titles";
 const _showAppNamesBelowIcons = "show_app_names_below_icons";
+const _squareBannerShapeEnabled = "square_banner_shape_enabled";
+const _hideHighlightOutlineOnHomescreen = "hide_highlight_outline_on_homescreen";
+const _appSelectorTransitionAnimationEnabled = "app_selector_transition_animation_enabled";
 const _showDateInStatusBar = "show_date_in_status_bar";
 const _showTimeInStatusBar = "show_time_in_status_bar";
 const _timeFormat = "time_format";
@@ -77,6 +80,12 @@ class SettingsService extends ChangeNotifier {
   bool get showCategoryTitles => _sharedPreferences.getBool(_showCategoryTitles) ?? true;
 
   bool get showAppNamesBelowIcons => _sharedPreferences.getBool(_showAppNamesBelowIcons) ?? false;
+
+  bool get squareBannerShapeEnabled => _sharedPreferences.getBool(_squareBannerShapeEnabled) ?? false;
+
+  bool get hideHighlightOutlineOnHomescreen => _sharedPreferences.getBool(_hideHighlightOutlineOnHomescreen) ?? false;
+
+  bool get appSelectorTransitionAnimationEnabled => _sharedPreferences.getBool(_appSelectorTransitionAnimationEnabled) ?? true;
 
   bool get showDateInStatusBar => _sharedPreferences.getBool(_showDateInStatusBar) ?? true;
 
@@ -150,6 +159,18 @@ class SettingsService extends ChangeNotifier {
 
   Future<void> setShowAppNamesBelowIcons(bool show) async {
     return set(_showAppNamesBelowIcons, show);
+  }
+
+  Future<void> setSquareBannerShapeEnabled(bool enabled) async {
+    return set(_squareBannerShapeEnabled, enabled);
+  }
+
+  Future<void> setHideHighlightOutlineOnHomescreen(bool enabled) async {
+    return set(_hideHighlightOutlineOnHomescreen, enabled);
+  }
+
+  Future<void> setAppSelectorTransitionAnimationEnabled(bool enabled) async {
+    return set(_appSelectorTransitionAnimationEnabled, enabled);
   }
 
   Future<void> setShowDateInStatusBar(bool show) async {
