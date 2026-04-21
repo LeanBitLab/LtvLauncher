@@ -217,9 +217,9 @@ class AppsService extends ChangeNotifier
 
   Future<void> _initDefaultCategories() {
     final tvApplications =
-        _applications.values.where((application) => application.sideloaded == false);
+        _applications.values.where((application) => !application.sideloaded);
     final nonTvApplications =
-        _applications.values.where((application) => application.sideloaded == true);
+        _applications.values.where((application) => application.sideloaded);
 
     return _database.transaction(() async {
       if (nonTvApplications.isNotEmpty) {
@@ -459,7 +459,8 @@ class AppsService extends ChangeNotifier
 
   Future<void> addToCategory(App app, Category category,
       {bool shouldNotifyListeners = true}) async {
-    await addAppsToCategory([app], category, shouldNotifyListeners: shouldNotifyListeners);
+    await addAppsToCategory([app], category,
+        shouldNotifyListeners: shouldNotifyListeners);
   }
 
   Future<void> addAppsToCategory(Iterable<App> apps, Category category,
@@ -530,7 +531,8 @@ class AppsService extends ChangeNotifier
         return; // Not a special category
     }
 
-    await addAppsToCategory(appsToAdd, actualCategory, shouldNotifyListeners: false);
+    await addAppsToCategory(appsToAdd, actualCategory,
+        shouldNotifyListeners: false);
 
     notifyListeners();
   }
