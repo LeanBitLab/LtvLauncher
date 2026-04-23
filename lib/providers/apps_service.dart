@@ -233,8 +233,10 @@ class AppsService extends ChangeNotifier {
           shouldNotifyListeners: false,
         );
         Category nonTvAppsCategory = _categoriesById[categoryId]!;
-        await addAllToCategory(nonTvApplications, nonTvAppsCategory, shouldNotifyListeners: false);
-        sortCategory(nonTvAppsCategory);
+        for (final app in nonTvApplications) {
+          await addToCategory(app, nonTvAppsCategory,
+              shouldNotifyListeners: false);
+        }
       }
 
       if (tvApplications.isNotEmpty) {
@@ -242,8 +244,10 @@ class AppsService extends ChangeNotifier {
             type: CategoryType.grid, shouldNotifyListeners: false);
 
         Category tvAppsCategory = _categoriesById[categoryId]!;
-        await addAllToCategory(tvApplications, tvAppsCategory, shouldNotifyListeners: false);
-        sortCategory(tvAppsCategory);
+        for (final app in tvApplications) {
+          await addToCategory(app, tvAppsCategory,
+              shouldNotifyListeners: false);
+        }
       }
 
       await addCategory("Favorites", shouldNotifyListeners: false);
@@ -481,35 +485,24 @@ class AppsService extends ChangeNotifier {
 
   Future<void> addToCategory(App app, Category category,
       {bool shouldNotifyListeners = true}) async {
-    await addAllToCategory([app], category, shouldNotifyListeners: shouldNotifyListeners);
-  }
-
-  Future<void> addAllToCategory(Iterable<App> apps, Category category,
-      {bool shouldNotifyListeners = true}) async {
-    if (apps.isEmpty) return;
-
-    final categoryFound = _categoriesById[category.id];
-    if (categoryFound == null) return;
-
-    int nextOrder = await _database.nextAppCategoryOrder(category.id) ?? 0;
-    List<AppsCategoriesCompanion> batch = [];
-
-    for (final app in apps) {
-      batch.add(AppsCategoriesCompanion.insert(
+    int index = await _database.nextAppCategoryOrder(category.id) ?? 0;
+    await _database.insertAppsCategories([
+      AppsCategoriesCompanion.insert(
         categoryId: category.id,
         appPackageName: app.packageName,
-        order: nextOrder,
-      ));
-      app.categoryOrders[category.id] = nextOrder;
+        order: index,
+      )
+    ]);
+
+    final categoryFound = _categoriesById[category.id];
+    if (categoryFound != null) {
+      app.categoryOrders[categoryFound.id] = index;
       categoryFound.applications.add(app);
-      nextOrder++;
-    }
 
-    await _database.insertAppsCategories(batch);
-
-    if (shouldNotifyListeners) {
-      sortCategory(categoryFound);
-      notifyListeners();
+      if (shouldNotifyListeners) {
+        sortCategory(categoryFound);
+        notifyListeners();
+      }
     }
   }
 
