@@ -49,9 +49,7 @@ public class LauncherAppsEventStreamHandler implements EventChannel.StreamHandle
 
         @Override
         public void onPackageRemoved(String packageName, UserHandle user) {
-            _eventSink.success(Map.of(
-                    "action", "PACKAGE_REMOVED",
-                    "packageName", packageName));
+            _eventSink.success(new java.util.HashMap<String, Object>() {{ put("action", "PACKAGE_REMOVED"); put("packageName", packageName); }});
         }
 
         @Override
@@ -59,9 +57,7 @@ public class LauncherAppsEventStreamHandler implements EventChannel.StreamHandle
             Map<String, Serializable> application = _activity.getApplication(packageName);
 
             if (!application.isEmpty()) {
-                _eventSink.success(Map.of(
-                        "action", "PACKAGE_ADDED",
-                        "activityInfo", application));
+                _eventSink.success(new java.util.HashMap<String, Object>() {{ put("action", "PACKAGE_ADDED"); put("activityInfo", application); }});
             }
         }
 
@@ -70,9 +66,7 @@ public class LauncherAppsEventStreamHandler implements EventChannel.StreamHandle
             Map<String, Serializable> application = _activity.getApplication(packageName);
 
             if (!application.isEmpty()) {
-                _eventSink.success(Map.of(
-                        "action", "PACKAGE_CHANGED",
-                        "activityInfo", application));
+                _eventSink.success(new java.util.HashMap<String, Object>() {{ put("action", "PACKAGE_CHANGED"); put("activityInfo", application); }});
             }
         }
 
@@ -89,9 +83,7 @@ public class LauncherAppsEventStreamHandler implements EventChannel.StreamHandle
             }
 
             if (!applications.isEmpty()) {
-                _eventSink.success(Map.of(
-                        "action", "PACKAGES_AVAILABLE",
-                        "activitiesInfo", applications));
+                _eventSink.success(new java.util.HashMap<String, Object>() {{ put("action", "PACKAGES_AVAILABLE"); put("activitiesInfo", applications); }});
             }
         }
 

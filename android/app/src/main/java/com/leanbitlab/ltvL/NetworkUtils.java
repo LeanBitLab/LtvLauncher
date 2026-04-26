@@ -80,11 +80,12 @@ public class NetworkUtils
             networkType = NETWORK_TYPE_WIRED;
         }
 
-        return Map.of(
-                KEY_NETWORK_ACCESS, hasNetworkAccess,
-                KEY_INTERNET_ACCESS, hasInternetAccess,
-                KEY_NETWORK_TYPE, networkType,
-                KEY_WIRELESS_SIGNAL_LEVEL, wirelessNetworkSignalLevel);
+        Map<String, Object> map = new java.util.HashMap<>();
+        map.put(KEY_NETWORK_ACCESS, hasNetworkAccess);
+        map.put(KEY_INTERNET_ACCESS, hasInternetAccess);
+        map.put(KEY_NETWORK_TYPE, networkType);
+        map.put(KEY_WIRELESS_SIGNAL_LEVEL, wirelessNetworkSignalLevel);
+        return map;
     }
 
     public static Map<String, Object> getNetworkInformation(Context context, Network network)
@@ -166,11 +167,12 @@ public class NetworkUtils
             }
         }
 
-        return Map.of(
-                KEY_NETWORK_TYPE, networkType,
-                KEY_NETWORK_ACCESS, hasNetworkAccess,
-                KEY_INTERNET_ACCESS, hasNetworkAccess,
-                KEY_WIRELESS_SIGNAL_LEVEL, wirelessSignalLevel);
+        Map<String, Object> mapOut = new java.util.HashMap<>();
+        mapOut.put(KEY_NETWORK_TYPE, networkType);
+        mapOut.put(KEY_NETWORK_ACCESS, hasNetworkAccess);
+        mapOut.put(KEY_INTERNET_ACCESS, hasNetworkAccess);
+        mapOut.put(KEY_WIRELESS_SIGNAL_LEVEL, wirelessSignalLevel);
+        return mapOut;
     }
 
     public static int getWifiSignalLevel(WifiInfo wifiInfo)

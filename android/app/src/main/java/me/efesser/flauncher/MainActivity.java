@@ -217,7 +217,7 @@ public class MainActivity extends FlutterActivity {
     }
 
     public Map<String, Serializable> getApplication(String packageName) {
-        Map<String, Serializable> map = Map.of();
+        Map<String, Serializable> map = new java.util.HashMap<>();
         PackageManager packageManager = getPackageManager();
         Intent intent = packageManager.getLeanbackLaunchIntentForPackage(packageName);
 

@@ -18,9 +18,6 @@ public class PhoneStateListenerImpl extends PhoneStateListener
     @Override
     public void onDataConnectionStateChanged(int state, int networkType)
     {
-        _eventSink.success(Map.of(
-                "name", "CELLULAR_STATE_CHANGED",
-                "arguments", networkType
-        ));
+        _eventSink.success(new java.util.HashMap<String, Object>() {{ put("name", "CELLULAR_STATE_CHANGED"); put("arguments", networkType); }});
     }
 }

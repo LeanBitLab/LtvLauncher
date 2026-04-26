@@ -98,10 +98,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
         @Override
         public void onAvailable(@NonNull Network network) {
             Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, network);
-            postEvent(Map.of(
-                    "name", "NETWORK_AVAILABLE",
-                    "arguments", map
-            ));
+            postEvent(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_AVAILABLE"); put("arguments", map); }});
         }
 
         @Override
@@ -118,10 +115,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 }
             }
 
-            postEvent(Map.of(
-                    "name", "CAPABILITIES_CHANGED",
-                    "arguments", map
-            ));
+            postEvent(new java.util.HashMap<String, Object>() {{ put("name", "CAPABILITIES_CHANGED"); put("arguments", map); }});
         }
 
         @Override
@@ -135,13 +129,10 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
 
             Network activeNetwork = _connectivityManager.getActiveNetwork();
             if (activeNetwork == null) {
-                postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+                postEvent(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_UNAVAILABLE"); }});
             } else {
                 Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, activeNetwork);
-                postEvent(Map.of(
-                        "name", "CAPABILITIES_CHANGED",
-                        "arguments", map
-                ));
+                postEvent(new java.util.HashMap<String, Object>() {{ put("name", "CAPABILITIES_CHANGED"); put("arguments", map); }});
             }
         }
     }
@@ -159,10 +150,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
         @Override
         public void onAvailable(@NonNull Network network) {
             Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, network);
-            postEvent(Map.of(
-                    "name", "NETWORK_AVAILABLE",
-                    "arguments", map
-            ));
+            postEvent(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_AVAILABLE"); put("arguments", map); }});
         }
 
         @Override
@@ -180,10 +168,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 }
             }
 
-            postEvent(Map.of(
-                    "name", "CAPABILITIES_CHANGED",
-                    "arguments", map
-            ));
+            postEvent(new java.util.HashMap<String, Object>() {{ put("name", "CAPABILITIES_CHANGED"); put("arguments", map); }});
         }
 
         @Override
@@ -196,13 +181,10 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
 
             Network activeNetwork = _connectivityManager.getActiveNetwork();
             if (activeNetwork == null) {
-                postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+                postEvent(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_UNAVAILABLE"); }});
             } else {
                 Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, activeNetwork);
-                postEvent(Map.of(
-                        "name", "CAPABILITIES_CHANGED",
-                        "arguments", map
-                ));
+                postEvent(new java.util.HashMap<String, Object>() {{ put("name", "CAPABILITIES_CHANGED"); put("arguments", map); }});
             }
         }
     }

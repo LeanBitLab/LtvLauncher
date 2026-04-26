@@ -25,15 +25,12 @@ public class NetworkChangeReceiver extends BroadcastReceiver
         boolean noConnectivity = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
 
         if (noConnectivity) {
-            _eventSink.success(Map.of("name", "NETWORK_UNAVAILABLE"));
+            _eventSink.success(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_UNAVAILABLE"); }});
         }
         else {
             //noinspection deprecation
             NetworkInfo networkInfo = intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
-            _eventSink.success(Map.of(
-                    "name", "NETWORK_AVAILABLE",
-                    "arguments", NetworkUtils.getNetworkInformation(context, networkInfo)
-            ));
+            _eventSink.success(new java.util.HashMap<String, Object>() {{ put("name", "NETWORK_AVAILABLE"); put("arguments", NetworkUtils.getNetworkInformation(context, networkInfo)); }});
         }
     }
 }
