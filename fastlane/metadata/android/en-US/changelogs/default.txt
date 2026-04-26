@@ -1,4 +1,0 @@
-- Added custom name section.
-- Added custom banner option.
-- Added app name toggle.
-- Performance optimization.
