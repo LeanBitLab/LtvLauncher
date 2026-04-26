@@ -376,12 +376,22 @@ public class MainActivity extends FlutterActivity {
     }
 
     private Map<String, Object> getActiveNetworkInformation() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return NetworkUtils.getNetworkInformation(this, connectivityManager.getActiveNetwork());
-        } else {
-            // noinspection deprecation
-            return NetworkUtils.getNetworkInformation(this, connectivityManager.getActiveNetworkInfo());
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                return NetworkUtils.getNetworkInformation(this, connectivityManager.getActiveNetwork());
+            } else {
+                // noinspection deprecation
+                return NetworkUtils.getNetworkInformation(this, connectivityManager.getActiveNetworkInfo());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Object> map = new java.util.HashMap<>();
+            map.put(NetworkUtils.KEY_NETWORK_TYPE, NetworkUtils.NETWORK_TYPE_UNKNOWN);
+            map.put(NetworkUtils.KEY_NETWORK_ACCESS, false);
+            map.put(NetworkUtils.KEY_INTERNET_ACCESS, false);
+            map.put(NetworkUtils.KEY_WIRELESS_SIGNAL_LEVEL, 0);
+            return map;
         }
     }
 
@@ -446,33 +456,33 @@ public class MainActivity extends FlutterActivity {
         try {
             NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_WIFI,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_MOBILE,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_ETHERNET,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -501,33 +511,33 @@ public class MainActivity extends FlutterActivity {
         try {
             NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_WIFI,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_MOBILE,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_ETHERNET,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -556,33 +566,33 @@ public class MainActivity extends FlutterActivity {
         try {
             NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_WIFI,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_MOBILE,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
                     ConnectivityManager.TYPE_ETHERNET,
-                    null,
+                    "",
                     startTime,
                     endTime);
             totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
-        } catch (RemoteException | SecurityException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

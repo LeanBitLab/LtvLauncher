@@ -50,6 +50,7 @@ class AppsGrid extends StatelessWidget
     }
     else {
       categoryContent = GridView.custom(
+        clipBehavior: Clip.none,
         primary: false,
         shrinkWrap: true,
         gridDelegate: _buildSliverGridDelegate(),

@@ -164,19 +164,19 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
     BorderRadius innerBorderRadius;
 
     switch (themes) {
-      case 'soft':
+      case 'apple_tv':
         borderRadius = BorderRadius.circular(16);
         innerBorderRadius = BorderRadius.circular(14);
         break;
-      case 'classic':
+      case 'roku_os':
         borderRadius = BorderRadius.zero;
         innerBorderRadius = BorderRadius.zero;
         break;
-      case 'pill':
+      case 'web_os':
         borderRadius = BorderRadius.circular(100);
         innerBorderRadius = BorderRadius.circular(98);
         break;
-      case 'modern':
+      case 'google_tv':
       default:
         borderRadius = BorderRadius.circular(8);
         innerBorderRadius = BorderRadius.circular(6);
@@ -219,7 +219,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                         child: Material(
                           borderRadius: borderRadius,
                           clipBehavior: Clip.antiAlias,
-                          elevation: shouldHighlight ? (themes == 'soft' ? 32 : (themes == 'classic' ? 8 : 16)) : 0,
+                          elevation: shouldHighlight ? (themes == 'apple_tv' ? 32 : (themes == 'roku_os' ? 8 : 16)) : 0,
                           shadowColor: Colors.black,
                           child: Stack(
                             fit: StackFit.expand,
@@ -263,11 +263,11 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                                   final accentColor = Color(int.parse('FF$accentColorHex', radix: 16));
 
                                   if (shouldHighlight && !hideHighlightOutlineOnHomescreen) {
-                                    if (themes == 'soft') {
+                                    if (themes == 'apple_tv') {
                                       _animation.stop();
                                       return const SizedBox();
                                     }
-                                    if (themes == 'classic') {
+                                    if (themes == 'roku_os') {
                                       _animation.stop();
                                       return IgnorePointer(
                                         child: Stack(
@@ -488,9 +488,9 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
   Matrix4 _scaleTransform(BuildContext context, String theme) {
     double scale = 1.0;
     if (!_moving && _shouldHighlight(context)) {
-      if (theme == 'soft') {
+      if (theme == 'apple_tv') {
         scale = 1.15;
-      } else if (theme == 'classic') {
+      } else if (theme == 'roku_os') {
         scale = 1.0;
       } else {
         scale = 1.1;

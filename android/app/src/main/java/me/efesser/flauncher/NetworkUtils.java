@@ -6,7 +6,6 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.net.TelephonyNetworkSpecifier;
-import android.net.TransportInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -21,11 +20,11 @@ import java.util.Objects;
 public class NetworkUtils
 {
     // Aligned with NetworkType enum value indices, on file lib/providers/network_service.dart
-    public static final short NETWORK_TYPE_CELLULAR = 0;
-    public static final short NETWORK_TYPE_WIFI = 1;
-    public static final short NETWORK_TYPE_VPN = 2;
-    public static final short NETWORK_TYPE_WIRED = 3;
-    public static final short NETWORK_TYPE_UNKNOWN = 4;
+    public static final int NETWORK_TYPE_CELLULAR = 0;
+    public static final int NETWORK_TYPE_WIFI = 1;
+    public static final int NETWORK_TYPE_VPN = 2;
+    public static final int NETWORK_TYPE_WIRED = 3;
+    public static final int NETWORK_TYPE_UNKNOWN = 4;
 
     public static final String KEY_INTERNET_ACCESS = "internetAccess";
     public static final String KEY_NETWORK_ACCESS = "networkAccess";
@@ -36,7 +35,7 @@ public class NetworkUtils
     {
         boolean hasNetworkAccess, hasInternetAccess;
         int wirelessNetworkSignalLevel = 0;
-        short networkType = NETWORK_TYPE_UNKNOWN;
+        int networkType = NETWORK_TYPE_UNKNOWN;
 
         hasNetworkAccess = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -54,12 +53,22 @@ public class NetworkUtils
                     .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q
-                    && capabilities.getTransportInfo() instanceof WifiInfo wifiInfo) {
+                    && capabilities.getTransportInfo() instanceof WifiInfo) {
+                WifiInfo wifiInfo = (WifiInfo) capabilities.getTransportInfo();
                 wirelessNetworkSignalLevel = getWifiSignalLevel(wifiInfo);
             }
             else {
                 // TODO: Will this give the correct information?
-                wirelessNetworkSignalLevel = getWifiSignalLevel(wifiManager.getConnectionInfo());
+                try {
+                    if (wifiManager != null) {
+                        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                        if (wifiInfo != null) {
+                            wirelessNetworkSignalLevel = getWifiSignalLevel(wifiInfo);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             networkType = NETWORK_TYPE_WIFI;
@@ -83,15 +92,26 @@ public class NetworkUtils
         Map<String, Object> map = null;
         int wirelessNetworkSignalLevel = 0;
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
+        if (network != null) {
+            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
 
-        if (capabilities != null) {
-            map = getNetworkCapabilitiesInformation(context, capabilities);
+            if (capabilities != null) {
+                map = getNetworkCapabilitiesInformation(context, capabilities);
 
-            if (Objects.equals(map.get(KEY_NETWORK_TYPE), NETWORK_TYPE_WIFI)) {
-                WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                wirelessNetworkSignalLevel = getWifiSignalLevel(wifiManager.getConnectionInfo());
+                if (Objects.equals(map.get(KEY_NETWORK_TYPE), NETWORK_TYPE_WIFI)) {
+                    try {
+                        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                        if (wifiManager != null) {
+                            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                            if (wifiInfo != null) {
+                                wirelessNetworkSignalLevel = getWifiSignalLevel(wifiInfo);
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
 
@@ -100,6 +120,9 @@ public class NetworkUtils
         }
         else {
             map = new HashMap<>();
+            map.put(KEY_NETWORK_TYPE, NETWORK_TYPE_UNKNOWN);
+            map.put(KEY_NETWORK_ACCESS, false);
+            map.put(KEY_INTERNET_ACCESS, false);
         }
 
         map.put(KEY_WIRELESS_SIGNAL_LEVEL, wirelessNetworkSignalLevel);
@@ -123,8 +146,17 @@ public class NetworkUtils
                 WifiManager wifiManager = (WifiManager) context
                         .getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-                networkType = networkInfoType;
-                wirelessSignalLevel = getWifiSignalLevel(wifiManager.getConnectionInfo());
+                networkType = NETWORK_TYPE_WIFI;
+                try {
+                    if (wifiManager != null) {
+                        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                        if (wifiInfo != null) {
+                            wirelessSignalLevel = getWifiSignalLevel(wifiInfo);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             else if (networkInfoType == ConnectivityManager.TYPE_VPN) {
                 networkType = NETWORK_TYPE_VPN;

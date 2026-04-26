@@ -66,16 +66,11 @@ class InterfaceSettingsPage extends StatelessWidget {
                   onPressed: () => Navigator.of(context).pushNamed(AccentColorPage.routeName),
                 ),
                 FocusableSettingsTile(
-                FocusableSettingsTile(
                   leading: const Icon(Icons.crop_square),
                   title: Text(localizations.themes, style: Theme.of(context).textTheme.bodyMedium),
                   onPressed: () => Navigator.of(context).pushNamed(ThemesPage.routeName),
                 ),
                 FocusableSettingsTile(
-                  leading: const Icon(Icons.crop_square),
-                  title: Text(localizations.themes, style: Theme.of(context).textTheme.bodyMedium),
-                  onPressed: () => Navigator.of(context).pushNamed(ThemesPage.routeName),
-                ),
                   leading: const Icon(Icons.miscellaneous_services),
                   title: Text("Miscellaneous", style: Theme.of(context).textTheme.bodyMedium),
                   onPressed: () => Navigator.of(context).pushNamed(MiscPanelPage.routeName),

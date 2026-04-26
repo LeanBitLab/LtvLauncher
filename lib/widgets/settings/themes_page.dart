@@ -49,7 +49,7 @@ class ThemesPage extends StatelessWidget {
                       subtitle: 'Rounded corners (8px)',
                       value: 'google_tv',
                       groupValue: currentShape,
-                      onChanged: (value) => settingsService.setAppBannerShape(value!),
+                      onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'google_tv',
                     ),
                     _ShapeRadioTile(
@@ -57,7 +57,7 @@ class ThemesPage extends StatelessWidget {
                       subtitle: 'Larger rounded corners (16px)',
                       value: 'apple_tv',
                       groupValue: currentShape,
-                      onChanged: (value) => settingsService.setAppBannerShape(value!),
+                      onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'apple_tv',
                     ),
                     _ShapeRadioTile(
@@ -65,7 +65,7 @@ class ThemesPage extends StatelessWidget {
                       subtitle: 'Square corners (0px)',
                       value: 'roku_os',
                       groupValue: currentShape,
-                      onChanged: (value) => settingsService.setAppBannerShape(value!),
+                      onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'roku_os' || currentShape == 'fire_os',
                     ),
                     _ShapeRadioTile(
@@ -73,7 +73,7 @@ class ThemesPage extends StatelessWidget {
                       subtitle: 'Circular / Pill shape',
                       value: 'web_os',
                       groupValue: currentShape,
-                      onChanged: (value) => settingsService.setAppBannerShape(value!),
+                      onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'web_os',
                     ),
                   ],

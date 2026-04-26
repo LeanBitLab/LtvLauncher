@@ -45,7 +45,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 _networkCallback = new NetworkCallbackImplApi31(events, null);
                 _connectivityManager.registerDefaultNetworkCallback(_networkCallback, _handler);
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 _networkCallback = new NetworkCallbackImpl(events, null);
                 _connectivityManager.registerDefaultNetworkCallback(_networkCallback, _handler);
             }
@@ -59,7 +59,9 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 _context.registerReceiver(_networkChangeReceiver, filter);
             }
         }
-        catch (RuntimeException ignored) { }
+        catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -94,6 +96,15 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
         }
 
         @Override
+        public void onAvailable(@NonNull Network network) {
+            Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, network);
+            postEvent(Map.of(
+                    "name", "NETWORK_AVAILABLE",
+                    "arguments", map
+            ));
+        }
+
+        @Override
         public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
             Map<String, Object> map = NetworkUtils.getNetworkCapabilitiesInformation(_context, networkCapabilities);
 
@@ -122,7 +133,16 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 _phoneStateListener = null;
             }
 
-            postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+            Network activeNetwork = _connectivityManager.getActiveNetwork();
+            if (activeNetwork == null) {
+                postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+            } else {
+                Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, activeNetwork);
+                postEvent(Map.of(
+                        "name", "CAPABILITIES_CHANGED",
+                        "arguments", map
+                ));
+            }
         }
     }
 
@@ -137,6 +157,15 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
         }
 
         @Override
+        public void onAvailable(@NonNull Network network) {
+            Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, network);
+            postEvent(Map.of(
+                    "name", "NETWORK_AVAILABLE",
+                    "arguments", map
+            ));
+        }
+
+        @Override
         public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
             Map<String, Object> map = NetworkUtils.getNetworkCapabilitiesInformation(_context, networkCapabilities);
 
@@ -145,7 +174,9 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
 
                 if (_telephonyCallback == null) {
                     _telephonyCallback = new TelephonyCallbackImpl(_eventSink);
-                    manager.registerTelephonyCallback(_context.getMainExecutor(), _telephonyCallback);
+                    try {
+                        manager.registerTelephonyCallback(_context.getMainExecutor(), _telephonyCallback);
+                    } catch (SecurityException ignored) { }
                 }
             }
 
@@ -163,7 +194,16 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 _telephonyCallback = null;
             }
 
-            postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+            Network activeNetwork = _connectivityManager.getActiveNetwork();
+            if (activeNetwork == null) {
+                postEvent(Map.of("name", "NETWORK_UNAVAILABLE"));
+            } else {
+                Map<String, Object> map = NetworkUtils.getNetworkInformation(_context, activeNetwork);
+                postEvent(Map.of(
+                        "name", "CAPABILITIES_CHANGED",
+                        "arguments", map
+                ));
+            }
         }
     }
 }

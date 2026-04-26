@@ -82,8 +82,11 @@ class NetworkService extends ChangeNotifier
         .getActiveNetworkInformation()
         .then((map) {
           if (map.isNotEmpty) {
-            _getNetworkInformation(map);
+            _getNetworkInformation(map.cast<String, dynamic>());
+            notifyListeners();
           }
+        }).catchError((e) {
+          print("Error getting active network info: $e");
         });
 
     _checkPermissionAndStartPolling();
@@ -171,12 +174,18 @@ class NetworkService extends ChangeNotifier
 
   void _getNetworkInformation(Map<String, dynamic> map)
   {
-    int networkTypeInt = map["networkType"];
-    _hasInternetAccess = map["internetAccess"];
-    _networkType = NetworkType.values[networkTypeInt];
+    print("NetworkService: _getNetworkInformation: $map");
+    try {
+      int networkTypeInt = map["networkType"] as int;
+      _hasInternetAccess = map["internetAccess"] as bool;
+      _networkType = NetworkType.values[networkTypeInt];
 
-    if (_networkType == NetworkType.Cellular || _networkType == NetworkType.Wifi) {
-      _wirelessNetworkSignalLevel = map["wirelessSignalLevel"];
+      if (_networkType == NetworkType.Cellular || _networkType == NetworkType.Wifi) {
+        _wirelessNetworkSignalLevel = map["wirelessSignalLevel"] as int;
+      }
+      print("NetworkService: parsed type $_networkType, signal $_wirelessNetworkSignalLevel");
+    } catch (e) {
+      print("NetworkService error parsing: $e");
     }
   }
 

@@ -49,8 +49,6 @@ class MiscPanelPage extends StatelessWidget {
                 title: Text("Show App Names Below Icons", style: Theme.of(context).textTheme.bodyMedium),
                 secondary: Icon(Icons.subtitles),
               ),
-              FocusableSettingsTile(
-              ),
               RoundedSwitchListTile(
                 value: settingsService.hideHighlightOutlineOnHomescreen,
                 onChanged: (value) => settingsService.setHideHighlightOutlineOnHomescreen(value),

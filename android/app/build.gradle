@@ -77,6 +77,9 @@ android {
         debug {
             applicationIdSuffix '.debug'
             signingConfig signingConfigs.debug
+            ndk {
+                abiFilters 'armeabi-v7a'
+            }
         }
         release {
             minifyEnabled true
@@ -115,4 +118,8 @@ android {
 
 flutter {
     source '../..'
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
 }
