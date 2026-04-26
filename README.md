@@ -21,7 +21,7 @@ This customized version introduces usability enhancements and some UX improvemen
 
 ## Key Features & Enhancements
 
-- **Data Usage Widget** - Track daily Internet consumption directly from the status bar.
+- **Data Usage Widget** - Track daily Internet consumption (WiFi, Ethernet, Mobile) directly from the status bar.
 - **Inbuilt OLED Screensaver** - Minimal screensaver with 30s clock position shifting to prevent burn-in.
 - **Easy WiFi Access** - Network indicator doubles as a shortcut to system WiFi settings.
 - **Quick Presets** - Select Time/Date formats and Category names from a list (No keyboard required).
@@ -31,6 +31,9 @@ This customized version introduces usability enhancements and some UX improvemen
 - **Smart Navigation** - Fixed "bounce back" issues and optimized focus traversal for a smoother experience.
 - **Refined Settings** - Reorganized menus with a new "Miscellaneous" section and unified focus styles.
 - **Accent Color Support** - Personalize the UI with multiple color presets.
+- **Themes** - Switch between distinct visual styles (Default, Premium, Classic, Capsule).
+- **Focus Customization** - Toggle focus outline and transition animations to tailor your experience.
+- **Edge Bump Animation** - Visual feedback when reaching the edge of a row, preventing accidental focus wrapping.
 - **Improved Sorting** - Easily reorder categories using Left/Right arrow keys instead of finicky gestures.
 - **Left Side Settings** - Reorganized settings panel now opens on the left for better reach.
 - **Brightness Scheduler (Experimental)** - Automatically adjust system brightness based on time of day (Requires `WRITE_SETTINGS` permission via ADB).
@@ -40,6 +43,21 @@ This customized version introduces usability enhancements and some UX improvemen
 
 > [!WARNING]
 > **Brightness Scheduler is an experimental feature.** It is currently untested across all devices and may be removed or modified in future versions based on user feedback.
+
+## Original FLauncher Features
+
+- [x] No ads
+- [x] Customizable categories
+- [x] Manually reorder apps within categories
+- [x] Wallpaper support
+- [x] Open "Android Settings"
+- [x] Open "App info"
+- [x] Uninstall app
+- [x] Clock
+- [x] Switch between row and grid for categories
+- [x] Support for non-TV (sideloaded) apps
+- [x] Navigation sound feedback
+- [x] Official support for `armeabi-v7a`, `arm64-v8a`, and `x86_64` devices.
 
 ## Screenshots
 
@@ -60,24 +78,11 @@ This customized version introduces usability enhancements and some UX improvemen
   </tr>
 </table>
 
-## Original FLauncher Features
-
-- [x] No ads
-- [x] Customizable categories
-- [x] Manually reorder apps within categories
-- [x] Wallpaper support
-- [x] Open "Android Settings"
-- [x] Open "App info"
-- [x] Uninstall app
-- [x] Clock
-- [x] Switch between row and grid for categories
-- [x] Support for non-TV (sideloaded) apps
-- [x] Navigation sound feedback
 
 ## Set LTvLauncher as default launcher
 
 ### Method 1: Remap the Home button
-This is the "safer" and easiest way. Use [Button Mapper](https://github.com/keymapperorg/KeyMapper) to remap the Home button of the remote to launch LTvLauncher.
+This is the "safer" and easiest way. Use [key Mapper](https://github.com/keymapperorg/KeyMapper) to remap the Home button of the remote to launch LTvLauncher.
 
 ### Method 2: Disable the default launcher
 **:warning: Disclaimer :warning:**
@@ -104,7 +109,7 @@ $ adb shell pm enable com.google.android.tungsten.setupwraith
 ```
 
 #### Known issues
-On Chromecast with Google TV (maybe others), the "YouTube" remote button will stop working if the default launcher is disabled. As a workaround, you can use [Button Mapper](https://play.google.com/store/apps/details?id=flar2.homebutton) to remap it correctly.
+On Chromecast with Google TV (maybe others), the "YouTube" remote button will stop working if the default launcher is disabled. As a workaround, you can use [key Mapper](https://github.com/keymapperorg/KeyMapper) to remap it correctly.
 
 ## Wallpaper
 Because Android's `WallpaperManager` is not available on some Android TV devices, FLauncher implements its own wallpaper management method.
