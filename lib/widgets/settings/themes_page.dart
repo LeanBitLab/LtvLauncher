@@ -45,7 +45,7 @@ class ThemesPage extends StatelessWidget {
                 child: Column(
                   children: [
                     _ShapeRadioTile(
-                      title: 'Modern',
+                      title: 'Default',
                       value: 'modern',
                       groupValue: currentShape,
                       onChanged: (value) => settingsService.setThemes(value!),
