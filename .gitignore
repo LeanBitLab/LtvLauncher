@@ -91,3 +91,4 @@ android/keystore.properties
 # Flutter module (Context7 recommendation)
 .android/
 .ios/
+*.py
