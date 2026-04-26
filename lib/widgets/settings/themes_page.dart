@@ -45,32 +45,28 @@ class ThemesPage extends StatelessWidget {
                 child: Column(
                   children: [
                     _ShapeRadioTile(
-                      title: 'Google TV / Android TV',
-                      subtitle: 'Rounded corners (8px)',
+                      title: 'Rounded',
                       value: 'google_tv',
                       groupValue: currentShape,
                       onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'google_tv',
                     ),
                     _ShapeRadioTile(
-                      title: 'Apple TV (tvOS)',
-                      subtitle: 'Larger rounded corners (16px)',
+                      title: 'Squircle',
                       value: 'apple_tv',
                       groupValue: currentShape,
                       onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'apple_tv',
                     ),
                     _ShapeRadioTile(
-                      title: 'Roku OS / Fire OS',
-                      subtitle: 'Square corners (0px)',
+                      title: 'Square',
                       value: 'roku_os',
                       groupValue: currentShape,
                       onChanged: (value) => settingsService.setThemes(value!),
                       autofocus: currentShape == 'roku_os' || currentShape == 'fire_os',
                     ),
                     _ShapeRadioTile(
-                      title: 'LG WebOS / Tizen',
-                      subtitle: 'Circular / Pill shape',
+                      title: 'Pill',
                       value: 'web_os',
                       groupValue: currentShape,
                       onChanged: (value) => settingsService.setThemes(value!),
@@ -89,7 +85,6 @@ class ThemesPage extends StatelessWidget {
 
 class _ShapeRadioTile extends StatefulWidget {
   final String title;
-  final String subtitle;
   final String value;
   final String groupValue;
   final ValueChanged<String?> onChanged;
@@ -97,7 +92,6 @@ class _ShapeRadioTile extends StatefulWidget {
 
   const _ShapeRadioTile({
     required this.title,
-    required this.subtitle,
     required this.value,
     required this.groupValue,
     required this.onChanged,
@@ -172,13 +166,6 @@ class _ShapeRadioTileState extends State<_ShapeRadioTile> {
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                             color: isSelected ? Colors.white : Colors.white70,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.subtitle,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.white54,
                           ),
                         ),
                       ],
