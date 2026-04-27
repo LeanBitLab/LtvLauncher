@@ -15,6 +15,7 @@ import 'package:flauncher/gradients.dart' as _i2;
 import 'package:flauncher/models/app.dart' as _i16;
 import 'package:flauncher/models/category.dart' as _i3;
 import 'package:flauncher/providers/apps_service.dart' as _i15;
+import 'package:flauncher/providers/network_service.dart' as _i19;
 import 'package:flauncher/providers/settings_service.dart' as _i17;
 import 'package:flauncher/providers/wallpaper_service.dart' as _i14;
 import 'package:flutter/cupertino.dart' as _i10;
@@ -1690,6 +1691,132 @@ class MockSettingsService extends _i1.Mock implements _i17.SettingsService {
         Invocation.method(
           #dispose,
           [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [NetworkService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNetworkService extends _i1.Mock implements _i19.NetworkService {
+  MockNetworkService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get hasInternetAccess => (super.noSuchMethod(
+        Invocation.getter(#hasInternetAccess),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  _i19.CellularNetworkType get cellularNetworkType => (super.noSuchMethod(
+        Invocation.getter(#cellularNetworkType),
+        returnValue: _i19.CellularNetworkType.Unknown,
+      ) as _i19.CellularNetworkType);
+
+  @override
+  _i19.NetworkType get networkType => (super.noSuchMethod(
+        Invocation.getter(#networkType),
+        returnValue: _i19.NetworkType.Cellular,
+      ) as _i19.NetworkType);
+
+  @override
+  int get wirelessNetworkSignalLevel => (super.noSuchMethod(
+        Invocation.getter(#wirelessNetworkSignalLevel),
+        returnValue: 0,
+      ) as int);
+
+  @override
+  int get dailyDataUsage => (super.noSuchMethod(
+        Invocation.getter(#dailyDataUsage),
+        returnValue: 0,
+      ) as int);
+
+  @override
+  bool get hasUsageStatsPermission => (super.noSuchMethod(
+        Invocation.getter(#hasUsageStatsPermission),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  _i9.Future<void> requestPermission() => (super.noSuchMethod(
+        Invocation.method(
+          #requestPermission,
+          [],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> refreshPermissionAndUsage() => (super.noSuchMethod(
+        Invocation.method(
+          #refreshPermissionAndUsage,
+          [],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> openWifiSettings() => (super.noSuchMethod(
+        Invocation.method(
+          #openWifiSettings,
+          [],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<int> getDataUsageForPeriod(String? period) => (super.noSuchMethod(
+        Invocation.method(
+          #getDataUsageForPeriod,
+          [period],
+        ),
+        returnValue: _i9.Future<int>.value(0),
+      ) as _i9.Future<int>);
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(_i4.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(_i4.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
         ),
         returnValueForMissingStub: null,
       );
