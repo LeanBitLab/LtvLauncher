@@ -862,6 +862,25 @@ class MockAppsService extends _i1.Mock implements _i15.AppsService {
       ) as _i9.Future<void>);
 
   @override
+  _i9.Future<void> addAllToCategory(
+    Iterable<_i16.App>? apps,
+    _i3.Category? category, {
+    bool? shouldNotifyListeners = true,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addAllToCategory,
+          [
+            apps,
+            category,
+          ],
+          {#shouldNotifyListeners: shouldNotifyListeners},
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
   _i9.Future<void> removeFromCategory(
     _i16.App? application,
     _i3.Category? category,
