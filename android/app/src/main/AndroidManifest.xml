@@ -47,9 +47,8 @@
     </queries>
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:banner="@drawable/banner"
-        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="LTvLauncher">
         <activity
