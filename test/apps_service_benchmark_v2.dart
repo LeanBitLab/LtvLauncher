@@ -5,6 +5,7 @@ import 'package:flauncher/flauncher_channel.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flauncher/models/category.dart';
+import 'package:drift/drift.dart';
 
 import 'mocks.mocks.dart';
 
@@ -54,6 +55,18 @@ void main() {
       version: '1.0.0',
       hidden: false,
     ));
+
+    // Insert apps into DB before categorizing them
+    await database.persistApps(appsToAdd1.map((app) => AppsCompanion(
+        packageName: Value(app.packageName),
+        name: Value(app.name),
+        version: Value(app.version),
+    )));
+    await database.persistApps(appsToAdd2.map((app) => AppsCompanion(
+        packageName: Value(app.packageName),
+        name: Value(app.name),
+        version: Value(app.version),
+    )));
 
     // Baseline: Loop
     final swLoop = Stopwatch()..start();
