@@ -411,7 +411,8 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
       future: _appImageLoadFuture,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          (AppImageType, ImageProvider) record = snapshot.data!;
+          final record = snapshot.data;
+          if (record == null) return const SizedBox();
 
           if (record.$1 == AppImageType.Banner) {
             return Ink.image(image: record.$2, fit: BoxFit.cover);
@@ -615,15 +616,20 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
   }
 
   Future<void> _showPanel(BuildContext context) async {
-    final result = await showDialog<ApplicationInfoPanelResult>(
-      context: context,
-      builder: (context) => ApplicationInfoPanel(
-        category: widget.category,
-        application: widget.application,
-      ),
-    );
-    if (result == ApplicationInfoPanelResult.reorderApp) {
-      setState(() => _moving = true);
+    try {
+      final result = await showDialog<ApplicationInfoPanelResult>(
+        context: context,
+        builder: (context) => ApplicationInfoPanel(
+          category: widget.category,
+          application: widget.application,
+        ),
+      );
+      if (result == ApplicationInfoPanelResult.reorderApp) {
+        setState(() => _moving = true);
+      }
+    } catch (e, stackTrace) {
+      print('Error showing panel: $e');
+      print('Stack trace: $stackTrace');
     }
   }
 }

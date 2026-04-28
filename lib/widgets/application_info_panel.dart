@@ -25,6 +25,7 @@ import 'package:flauncher/widgets/add_to_category_dialog.dart';
 import 'package:flauncher/widgets/side_panel_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations_en.dart';
 
 import '../models/app.dart';
 import '../models/category.dart';
@@ -58,7 +59,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context) ?? AppLocalizationsEn();
 
     return SidePanelDialog(
         width: 300,
@@ -192,7 +193,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                            Container(width: 8),
                            Flexible(
                              child: Text(
-                               localizations.removeFrom(widget.category!.name),
+                               localizations.removeFrom(widget.category?.name ?? ''),
                                style: Theme.of(context).textTheme.bodyMedium,
                                maxLines: 2,
                                overflow: TextOverflow.ellipsis,
@@ -201,7 +202,10 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                          ],
                        ),
                        onPressed: () async {
-                         await context.read<AppsService>().removeFromCategory(widget.application, widget.category!);
+                         final cat = widget.category;
+                         if (cat != null) {
+                           await context.read<AppsService>().removeFromCategory(widget.application, cat);
+                         }
                          Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                        },
                      ),
