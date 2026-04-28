@@ -211,12 +211,14 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                   child: AspectRatio(
                     aspectRatio: 16 / 9,
                     child: RepaintBoundary(
-                      child: AnimatedContainer(
-                        duration: appSelectorTransitionAnimationEnabled ? const Duration(milliseconds: 200) : Duration.zero,
-                        curve: Curves.easeInOut,
-                        transformAlignment: Alignment.center,
-                        transform: _scaleTransform(context, themes),
-                        child: Material(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return AnimatedContainer(
+                            duration: appSelectorTransitionAnimationEnabled ? const Duration(milliseconds: 200) : Duration.zero,
+                            curve: Curves.easeInOut,
+                            transformAlignment: Alignment.center,
+                            transform: _scaleTransform(context, themes, constraints.maxWidth),
+                            child: Material(
                           borderRadius: borderRadius,
                           clipBehavior: Clip.antiAlias,
                           elevation: shouldHighlight ? (themes == 'premium' ? 32 : (themes == 'classic' ? 8 : 16)) : 0,
@@ -365,11 +367,13 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ),
-                if (showAppNames)
+              ),
+            ),
+            if (showAppNames)
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
@@ -485,7 +489,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
     return FocusManager.instance.highlightMode == FocusHighlightMode.traditional && Focus.of(context).hasFocus;
   }
 
-  Matrix4 _scaleTransform(BuildContext context, String theme) {
+  Matrix4 _scaleTransform(BuildContext context, String theme, double maxWidth) {
     double scale = 1.0;
     if (!_moving && _shouldHighlight(context)) {
       if (theme == 'premium') {
@@ -494,6 +498,15 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
         scale = 1.0;
       } else {
         scale = 1.1;
+      }
+
+      if (maxWidth > 0) {
+        // Gap between cards is at least 16px.
+        // Limit horizontal expansion to 14px per side to prevent cropping with the next card.
+        double maxScale = 1.0 + (28.0 / maxWidth);
+        if (scale > maxScale) {
+          scale = maxScale;
+        }
       }
     }
     return Matrix4.diagonal3Values(scale, scale, 1.0);
