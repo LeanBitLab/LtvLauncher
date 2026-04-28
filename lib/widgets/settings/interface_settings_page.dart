@@ -19,7 +19,7 @@ import 'package:flauncher/widgets/settings/themes_page.dart';
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flauncher/l10n/app_localizations.dart';
 import 'focusable_settings_tile.dart';
 import 'launcher_sections_panel_page.dart';
 import 'wallpaper_panel_page.dart';
