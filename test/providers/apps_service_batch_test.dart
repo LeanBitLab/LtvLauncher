@@ -5,8 +5,9 @@ import 'package:flauncher/flauncher_channel.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flauncher/models/category.dart';
+import 'package:drift/drift.dart';
 
-import 'mocks.mocks.dart';
+import '../mocks.mocks.dart';
 
 void main() {
   late FLauncherDatabase database;
@@ -42,6 +43,12 @@ void main() {
       version: '1.0.0',
       hidden: false,
     ));
+
+    await database.persistApps(appsToAdd.map((app) => AppsCompanion(
+        packageName: Value(app.packageName),
+        name: Value(app.name),
+        version: Value(app.version),
+    )));
 
     await appsService.addAllToCategory(appsToAdd, category);
 
