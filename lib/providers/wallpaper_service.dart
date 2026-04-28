@@ -36,8 +36,10 @@ class WallpaperService extends ChangeNotifier {
   Timer? _timer;
 
   ImageProvider? _wallpaper;
+  int _version = 0;
 
   ImageProvider?  get wallpaper     => _wallpaper;
+  int             get version       => _version;
 
   FLauncherGradient get gradient => FLauncherGradients.all.firstWhere(
         (gradient) => gradient.uuid == _settingsService.gradientUuid,
@@ -145,6 +147,7 @@ class WallpaperService extends ChangeNotifier {
       // Evict from cache to ensure UI updates
       await FileImage(targetFile).evict();
 
+      _version++;
       _updateWallpaper(force: true);
     }
   }
