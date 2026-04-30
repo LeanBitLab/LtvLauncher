@@ -487,10 +487,7 @@ public class MainActivity extends FlutterActivity {
         if (networkStatsManager == null)
             return 0;
 
-        int activeTransport = getActiveNetworkTransportType();
-        if (activeTransport == -1) {
-            return 0;
-        }
+
 
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
@@ -502,12 +499,34 @@ public class MainActivity extends FlutterActivity {
 
         long totalBytes = 0;
         try {
-            NetworkStats.Bucket bucket = networkStatsManager.querySummaryForDevice(
-                    activeTransport,
+            NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_WIFI,
                     null,
                     startTime,
                     endTime);
-            totalBytes += bucket.getRxBytes() + bucket.getTxBytes();
+            totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_MOBILE,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_ETHERNET,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -524,10 +543,7 @@ public class MainActivity extends FlutterActivity {
         if (networkStatsManager == null)
             return 0;
 
-        int activeTransport = getActiveNetworkTransportType();
-        if (activeTransport == -1) {
-            return 0;
-        }
+
 
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.set(java.util.Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
@@ -540,12 +556,34 @@ public class MainActivity extends FlutterActivity {
 
         long totalBytes = 0;
         try {
-            NetworkStats.Bucket bucket = networkStatsManager.querySummaryForDevice(
-                    activeTransport,
+            NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_WIFI,
                     null,
                     startTime,
                     endTime);
-            totalBytes += bucket.getRxBytes() + bucket.getTxBytes();
+            totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_MOBILE,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_ETHERNET,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -562,10 +600,7 @@ public class MainActivity extends FlutterActivity {
         if (networkStatsManager == null)
             return 0;
 
-        int activeTransport = getActiveNetworkTransportType();
-        if (activeTransport == -1) {
-            return 0;
-        }
+
 
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.set(java.util.Calendar.DAY_OF_MONTH, 1);
@@ -578,12 +613,34 @@ public class MainActivity extends FlutterActivity {
 
         long totalBytes = 0;
         try {
-            NetworkStats.Bucket bucket = networkStatsManager.querySummaryForDevice(
-                    activeTransport,
+            NetworkStats.Bucket wifiBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_WIFI,
                     null,
                     startTime,
                     endTime);
-            totalBytes += bucket.getRxBytes() + bucket.getTxBytes();
+            totalBytes += wifiBucket.getRxBytes() + wifiBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket mobileBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_MOBILE,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += mobileBucket.getRxBytes() + mobileBucket.getTxBytes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            NetworkStats.Bucket ethernetBucket = networkStatsManager.querySummaryForDevice(
+                    ConnectivityManager.TYPE_ETHERNET,
+                    null,
+                    startTime,
+                    endTime);
+            totalBytes += ethernetBucket.getRxBytes() + ethernetBucket.getTxBytes();
         } catch (Exception e) {
             e.printStackTrace();
         }
