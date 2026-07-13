@@ -207,6 +207,9 @@ class BackupRestorePage extends StatelessWidget {
 
   Future<void> _confirmFileImport(
       BuildContext context, AppLocalizations localizations, BackupFileEntry entry) async {
+    final backupService = context.read<BackupService>();
+    final settingsService = context.read<SettingsService>();
+    final appsService = context.read<AppsService>();
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -220,51 +223,16 @@ class BackupRestorePage extends StatelessWidget {
           TextButton(
             onPressed: () async {
               Navigator.of(dialogContext).pop();
-              _import(context, localizations, entry.file);
+              try {
+                await backupService.importBackup(entry.file);
+                settingsService.reload();
+                await appsService.refreshState();
+              } catch (_) {}
             },
             child: const Text("Import"),
           ),
         ],
       ),
     );
-  }
-
-  Future<void> _import(BuildContext context, AppLocalizations localizations, File file) async {
-    try {
-      await context.read<BackupService>().importBackup(file);
-      if (context.mounted) {
-        context.read<SettingsService>().reload();
-        await context.read<AppsService>().refreshState();
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Import Success"),
-            content: Text(localizations.importSuccess),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text("OK"),
-              ),
-            ],
-          ),
-        );
-      }
-    } catch (e) {
-      if (context.mounted) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Import Failed"),
-            content: Text(localizations.importError(e.toString())),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text("OK"),
-              ),
-            ],
-          ),
-        );
-      }
-    }
   }
 }
