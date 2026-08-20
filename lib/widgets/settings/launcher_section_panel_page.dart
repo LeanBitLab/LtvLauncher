@@ -407,11 +407,20 @@ class _CategorySettingsState extends State<_CategorySettings>
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
     
-    return Column(
-      children: [
-        _listTile(
-          context,
-          Text(localizations.name),
+    return PopScope(
+      canPop: !_textFieldFocusNode.hasFocus,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (didPop) return;
+        if (_textFieldFocusNode.hasFocus) {
+          _textFieldFocusNode.unfocus();
+          await SystemChannels.textInput.invokeMethod('TextInput.hide');
+        }
+      },
+      child: Column(
+        children: [
+          _listTile(
+            context,
+            Text(localizations.name),
           Padding(
             padding: EdgeInsets.only(top: 4),
             child: DropdownButtonFormField<String>(
@@ -597,9 +606,10 @@ class _CategorySettingsState extends State<_CategorySettings>
               )
             )
           )
-      ]
-    );
-  }
+      ],
+    ),
+  );
+}
 
   void _notifyChange()
   {

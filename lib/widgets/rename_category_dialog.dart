@@ -17,39 +17,76 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
 
-class AddCategoryDialog extends StatelessWidget {
+class AddCategoryDialog extends StatefulWidget {
   final String initialValue;
 
-  AddCategoryDialog({
+  const AddCategoryDialog({
+    Key? key,
     required this.initialValue,
-  });
+  }) : super(key: key);
+
+  @override
+  State<AddCategoryDialog> createState() => _AddCategoryDialogState();
+}
+
+class _AddCategoryDialogState extends State<AddCategoryDialog> {
+  late final FocusNode _focusNode;
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _controller = TextEditingController(text: widget.initialValue);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    return SimpleDialog(
-      insetPadding: EdgeInsets.only(bottom: 120),
-      contentPadding: EdgeInsets.all(24),
-      title: Text(localizations.renameCategory),
-      children: [
-        TextFormField(
-          autofocus: true,
-          initialValue: initialValue,
-          decoration: InputDecoration(labelText: localizations.name),
-          validator: (value) => value!.trim().isEmpty ? localizations.mustNotBeEmpty : null,
-          autovalidateMode: AutovalidateMode.always,
-          keyboardType: TextInputType.text,
-          textCapitalization: TextCapitalization.sentences,
-          onFieldSubmitted: (value) {
-            if (value.trim().isNotEmpty) {
-              Navigator.of(context).pop(value);
-            }
-          },
-        )
-      ],
+    return PopScope(
+      canPop: !_focusNode.hasFocus,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (didPop) return;
+        if (_focusNode.hasFocus) {
+          _focusNode.unfocus();
+          await SystemChannels.textInput.invokeMethod('TextInput.hide');
+        } else {
+          Navigator.of(context).pop();
+        }
+      },
+      child: SimpleDialog(
+        insetPadding: const EdgeInsets.only(bottom: 120),
+        contentPadding: const EdgeInsets.all(24),
+        title: Text(localizations.renameCategory),
+        children: [
+          TextFormField(
+            focusNode: _focusNode,
+            autofocus: true,
+            controller: _controller,
+            decoration: InputDecoration(labelText: localizations.name),
+            validator: (value) => value!.trim().isEmpty ? localizations.mustNotBeEmpty : null,
+            autovalidateMode: AutovalidateMode.always,
+            keyboardType: TextInputType.text,
+            textCapitalization: TextCapitalization.sentences,
+            onFieldSubmitted: (value) {
+              if (value.trim().isNotEmpty) {
+                Navigator.of(context).pop(value);
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }
