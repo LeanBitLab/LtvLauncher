@@ -1,0 +1,191 @@
+{
+    "aboutFlauncher": "Про LTvLauncher",
+    "addCategory": "Додати категорію",
+    "addSection": "Додати розділ",
+    "alphabetical": "За алфавітом",
+    "appCardHighlightAnimation": "Анімація виділення картки застосунку",
+    "appInfo": "Інформація про застосунок",
+    "appKeyClick": "Звук клацання при натисканні клавіші",
+    "applications": "Застосунки",
+    "autoHideAppBar": "Автоматично приховувати рядок стану",
+    "backButtonAction": "Дія кнопки «Назад»",
+    "category": "Категорія",
+    "categories": "Категорії",
+    "columnCount": "Кількість стовпців",
+    "date": "Дата",
+    "dateAndTimeFormat": "Формат дати й часу",
+    "delete": "Видалити",
+    "dialogOptionBackButtonActionDoNothing": "Нічого не робити",
+    "dialogOptionBackButtonActionShowScreensaver": "Показати заставку",
+    "dialogOptionBackButtonActionShowClock": "Показати годинник",
+    "dialogTextNoFileExplorer": "Будь ласка, встановіть файловий менеджер, щоб вибрати зображення.",
+    "dialogTitleBackButtonAction": "Виберіть дію кнопки «Назад»",
+    "disambiguateCategoryTitle": "{title} (Категорія)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Формат дати: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Формат часу: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Градієнт",
+    "favoriteApps": "Улюблені застосунки",
+    "grid": "Сітка",
+    "height": "Висота",
+    "hide": "Приховати",
+    "hiddenApplications": "Приховані застосунки",
+    "launcherSections": "Розділи",
+    "layout": "Розташування",
+    "loading": "Завантаження",
+    "manual": "Вручну",
+    "modifySection": "Змінити розділ",
+    "mustNotBeEmpty": "Не повинно бути порожнім",
+    "name": "Назва",
+    "newSection": "Новий розділ",
+    "noDateFormatSpecified": "Формат дати не вказано",
+    "noTimeFormatSpecified": "Формат часу не вказано",
+    "nonTvApplications": "Застосунки не для ТБ",
+    "open": "Відкрити",
+    "orSelectFormatSpecifiers": "Або виберіть специфікатори формату",
+    "picture": "Зображення",
+    "removeFrom": "Видалити з {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Перейменувати категорію",
+    "reorder": "Змінити порядок",
+    "row": "Рядок",
+    "rowHeight": "Висота рядка",
+    "save": "Зберегти",
+    "spacer": "Роздільник",
+    "spacerMaxHeightRequirement": "Має бути більше 0 і не більше 500",
+    "statusBar": "Рядок стану",
+    "settings": "Налаштування",
+    "show": "Показати",
+    "showCategoryTitles": "Показувати назви категорій",
+    "themes": "Теми",
+    "hideHighlightOutlineOnHomescreen": "Приховати контур виділення на головному екрані",
+    "appSelectorTransitionAnimation": "Анімація переходу вибору застосунку",
+    "sort": "Сортування",
+    "systemSettings": "Системні налаштування",
+    "textAboutDialog": "LTvLauncher — це налаштований лаунчер з відкритим кодом для Android TV, створений на основі FLauncher.\n\nРозроблено LeanBitLab.\nВихідний код доступний за адресою {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Ця категорія порожня.",
+    "time": "Час",
+    "titleStatusBarSettingsPage": "Виберіть, що відображати в рядку стану",
+    "tvApplications": "Застосунки для ТБ",
+    "type": "Тип",
+    "typeInTheDateFormat": "Введіть формат дати",
+    "typeInTheHourFormat": "Введіть формат часу",
+    "uninstall": "Видалити",
+    "wallpaper": "Шпалери",
+    "withEllipsisAddTo": "Додати до...",
+    "timeBasedWallpaper": "Шпалери залежно від часу",
+    "pickDayWallpaper": "Вибрати денні шпалери",
+    "pickNightWallpaper": "Вибрати нічні шпалери",
+    "accessibility": "Спеціальні можливості",
+    "defaultLauncherIsDefault": "LTvLauncher є лаунчером за замовчуванням",
+    "defaultLauncherNotDefault": "LTvLauncher не є лаунчером за замовчуванням",
+    "setAsDefaultLauncher": "Встановити як лаунчер за замовчуванням",
+    "defaultLauncherDescription": "Якщо встановлено як лаунчер за замовчуванням, кнопка «Домівка» завжди повертатиме до LTvLauncher. Телевізор також завантажуватиметься одразу в LTvLauncher.",
+    "inputs": "Джерела сигналу",
+    "inputSources": "Джерела сигналу",
+    "backupAndRestore": "Резервне копіювання та відновлення",
+    "exportBackup": "Експортувати резервну копію",
+    "importBackup": "Імпортувати резервну копію",
+    "exportSuccess": "Резервну копію успішно експортовано до {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Резервну копію успішно імпортовано",
+    "importConfirm": "Ви впевнені, що хочете імпортувати резервну копію? Це замінить поточні налаштування та розташування.",
+    "importError": "Не вдалося імпортувати резервну копію: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Не вдалося експортувати резервну копію: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Поділитися резервною копією",
+    "shareBackupDescription": "Поділитися резервною копією з іншими пристроями в локальній мережі",
+    "stopSharing": "Зупинити спільний доступ",
+    "localNetworkSharingActive": "Спільний доступ у локальній мережі активний!",
+    "localNetworkSharingInstructions": "Підключіть інший пристрій до тієї самої мережі Wi-Fi та відкрийте таку адресу у веббраузері:",
+    "localNetworkSharingDetails": "Тут ви можете завантажити налаштування/розташування вашого ТБ або вивантажити файл резервної копії назад на цей телевізор.",
+    "failedToStartServer": "Не вдалося запустити сервер спільного доступу: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Дзвіночок сповіщень",
+    "autoHideNotificationBell": "Автоматично приховувати дзвіночок сповіщень",
+    "continueWatching": "Продовжити перегляд",
+    "showContinueWatchingOnHome": "Показувати «Продовжити перегляд» на головному екрані",
+    "permissionDeniedContinueWatching": "Потрібен дозвіл для показу «Продовжити перегляд»",
+    "interface": "Інтерфейс",
+    "system": "Система",
+    "accentColor": "Акцентний колір",
+    "miscellaneous": "Інше",
+    "brightnessScheduler": "Розклад яскравості",
+    "screensaverSettings": "Налаштування заставки",
+    "screensaverClockStyle": "Стиль годинника заставки",
+    "dataUsagePeriod": "Період використання даних",
+    "notificationAccess": "Доступ до сповіщень",
+    "granted": "Надано",
+    "permissionRequired": "Потрібен дозвіл",
+    "systemWidePopupAlert": "Спливне сповіщення в системі",
+    "overlayPermissionRequired": "Потрібен дозвіл на накладання",
+    "enabled": "Увімкнено",
+    "disabled": "Вимкнено",
+    "showAppNamesBelowIcons": "Показувати назви застосунків під іконками",
+    "dataUsage": "Використання даних",
+    "networkIndicator": "Індикатор мережі",
+    "homeButtonFix": "Виправлення кнопки «Домівка» (Google TV)",
+    "appLanguage": "Мова",
+    "systemDefault": "Системна мова за замовчуванням",
+    "english": "Англійська",
+    "spanish": "Іспанська",
+    "ukrainian": "Українська"
+}
