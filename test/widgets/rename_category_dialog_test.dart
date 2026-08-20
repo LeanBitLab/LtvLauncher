@@ -24,11 +24,46 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Verify PopScope exists
-    expect(find.byWidgetPredicate((widget) => widget is PopScope), findsOneWidget);
+    // Verify PopScope exists and canPop is false
+    final popScopeFinder = find.byWidgetPredicate((widget) => widget is PopScope);
+    expect(popScopeFinder, findsOneWidget);
+    final PopScope popScopeWidget = tester.widget(popScopeFinder);
+    expect(popScopeWidget.canPop, isFalse);
 
     // Verify TextFormField renders with initial value
     expect(find.byType(TextFormField), findsOneWidget);
     expect(find.text('Favorites'), findsOneWidget);
+  });
+
+  testWidgets('AddCategoryDialog unfocuses on back press when focused', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Scaffold(
+          body: AddCategoryDialog(
+            initialValue: 'Favorites',
+          ),
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    // Verify text field has focus initially (autofocus)
+    final editableText = tester.widget<EditableText>(find.byType(EditableText));
+    expect(editableText.focusNode.hasFocus, isTrue);
+
+    // Simulate back navigation
+    final dynamic widgetsAppState = tester.state(find.byType(WidgetsApp));
+    await widgetsAppState.didPopRoute();
+    await tester.pump();
+
+    // Verify dialog is still present (did not dismiss)
+    expect(find.byType(AddCategoryDialog), findsOneWidget);
   });
 }

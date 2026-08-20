@@ -55,12 +55,12 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
     AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return PopScope(
-      canPop: !_focusNode.hasFocus,
-      onPopInvokedWithResult: (didPop, _) async {
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
         if (didPop) return;
         if (_focusNode.hasFocus) {
           _focusNode.unfocus();
-          await SystemChannels.textInput.invokeMethod('TextInput.hide');
+          SystemChannels.textInput.invokeMethod('TextInput.hide');
         } else {
           Navigator.of(context).pop();
         }

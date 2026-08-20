@@ -408,12 +408,14 @@ class _CategorySettingsState extends State<_CategorySettings>
     AppLocalizations localizations = AppLocalizations.of(context)!;
     
     return PopScope(
-      canPop: !_textFieldFocusNode.hasFocus,
-      onPopInvokedWithResult: (didPop, _) async {
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
         if (didPop) return;
         if (_textFieldFocusNode.hasFocus) {
           _textFieldFocusNode.unfocus();
-          await SystemChannels.textInput.invokeMethod('TextInput.hide');
+          SystemChannels.textInput.invokeMethod('TextInput.hide');
+        } else {
+          Navigator.of(context).pop();
         }
       },
       child: Column(
