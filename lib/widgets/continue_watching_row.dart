@@ -46,7 +46,9 @@ class ContinueWatchingRow extends StatelessWidget {
           );
         }
 
-        final List<WatchNextProgram> programs = watchNextService.programs;
+        final List<WatchNextProgram> programs = watchNextService.programs
+            .where((p) => !appsService.applications.any((app) => app.packageName == p.packageName && app.hidden))
+            .toList();
         if (programs.isEmpty) {
           return const SizedBox.shrink();
         }
@@ -164,11 +166,9 @@ class _WatchNextCardState extends State<WatchNextCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final settingsService = Provider.of<SettingsService>(context, listen: false);
-    final accentColor = settingsService.accentColor;
-
-    const double cardWidth = 260;
-    const double cardHeight = 146;
+    final accentColor = theme.colorScheme.primary;
+    final cardWidth = 240.0;
+    final cardHeight = 135.0;
 
     // Progress percentage
     double progress = 0;
@@ -177,28 +177,22 @@ class _WatchNextCardState extends State<WatchNextCard> {
       if (progress > 1.0) progress = 1.0;
     }
 
-    return Focus(
+    return FocusableActionDetector(
       focusNode: _focusNode,
-      onKeyEvent: (node, event) {
-        if (event is KeyDownEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.select ||
-              event.logicalKey == LogicalKeyboardKey.enter ||
-              event.logicalKey == LogicalKeyboardKey.gameButtonA) {
-            _onPressed();
-            return KeyEventResult.handled;
-          } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-            Actions.invoke(context, const MoveFocusToSettingsIntent());
-            return KeyEventResult.handled;
-          }
-        }
-        // Handle key repeats for directional navigation only
-        if (event is KeyRepeatEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-            Actions.invoke(context, const MoveFocusToSettingsIntent());
-            return KeyEventResult.handled;
-          }
-        }
-        return KeyEventResult.ignored;
+      onShowFocusHighlight: (v) => setState(() => _focused = v),
+      actions: {
+        ActivateIntent: CallbackAction<ActivateIntent>(
+          onInvoke: (_) => _onPressed(),
+        ),
+        MoveFocusToSettingsIntent: CallbackAction<MoveFocusToSettingsIntent>(
+          onInvoke: (_) => Actions.invoke(context, const MoveFocusToSettingsIntent()),
+        ),
+      },
+      shortcuts: const {
+        SingleActivator(LogicalKeyboardKey.select): ActivateIntent(),
+        SingleActivator(LogicalKeyboardKey.enter): ActivateIntent(),
+        SingleActivator(LogicalKeyboardKey.gameButtonA): ActivateIntent(),
+        SingleActivator(LogicalKeyboardKey.arrowUp): MoveFocusToSettingsIntent(),
       },
       child: GestureDetector(
         onTap: _onPressed,
@@ -244,10 +238,13 @@ class _WatchNextCardState extends State<WatchNextCard> {
               children: [
                 // Poster background
                 Positioned.fill(
-                  child: widget.program.posterBytes != null
+                  child: (widget.program.posterBytes != null && widget.program.posterBytes!.isNotEmpty)
                       ? Image.memory(
                           widget.program.posterBytes!,
                           fit: BoxFit.cover,
+                          cacheWidth: 480,
+                          filterQuality: FilterQuality.medium,
+                          errorBuilder: (context, error, stackTrace) => _emptyPosterFallback(theme),
                         )
                       : _emptyPosterFallback(theme),
                 ),

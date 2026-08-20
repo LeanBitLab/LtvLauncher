@@ -2,20 +2,26 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flauncher/flauncher_channel.dart';
 import '../models/watch_next_program.dart';
 
-class WatchNextService extends ChangeNotifier {
+class WatchNextService extends ChangeNotifier with WidgetsBindingObserver {
   final FLauncherChannel _channel;
   List<WatchNextProgram> _programs = [];
   bool _initialized = false;
   bool _hasPermission = true;
   Timer? _refreshTimer;
   int _callCount = 0;
+  bool _isFetching = false;
+  bool _hasPendingRefresh = false;
 
   bool get _isTest => Platform.environment.containsKey('FLUTTER_TEST');
 
   WatchNextService(this._channel) {
+    if (!_isTest) {
+      WidgetsBinding.instance.addObserver(this);
+    }
     _init();
   }
 
@@ -28,11 +34,33 @@ class WatchNextService extends ChangeNotifier {
     _initialized = true;
     notifyListeners();
 
+    _startPeriodicTimer();
+  }
+
+  void _startPeriodicTimer() {
+    _refreshTimer?.cancel();
     // Refresh every 30 seconds to keep EPG/Playback progress up to date
     _refreshTimer = Timer.periodic(const Duration(seconds: 30), (_) => refresh());
   }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.hidden) {
+      _refreshTimer?.cancel();
+      _refreshTimer = null;
+    } else if (state == AppLifecycleState.resumed) {
+      refresh();
+      _startPeriodicTimer();
+    }
+  }
+
   Future<void> refresh() async {
+    if (_isFetching) {
+      _hasPendingRefresh = true;
+      return;
+    }
+    _isFetching = true;
+
     final int callSnapshot = ++_callCount;
     try {
       final bool hasPermission = await checkPermission();
@@ -77,7 +105,7 @@ class WatchNextService extends ChangeNotifier {
       _programs = newPrograms;
       if (callSnapshot == _callCount) notifyListeners();
 
-      // Phase 2: Fetch missing posters concurrently, then notify again
+      // Phase 2: Fetch missing posters concurrently with 5s timeout, then notify again
       final needsPoster = newPrograms.where(
         (p) => p.posterArtUri.isNotEmpty && p.posterBytes == null
       ).toList();
@@ -90,11 +118,20 @@ class WatchNextService extends ChangeNotifier {
               log('Failed to fetch poster for ${p.title}', name: 'WatchNextService', error: e);
             }
           }),
+        ).timeout(
+          const Duration(seconds: 5),
+          onTimeout: () => [],
         );
         if (callSnapshot == _callCount) notifyListeners();
       }
     } catch (e) {
       log('Failed to refresh watch next programs', name: 'WatchNextService', error: e);
+    } finally {
+      _isFetching = false;
+      if (_hasPendingRefresh) {
+        _hasPendingRefresh = false;
+        refresh();
+      }
     }
   }
 
@@ -165,6 +202,9 @@ class WatchNextService extends ChangeNotifier {
 
   @override
   void dispose() {
+    if (!_isTest) {
+      WidgetsBinding.instance.removeObserver(this);
+    }
     _refreshTimer?.cancel();
     super.dispose();
   }
