@@ -401,4 +401,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ukrainian => 'Ucraniano';
+
+  @override
+  String get chinese => 'Chino';
 }
