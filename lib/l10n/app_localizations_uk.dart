@@ -71,17 +71,17 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '$title (Категорія)';
+    return '${title} (Категорія)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Формат дати: $dateString';
+    return 'Формат дати: ${dateString}';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Формат часу: $timeString';
+    return 'Формат часу: ${timeString}';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Видалити з $name';
+    return 'Видалити з ${name}';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher — це налаштований лаунчер з відкритим кодом для Android TV, створений на основі FLauncher.\n\nРозроблено LeanBitLab.\nВихідний код доступний за адресою $repoUrl.';
+    return 'LTvLauncher — це налаштований лаунчер з відкритим кодом для Android TV, створений на основі FLauncher.\n\nРозроблено LeanBitLab.\nВихідний код доступний за адресою ${repoUrl}.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Резервну копію успішно експортовано до $path';
+    return 'Резервну копію успішно експортовано до ${path}';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Не вдалося імпортувати резервну копію: $error';
+    return 'Не вдалося імпортувати резервну копію: ${error}';
   }
 
   @override
   String exportError(String error) {
-    return 'Не вдалося експортувати резервну копію: $error';
+    return 'Не вдалося експортувати резервну копію: ${error}';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Не вдалося запустити сервер спільного доступу: $error';
+    return 'Не вдалося запустити сервер спільного доступу: ${error}';
   }
 
   @override
@@ -404,4 +404,34 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get chinese => 'Китайська';
+
+  @override
+  String get french => 'Французька';
+
+  @override
+  String get german => 'Німецька';
+
+  @override
+  String get japanese => 'Японська';
+
+  @override
+  String get portuguese => 'Португальська';
+
+  @override
+  String get russian => 'Російська';
+
+  @override
+  String get italian => 'Італійська';
+
+  @override
+  String get hindi => 'Гінді';
+
+  @override
+  String get korean => 'Корейська';
+
+  @override
+  String get arabic => 'Арабська';
+
+  @override
+  String get turkish => 'Турецька';
 }

@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "LTvLauncher 정보",
+    "addCategory": "카테고리 추가",
+    "addSection": "섹션 추가",
+    "alphabetical": "알파벳순",
+    "appCardHighlightAnimation": "앱 카드 하이라이트 애니메이션",
+    "appInfo": "앱 정보",
+    "appKeyClick": "키 누름 시 클릭 소리",
+    "applications": "애플리케이션",
+    "autoHideAppBar": "상태 표시줄 자동 숨기기",
+    "backButtonAction": "뒤로 버튼 동작",
+    "category": "카테고리",
+    "categories": "카테고리",
+    "columnCount": "열 수",
+    "date": "날짜",
+    "dateAndTimeFormat": "날짜 및 시간 형식",
+    "delete": "삭제",
+    "dialogOptionBackButtonActionDoNothing": "아무 작업 안 함",
+    "dialogOptionBackButtonActionShowScreensaver": "화면 보호기 표시",
+    "dialogOptionBackButtonActionShowClock": "시계 표시",
+    "dialogTextNoFileExplorer": "사진을 선택하려면 파일 탐색기를 설치하세요.",
+    "dialogTitleBackButtonAction": "뒤로 버튼 동작 선택",
+    "disambiguateCategoryTitle": "{title} (카테고리)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "포맷된 날짜: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "포맷된 시간: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "그라데이션",
+    "favoriteApps": "즐겨찾는 앱",
+    "grid": "그리드",
+    "height": "높이",
+    "hide": "숨기기",
+    "hiddenApplications": "숨겨진 앱",
+    "launcherSections": "섹션",
+    "layout": "레이아웃",
+    "loading": "로딩 중",
+    "manual": "수동",
+    "modifySection": "섹션 수정",
+    "mustNotBeEmpty": "비워둘 수 없습니다",
+    "name": "이름",
+    "newSection": "새 섹션",
+    "noDateFormatSpecified": "날짜 형식이 지정되지 않음",
+    "noTimeFormatSpecified": "시간 형식이 지정되지 않음",
+    "nonTvApplications": "비 TV 앱",
+    "open": "열기",
+    "orSelectFormatSpecifiers": "또는 형식 지정자 선택",
+    "picture": "사진",
+    "removeFrom": "{name}에서 제거",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "카테고리 이름 변경",
+    "reorder": "재정렬",
+    "row": "행",
+    "rowHeight": "행 높이",
+    "save": "저장",
+    "spacer": "간격",
+    "spacerMaxHeightRequirement": "0보다 크고 500 이하여야 합니다",
+    "statusBar": "상태 표시줄",
+    "settings": "설정",
+    "show": "표시",
+    "showCategoryTitles": "카테고리 제목 표시",
+    "themes": "테마",
+    "hideHighlightOutlineOnHomescreen": "홈 화면에서 하이라이트 윤곽선 숨기기",
+    "appSelectorTransitionAnimation": "앱 선택기 전환 애니메이션",
+    "sort": "정렬",
+    "systemSettings": "시스템 설정",
+    "textAboutDialog": "LTvLauncher는 FLauncher를 기반으로 한 Android TV용 맞춤형 오픈 소스 런처입니다.\n\nLeanBitLab에서 개발했습니다.\n소스 코드는 {repoUrl}에서 사용할 수 있습니다.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "이 카테고리는 비어 있습니다.",
+    "time": "시간",
+    "titleStatusBarSettingsPage": "상태 표시줄에 표시할 내용 선택",
+    "tvApplications": "TV 앱",
+    "type": "유형",
+    "typeInTheDateFormat": "날짜 형식 입력",
+    "typeInTheHourFormat": "시간 형식 입력",
+    "uninstall": "제거",
+    "wallpaper": "배경화면",
+    "withEllipsisAddTo": "추가...",
+    "timeBasedWallpaper": "시간 기반 배경화면",
+    "pickDayWallpaper": "주간 배경화면 선택",
+    "pickNightWallpaper": "야간 배경화면 선택",
+    "accessibility": "접근성",
+    "defaultLauncherIsDefault": "LTvLauncher가 기본 런처입니다",
+    "defaultLauncherNotDefault": "LTvLauncher가 기본 런처가 아닙니다",
+    "setAsDefaultLauncher": "기본 런처로 설정",
+    "defaultLauncherDescription": "기본 런처로 설정하면 홈 버튼은 항상 LTvLauncher로 돌아갑니다. TV도 직접 LTvLauncher로 부팅됩니다.",
+    "inputs": "입력",
+    "inputSources": "입력 소스",
+    "backupAndRestore": "백업 및 복원",
+    "exportBackup": "백업 내보내기",
+    "importBackup": "백업 가져오기",
+    "exportSuccess": "백업이 {path}로 성공적으로 내보내졌습니다",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "백업을 성공적으로 가져왔습니다",
+    "importConfirm": "백업을 가져오시겠습니까? 현재 설정 및 레이아웃을 덮어씁니다.",
+    "importError": "백업 가져오기 실패: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "백업 내보내기 실패: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "백업 공유",
+    "shareBackupDescription": "로컬 네트워크의 다른 기기와 백업 공유",
+    "stopSharing": "공유 중지",
+    "localNetworkSharingActive": "로컬 네트워크 공유가 활성화되었습니다!",
+    "localNetworkSharingInstructions": "다른 기기를 동일한 Wi-Fi 네트워크에 연결하고 웹 브라우저에서 다음 URL을 엽니다.",
+    "localNetworkSharingDetails": "여기에서 TV 설정/레이아웃을 다운로드하거나 이 TV로 백업 파일을 업로드할 수 있습니다.",
+    "failedToStartServer": "공유 서버 시작 실패: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "알림 벨",
+    "autoHideNotificationBell": "알림 벨 자동 숨기기",
+    "continueWatching": "계속 시청",
+    "showContinueWatchingOnHome": "홈에서 계속 시청 표시",
+    "permissionDeniedContinueWatching": "계속 시청을 표시하려면 권한이 필요합니다",
+    "interface": "인터페이스",
+    "system": "시스템",
+    "accentColor": "강조 색상",
+    "miscellaneous": "기타",
+    "brightnessScheduler": "밝기 스케줄러",
+    "screensaverSettings": "화면 보호기 설정",
+    "screensaverClockStyle": "화면 보호기 시계 스타일",
+    "dataUsagePeriod": "데이터 사용 기간",
+    "notificationAccess": "알림 액세스",
+    "granted": "부여됨",
+    "permissionRequired": "권한 필요",
+    "systemWidePopupAlert": "시스템 전체 팝업 알림",
+    "overlayPermissionRequired": "오버레이 권한 필요",
+    "enabled": "사용 설정됨",
+    "disabled": "사용 중지됨",
+    "showAppNamesBelowIcons": "아이콘 아래에 앱 이름 표시",
+    "dataUsage": "데이터 사용량",
+    "networkIndicator": "네트워크 표시기",
+    "homeButtonFix": "홈 버튼 수정 (Google TV)",
+    "appLanguage": "언어",
+    "systemDefault": "시스템 기본값",
+    "english": "영어",
+    "spanish": "스페인어",
+    "ukrainian": "우크라이나어",
+    "chinese": "중국어",
+    "french": "프랑스어",
+    "german": "독일어",
+    "japanese": "일본어",
+    "portuguese": "포르투갈어",
+    "russian": "러시아어",
+    "italian": "이탈리아어",
+    "hindi": "힌디어",
+    "korean": "한국어",
+    "arabic": "아랍어",
+    "turkish": "터키어"
+}

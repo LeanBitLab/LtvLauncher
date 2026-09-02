@@ -67,7 +67,9 @@
     "removeFrom": "Eliminar de {name}",
     "@removeFrom": {
         "placeholders": {
-            "name": { "type": "String" }
+            "name": {
+                "type": "String"
+            }
         }
     },
     "renameCategory": "Renombrar categoría",
@@ -186,5 +188,15 @@
     "english": "Inglés",
     "spanish": "Español",
     "ukrainian": "Ucraniano",
-    "chinese": "Chino"
+    "chinese": "Chino",
+    "french": "Francés",
+    "german": "Alemán",
+    "japanese": "Japonés",
+    "portuguese": "Portugués",
+    "russian": "Ruso",
+    "italian": "Italiano",
+    "hindi": "Hindi",
+    "korean": "Coreano",
+    "arabic": "Árabe",
+    "turkish": "Turco"
 }

@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "À propos de LTvLauncher",
+    "addCategory": "Ajouter une catégorie",
+    "addSection": "Ajouter une section",
+    "alphabetical": "Alphabétique",
+    "appCardHighlightAnimation": "Animation de surbrillance de la carte d'application",
+    "appInfo": "Infos sur l'application",
+    "appKeyClick": "Son de clic lors de l'appui sur une touche",
+    "applications": "Applications",
+    "autoHideAppBar": "Masquer automatiquement la barre d'état",
+    "backButtonAction": "Action du bouton retour",
+    "category": "Catégorie",
+    "categories": "Catégories",
+    "columnCount": "Nombre de colonnes",
+    "date": "Date",
+    "dateAndTimeFormat": "Format de la date et de l'heure",
+    "delete": "Supprimer",
+    "dialogOptionBackButtonActionDoNothing": "Ne rien faire",
+    "dialogOptionBackButtonActionShowScreensaver": "Afficher l'écran de veille",
+    "dialogOptionBackButtonActionShowClock": "Afficher l'horloge",
+    "dialogTextNoFileExplorer": "Veuillez installer un explorateur de fichiers pour sélectionner une image.",
+    "dialogTitleBackButtonAction": "Choisir l'action du bouton retour",
+    "disambiguateCategoryTitle": "{title} (Catégorie)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Date formatée : {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Heure formatée : {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Dégradé",
+    "favoriteApps": "Applications favorites",
+    "grid": "Grille",
+    "height": "Hauteur",
+    "hide": "Masquer",
+    "hiddenApplications": "Applications masquées",
+    "launcherSections": "Sections",
+    "layout": "Disposition",
+    "loading": "Chargement",
+    "manual": "Manuel",
+    "modifySection": "Modifier la section",
+    "mustNotBeEmpty": "Ne doit pas être vide",
+    "name": "Nom",
+    "newSection": "Nouvelle section",
+    "noDateFormatSpecified": "Aucun format de date spécifié",
+    "noTimeFormatSpecified": "Aucun format d'heure spécifié",
+    "nonTvApplications": "Applications non TV",
+    "open": "Ouvrir",
+    "orSelectFormatSpecifiers": "Ou sélectionner les spécificateurs de format",
+    "picture": "Image",
+    "removeFrom": "Retirer de {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Renommer la catégorie",
+    "reorder": "Réorganiser",
+    "row": "Ligne",
+    "rowHeight": "Hauteur de ligne",
+    "save": "Enregistrer",
+    "spacer": "Espace",
+    "spacerMaxHeightRequirement": "Doit être supérieur à 0 et inférieur ou égal à 500",
+    "statusBar": "Barre d'état",
+    "settings": "Paramètres",
+    "show": "Afficher",
+    "showCategoryTitles": "Afficher les titres des catégories",
+    "themes": "Thèmes",
+    "hideHighlightOutlineOnHomescreen": "Masquer le contour de surbrillance sur l'écran d'accueil",
+    "appSelectorTransitionAnimation": "Animation de transition du sélecteur d'application",
+    "sort": "Trier",
+    "systemSettings": "Paramètres système",
+    "textAboutDialog": "LTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Cette catégorie est vide.",
+    "time": "Heure",
+    "titleStatusBarSettingsPage": "Choisir ce qu'il faut afficher dans la barre d'état",
+    "tvApplications": "Applications TV",
+    "type": "Type",
+    "typeInTheDateFormat": "Saisir le format de date",
+    "typeInTheHourFormat": "Saisir le format de l'heure",
+    "uninstall": "Désinstaller",
+    "wallpaper": "Fond d'écran",
+    "withEllipsisAddTo": "Ajouter à...",
+    "timeBasedWallpaper": "Fond d'écran basé sur l'heure",
+    "pickDayWallpaper": "Choisir le fond d'écran de jour",
+    "pickNightWallpaper": "Choisir le fond d'écran de nuit",
+    "accessibility": "Accessibilité",
+    "defaultLauncherIsDefault": "LTvLauncher est le lanceur par défaut",
+    "defaultLauncherNotDefault": "LTvLauncher n'est pas le lanceur par défaut",
+    "setAsDefaultLauncher": "Définir comme lanceur par défaut",
+    "defaultLauncherDescription": "Lorsqu'il est défini comme lanceur par défaut, le bouton Accueil reviendra toujours à LTvLauncher. La TV démarrera également directement sur LTvLauncher.",
+    "inputs": "Entrées",
+    "inputSources": "Sources d'entrée",
+    "backupAndRestore": "Sauvegarde et restauration",
+    "exportBackup": "Exporter la sauvegarde",
+    "importBackup": "Importer la sauvegarde",
+    "exportSuccess": "Sauvegarde exportée avec succès vers {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Sauvegarde importée avec succès",
+    "importConfirm": "Voulez-vous vraiment importer la sauvegarde ? Cela remplacera vos paramètres et votre disposition actuels.",
+    "importError": "Échec de l'importation de la sauvegarde : {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Échec de l'exportation de la sauvegarde : {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Partager la sauvegarde",
+    "shareBackupDescription": "Partager la sauvegarde avec d'autres appareils sur le réseau local",
+    "stopSharing": "Arrêter le partage",
+    "localNetworkSharingActive": "Le partage sur le réseau local est actif !",
+    "localNetworkSharingInstructions": "Connectez un autre appareil au même réseau Wi-Fi et ouvrez l'URL suivante dans un navigateur Web :",
+    "localNetworkSharingDetails": "Ici, vous pouvez télécharger les paramètres/disposition de votre TV ou importer un fichier de sauvegarde vers cette TV.",
+    "failedToStartServer": "Échec du démarrage du serveur de partage : {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Cloche de notification",
+    "autoHideNotificationBell": "Masquer automatiquement la cloche de notification",
+    "continueWatching": "Continuer à regarder",
+    "showContinueWatchingOnHome": "Afficher Continuer à regarder sur l'accueil",
+    "permissionDeniedContinueWatching": "Autorisation requise pour afficher Continuer à regarder",
+    "interface": "Interface",
+    "system": "Système",
+    "accentColor": "Couleur d'accentuation",
+    "miscellaneous": "Divers",
+    "brightnessScheduler": "Planificateur de luminosité",
+    "screensaverSettings": "Paramètres de l'écran de veille",
+    "screensaverClockStyle": "Style d'horloge de l'écran de veille",
+    "dataUsagePeriod": "Période d'utilisation des données",
+    "notificationAccess": "Accès aux notifications",
+    "granted": "Accordé",
+    "permissionRequired": "Autorisation requise",
+    "systemWidePopupAlert": "Alerte contextuelle à l'échelle du système",
+    "overlayPermissionRequired": "Autorisation de superposition requise",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "showAppNamesBelowIcons": "Afficher les noms des applications sous les icônes",
+    "dataUsage": "Utilisation des données",
+    "networkIndicator": "Indicateur réseau",
+    "homeButtonFix": "Correction du bouton Accueil (Google TV)",
+    "appLanguage": "Langue",
+    "systemDefault": "Système par défaut",
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "ukrainian": "Ukrainien",
+    "chinese": "Chinois",
+    "french": "Français",
+    "german": "Allemand",
+    "japanese": "Japonais",
+    "portuguese": "Portugais",
+    "russian": "Russe",
+    "italian": "Italien",
+    "hindi": "Hindi",
+    "korean": "Coréen",
+    "arabic": "Arabe",
+    "turkish": "Turc"
+}

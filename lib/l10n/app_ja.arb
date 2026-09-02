@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "LTvLauncherについて",
+    "addCategory": "カテゴリを追加",
+    "addSection": "セクションを追加",
+    "alphabetical": "アルファベット順",
+    "appCardHighlightAnimation": "アプリカードのハイライトアニメーション",
+    "appInfo": "アプリ情報",
+    "appKeyClick": "キー押下時のクリック音",
+    "applications": "アプリケーション",
+    "autoHideAppBar": "ステータスバーを自動非表示",
+    "backButtonAction": "戻るボタンの動作",
+    "category": "カテゴリ",
+    "categories": "カテゴリ",
+    "columnCount": "列数",
+    "date": "日付",
+    "dateAndTimeFormat": "日付と時刻の形式",
+    "delete": "削除",
+    "dialogOptionBackButtonActionDoNothing": "何もしない",
+    "dialogOptionBackButtonActionShowScreensaver": "スクリーンセーバーを表示",
+    "dialogOptionBackButtonActionShowClock": "時計を表示",
+    "dialogTextNoFileExplorer": "画像を選択するにはファイルエクスプローラーをインストールしてください。",
+    "dialogTitleBackButtonAction": "戻るボタンの動作を選択",
+    "disambiguateCategoryTitle": "{title} (カテゴリ)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "書式化された日付: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "書式化された時刻: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "グラデーション",
+    "favoriteApps": "お気に入りアプリ",
+    "grid": "グリッド",
+    "height": "高さ",
+    "hide": "非表示",
+    "hiddenApplications": "非表示のアプリ",
+    "launcherSections": "セクション",
+    "layout": "レイアウト",
+    "loading": "読み込み中",
+    "manual": "手動",
+    "modifySection": "セクションを変更",
+    "mustNotBeEmpty": "空にすることはできません",
+    "name": "名前",
+    "newSection": "新しいセクション",
+    "noDateFormatSpecified": "日付形式が指定されていません",
+    "noTimeFormatSpecified": "時刻形式が指定されていません",
+    "nonTvApplications": "非TVアプリ",
+    "open": "開く",
+    "orSelectFormatSpecifiers": "または形式指定子を選択",
+    "picture": "画像",
+    "removeFrom": "{name}から削除",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "カテゴリ名を変更",
+    "reorder": "並べ替え",
+    "row": "行",
+    "rowHeight": "行の高さ",
+    "save": "保存",
+    "spacer": "スペーサー",
+    "spacerMaxHeightRequirement": "0より大きく500以下である必要があります",
+    "statusBar": "ステータスバー",
+    "settings": "設定",
+    "show": "表示",
+    "showCategoryTitles": "カテゴリタイトルを表示",
+    "themes": "テーマ",
+    "hideHighlightOutlineOnHomescreen": "ホーム画面でハイライトのアウトラインを非表示",
+    "appSelectorTransitionAnimation": "アプリセレクターの遷移アニメーション",
+    "sort": "並べ替え",
+    "systemSettings": "システム設定",
+    "textAboutDialog": "LTvLauncherはFLauncherをベースにしたAndroid TV用のカスタムオープンソースランチャーです。\n\nLeanBitLabによって開発されています。\nソースコードは{repoUrl}で入手できます。",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "このカテゴリは空です。",
+    "time": "時刻",
+    "titleStatusBarSettingsPage": "ステータスバーに表示するものを選択",
+    "tvApplications": "TVアプリ",
+    "type": "種類",
+    "typeInTheDateFormat": "日付形式を入力",
+    "typeInTheHourFormat": "時刻形式を入力",
+    "uninstall": "アンインストール",
+    "wallpaper": "壁紙",
+    "withEllipsisAddTo": "追加...",
+    "timeBasedWallpaper": "時間ベースの壁紙",
+    "pickDayWallpaper": "昼の壁紙を選択",
+    "pickNightWallpaper": "夜の壁紙を選択",
+    "accessibility": "アクセシビリティ",
+    "defaultLauncherIsDefault": "LTvLauncherはデフォルトのランチャーです",
+    "defaultLauncherNotDefault": "LTvLauncherはデフォルトのランチャーではありません",
+    "setAsDefaultLauncher": "デフォルトのランチャーに設定",
+    "defaultLauncherDescription": "デフォルトのランチャーに設定すると、ホームボタンは常にLTvLauncherに戻ります。TVの起動時も直接LTvLauncherが起動します。",
+    "inputs": "入力",
+    "inputSources": "入力ソース",
+    "backupAndRestore": "バックアップと復元",
+    "exportBackup": "バックアップをエクスポート",
+    "importBackup": "バックアップをインポート",
+    "exportSuccess": "バックアップが{path}に正常にエクスポートされました",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "バックアップが正常にインポートされました",
+    "importConfirm": "バックアップをインポートしますか？現在の設定とレイアウトが上書きされます。",
+    "importError": "バックアップのインポートに失敗しました: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "バックアップのエクスポートに失敗しました: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "バックアップを共有",
+    "shareBackupDescription": "ローカルネットワーク上の他のデバイスとバックアップを共有",
+    "stopSharing": "共有を停止",
+    "localNetworkSharingActive": "ローカルネットワーク共有が有効です！",
+    "localNetworkSharingInstructions": "他のデバイスを同じWi-Fiネットワークに接続し、Webブラウザで次のURLを開きます：",
+    "localNetworkSharingDetails": "ここでTVの設定/レイアウトをダウンロードするか、バックアップファイルをこのTVにアップロードできます。",
+    "failedToStartServer": "共有サーバーの起動に失敗しました: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "通知ベル",
+    "autoHideNotificationBell": "通知ベルを自動非表示",
+    "continueWatching": "続きを見る",
+    "showContinueWatchingOnHome": "ホームに「続きを見る」を表示",
+    "permissionDeniedContinueWatching": "「続きを見る」を表示するには権限が必要です",
+    "interface": "インターフェース",
+    "system": "システム",
+    "accentColor": "アクセントカラー",
+    "miscellaneous": "その他",
+    "brightnessScheduler": "明るさスケジューラー",
+    "screensaverSettings": "スクリーンセーバー設定",
+    "screensaverClockStyle": "スクリーンセーバー時計スタイル",
+    "dataUsagePeriod": "データ使用期間",
+    "notificationAccess": "通知アクセス",
+    "granted": "許可済み",
+    "permissionRequired": "権限が必要です",
+    "systemWidePopupAlert": "システム全体のポップアップアラート",
+    "overlayPermissionRequired": "オーバーレイ権限が必要です",
+    "enabled": "有効",
+    "disabled": "無効",
+    "showAppNamesBelowIcons": "アイコンの下にアプリ名を表示",
+    "dataUsage": "データ使用量",
+    "networkIndicator": "ネットワークインジケーター",
+    "homeButtonFix": "ホームボタン修正 (Google TV)",
+    "appLanguage": "言語",
+    "systemDefault": "システムのデフォルト",
+    "english": "英語",
+    "spanish": "スペイン語",
+    "ukrainian": "ウクライナ語",
+    "chinese": "中国語",
+    "french": "フランス語",
+    "german": "ドイツ語",
+    "japanese": "日本語",
+    "portuguese": "ポルトガル語",
+    "russian": "ロシア語",
+    "italian": "イタリア語",
+    "hindi": "ヒンディー語",
+    "korean": "韓国語",
+    "arabic": "アラビア語",
+    "turkish": "トルコ語"
+}

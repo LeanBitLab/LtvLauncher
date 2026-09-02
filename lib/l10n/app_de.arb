@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "Über LTvLauncher",
+    "addCategory": "Kategorie hinzufügen",
+    "addSection": "Abschnitt hinzufügen",
+    "alphabetical": "Alphabetisch",
+    "appCardHighlightAnimation": "App-Karten-Hervorhebungsanimation",
+    "appInfo": "App-Info",
+    "appKeyClick": "Klickgeräusch bei Tastendruck",
+    "applications": "Anwendungen",
+    "autoHideAppBar": "Statusleiste automatisch ausblenden",
+    "backButtonAction": "Aktion der Zurücktaste",
+    "category": "Kategorie",
+    "categories": "Kategorien",
+    "columnCount": "Spaltenanzahl",
+    "date": "Datum",
+    "dateAndTimeFormat": "Datums- und Zeitformat",
+    "delete": "Löschen",
+    "dialogOptionBackButtonActionDoNothing": "Nichts tun",
+    "dialogOptionBackButtonActionShowScreensaver": "Bildschirmschoner anzeigen",
+    "dialogOptionBackButtonActionShowClock": "Uhr anzeigen",
+    "dialogTextNoFileExplorer": "Bitte installieren Sie einen Dateimanager, um ein Bild auszuwählen.",
+    "dialogTitleBackButtonAction": "Aktion der Zurücktaste wählen",
+    "disambiguateCategoryTitle": "{title} (Kategorie)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Formatiertes Datum: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Formatierte Zeit: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Farbverlauf",
+    "favoriteApps": "Lieblings-Apps",
+    "grid": "Raster",
+    "height": "Höhe",
+    "hide": "Ausblenden",
+    "hiddenApplications": "Ausgeblendete Apps",
+    "launcherSections": "Abschnitte",
+    "layout": "Layout",
+    "loading": "Wird geladen",
+    "manual": "Manuell",
+    "modifySection": "Abschnitt ändern",
+    "mustNotBeEmpty": "Darf nicht leer sein",
+    "name": "Name",
+    "newSection": "Neuer Abschnitt",
+    "noDateFormatSpecified": "Kein Datumsformat angegeben",
+    "noTimeFormatSpecified": "Kein Zeitformat angegeben",
+    "nonTvApplications": "Nicht-TV-Apps",
+    "open": "Öffnen",
+    "orSelectFormatSpecifiers": "Oder Formatbezeichner auswählen",
+    "picture": "Bild",
+    "removeFrom": "Entfernen aus {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Kategorie umbenennen",
+    "reorder": "Neu anordnen",
+    "row": "Zeile",
+    "rowHeight": "Zeilenhöhe",
+    "save": "Speichern",
+    "spacer": "Abstandshalter",
+    "spacerMaxHeightRequirement": "Muss größer als 0 und kleiner oder gleich 500 sein",
+    "statusBar": "Statusleiste",
+    "settings": "Einstellungen",
+    "show": "Anzeigen",
+    "showCategoryTitles": "Kategorietitel anzeigen",
+    "themes": "Designs",
+    "hideHighlightOutlineOnHomescreen": "Hervorhebungskontur auf dem Startbildschirm ausblenden",
+    "appSelectorTransitionAnimation": "App-Auswahl-Übergangsanimation",
+    "sort": "Sortieren",
+    "systemSettings": "Systemeinstellungen",
+    "textAboutDialog": "LTvLauncher ist ein angepasster Open-Source-Launcher für Android TV, basierend auf FLauncher.\n\nEntwickelt von LeanBitLab.\nQuellcode verfügbar unter {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Diese Kategorie ist leer.",
+    "time": "Zeit",
+    "titleStatusBarSettingsPage": "Wählen Sie aus, was in der Statusleiste angezeigt werden soll",
+    "tvApplications": "TV-Apps",
+    "type": "Typ",
+    "typeInTheDateFormat": "Datumsformat eingeben",
+    "typeInTheHourFormat": "Zeitformat eingeben",
+    "uninstall": "Deinstallieren",
+    "wallpaper": "Hintergrundbild",
+    "withEllipsisAddTo": "Hinzufügen zu...",
+    "timeBasedWallpaper": "Zeitbasiertes Hintergrundbild",
+    "pickDayWallpaper": "Tag-Hintergrundbild auswählen",
+    "pickNightWallpaper": "Nacht-Hintergrundbild auswählen",
+    "accessibility": "Barrierefreiheit",
+    "defaultLauncherIsDefault": "LTvLauncher ist der Standard-Launcher",
+    "defaultLauncherNotDefault": "LTvLauncher ist nicht der Standard-Launcher",
+    "setAsDefaultLauncher": "Als Standard-Launcher festlegen",
+    "defaultLauncherDescription": "Wenn als Standard-Launcher festgelegt, kehrt die Home-Taste immer zu LTvLauncher zurück. Der TV bootet ebenfalls direkt in LTvLauncher.",
+    "inputs": "Eingänge",
+    "inputSources": "Eingabequellen",
+    "backupAndRestore": "Sichern & Wiederherstellen",
+    "exportBackup": "Sicherung exportieren",
+    "importBackup": "Sicherung importieren",
+    "exportSuccess": "Sicherung erfolgreich exportiert nach {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Sicherung erfolgreich importiert",
+    "importConfirm": "Möchten Sie die Sicherung wirklich importieren? Dies wird Ihre aktuellen Einstellungen und Ihr Layout überschreiben.",
+    "importError": "Importieren der Sicherung fehlgeschlagen: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Exportieren der Sicherung fehlgeschlagen: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Sicherung teilen",
+    "shareBackupDescription": "Sicherung mit anderen Geräten im lokalen Netzwerk teilen",
+    "stopSharing": "Teilen beenden",
+    "localNetworkSharingActive": "Die Freigabe im lokalen Netzwerk ist aktiv!",
+    "localNetworkSharingInstructions": "Verbinden Sie ein anderes Gerät mit demselben WLAN-Netzwerk und öffnen Sie die folgende URL in einem Webbrowser:",
+    "localNetworkSharingDetails": "Hier können Sie Ihre TV-Einstellungen/Ihr Layout herunterladen oder eine Sicherungsdatei auf diesen TV hochladen.",
+    "failedToStartServer": "Starten des Freigabeservers fehlgeschlagen: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Benachrichtigungsglocke",
+    "autoHideNotificationBell": "Benachrichtigungsglocke automatisch ausblenden",
+    "continueWatching": "Weiterschauen",
+    "showContinueWatchingOnHome": "Weiterschauen auf dem Startbildschirm anzeigen",
+    "permissionDeniedContinueWatching": "Berechtigung erforderlich, um Weiterschauen anzuzeigen",
+    "interface": "Oberfläche",
+    "system": "System",
+    "accentColor": "Akzentfarbe",
+    "miscellaneous": "Sonstiges",
+    "brightnessScheduler": "Helligkeitsplaner",
+    "screensaverSettings": "Bildschirmschoner-Einstellungen",
+    "screensaverClockStyle": "Bildschirmschoner-Uhrstil",
+    "dataUsagePeriod": "Datennutzungszeitraum",
+    "notificationAccess": "Benachrichtigungszugriff",
+    "granted": "Gewährt",
+    "permissionRequired": "Berechtigung erforderlich",
+    "systemWidePopupAlert": "Systemweite Popup-Warnung",
+    "overlayPermissionRequired": "Overlay-Berechtigung erforderlich",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "showAppNamesBelowIcons": "App-Namen unter Symbolen anzeigen",
+    "dataUsage": "Datennutzung",
+    "networkIndicator": "Netzwerkindikator",
+    "homeButtonFix": "Home-Taste-Fix (Google TV)",
+    "appLanguage": "Sprache",
+    "systemDefault": "Systemstandard",
+    "english": "Englisch",
+    "spanish": "Spanisch",
+    "ukrainian": "Ukrainisch",
+    "chinese": "Chinesisch",
+    "french": "Französisch",
+    "german": "Deutsch",
+    "japanese": "Japanisch",
+    "portuguese": "Portugiesisch",
+    "russian": "Russisch",
+    "italian": "Italienisch",
+    "hindi": "Hindi",
+    "korean": "Koreanisch",
+    "arabic": "Arabisch",
+    "turkish": "Türkisch"
+}

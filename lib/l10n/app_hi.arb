@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "LTvLauncher के बारे में",
+    "addCategory": "श्रेणी जोड़ें",
+    "addSection": "अनुभाग जोड़ें",
+    "alphabetical": "वर्णानुक्रम",
+    "appCardHighlightAnimation": "ऐप कार्ड हाइलाइट एनिमेशन",
+    "appInfo": "ऐप जानकारी",
+    "appKeyClick": "कुंजी दबाने पर क्लिक ध्वनि",
+    "applications": "एप्लिकेशन",
+    "autoHideAppBar": "स्टेटस बार को स्वचालित रूप से छिपाएं",
+    "backButtonAction": "बैक बटन एक्शन",
+    "category": "श्रेणी",
+    "categories": "श्रेणियाँ",
+    "columnCount": "कॉलम संख्या",
+    "date": "दिनांक",
+    "dateAndTimeFormat": "दिनांक और समय प्रारूप",
+    "delete": "हटाएं",
+    "dialogOptionBackButtonActionDoNothing": "कुछ न करें",
+    "dialogOptionBackButtonActionShowScreensaver": "स्क्रीनसेवर दिखाएं",
+    "dialogOptionBackButtonActionShowClock": "घड़ी दिखाएं",
+    "dialogTextNoFileExplorer": "कृपया चित्र चुनने के लिए फ़ाइल एक्सप्लोरर इंस्टॉल करें।",
+    "dialogTitleBackButtonAction": "बैक बटन एक्शन चुनें",
+    "disambiguateCategoryTitle": "{title} (श्रेणी)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "फ़ॉर्मेट किया गया दिनांक: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "फ़ॉर्मेट किया गया समय: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "ग्रेडिएंट",
+    "favoriteApps": "पसंदीदा ऐप्स",
+    "grid": "ग्रिड",
+    "height": "ऊंचाई",
+    "hide": "छिपाएं",
+    "hiddenApplications": "छिपे हुए ऐप्स",
+    "launcherSections": "अनुभाग",
+    "layout": "लेआउट",
+    "loading": "लोड हो रहा है",
+    "manual": "मैनुअल",
+    "modifySection": "अनुभाग संशोधित करें",
+    "mustNotBeEmpty": "खाली नहीं होना चाहिए",
+    "name": "नाम",
+    "newSection": "नया अनुभाग",
+    "noDateFormatSpecified": "कोई दिनांक प्रारूप निर्दिष्ट नहीं",
+    "noTimeFormatSpecified": "कोई समय प्रारूप निर्दिष्ट नहीं",
+    "nonTvApplications": "गैर-टीवी ऐप्स",
+    "open": "खोलें",
+    "orSelectFormatSpecifiers": "या प्रारूप निर्दिष्टकर्ता चुनें",
+    "picture": "चित्र",
+    "removeFrom": "{name} से हटाएं",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "श्रेणी का नाम बदलें",
+    "reorder": "पुन: व्यवस्थित करें",
+    "row": "पंक्ति",
+    "rowHeight": "पंक्ति की ऊंचाई",
+    "save": "सहेजें",
+    "spacer": "स्पेसर",
+    "spacerMaxHeightRequirement": "0 से अधिक और 500 से कम या बराबर होना चाहिए",
+    "statusBar": "स्टेटस बार",
+    "settings": "सेटिंग्स",
+    "show": "दिखाएं",
+    "showCategoryTitles": "श्रेणी शीर्षक दिखाएं",
+    "themes": "थीम",
+    "hideHighlightOutlineOnHomescreen": "होम स्क्रीन पर हाइलाइट आउटलाइन छिपाएं",
+    "appSelectorTransitionAnimation": "ऐप सेलेक्टर ट्रांज़िशन एनिमेशन",
+    "sort": "क्रमबद्ध करें",
+    "systemSettings": "सिस्टम सेटिंग्स",
+    "textAboutDialog": "LTvLauncher FLauncher पर आधारित Android TV के लिए एक अनुकूलित ओपन-सोर्स लॉन्चर है।\n\nLeanBitLab द्वारा विकसित।\nस्रोत कोड {repoUrl} पर उपलब्ध है।",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "यह श्रेणी खाली है।",
+    "time": "समय",
+    "titleStatusBarSettingsPage": "चुनें कि स्टेटस बार में क्या दिखाना है",
+    "tvApplications": "टीवी ऐप्स",
+    "type": "प्रकार",
+    "typeInTheDateFormat": "दिनांक प्रारूप टाइप करें",
+    "typeInTheHourFormat": "समय प्रारूप टाइप करें",
+    "uninstall": "अनइंस्टॉल करें",
+    "wallpaper": "वॉलपेपर",
+    "withEllipsisAddTo": "इसमें जोड़ें...",
+    "timeBasedWallpaper": "समय आधारित वॉलपेपर",
+    "pickDayWallpaper": "दिन का वॉलपेपर चुनें",
+    "pickNightWallpaper": "रात का वॉलपेपर चुनें",
+    "accessibility": "पहुंच (एक्सेसिबिलिटी)",
+    "defaultLauncherIsDefault": "LTvLauncher डिफ़ॉल्ट लॉन्चर है",
+    "defaultLauncherNotDefault": "LTvLauncher डिफ़ॉल्ट लॉन्चर नहीं है",
+    "setAsDefaultLauncher": "डिफ़ॉल्ट लॉन्चर के रूप में सेट करें",
+    "defaultLauncherDescription": "डिफ़ॉल्ट लॉन्चर के रूप में सेट होने पर, होम बटन हमेशा LTvLauncher पर वापस आएगा। टीवी भी सीधे LTvLauncher में बूट होगा।",
+    "inputs": "इनपुट",
+    "inputSources": "इनपुट स्रोत",
+    "backupAndRestore": "बैकअप और पुनर्स्थापना",
+    "exportBackup": "बैकअप निर्यात करें",
+    "importBackup": "बैकअप आयात करें",
+    "exportSuccess": "बैकअप सफलतापूर्वक {path} में निर्यात किया गया",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "बैकअप सफलतापूर्वक आयात किया गया",
+    "importConfirm": "क्या आप वाकई बैकअप आयात करना चाहते हैं? यह आपकी वर्तमान सेटिंग्स और लेआउट को ओवरराइट कर देगा।",
+    "importError": "बैकअप आयात करने में विफल: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "बैकअप निर्यात करने में विफल: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "बैकअप साझा करें",
+    "shareBackupDescription": "स्थानीय नेटवर्क पर अन्य डिवाइसों के साथ बैकअप साझा करें",
+    "stopSharing": "साझा करना बंद करें",
+    "localNetworkSharingActive": "स्थानीय नेटवर्क साझाकरण सक्रिय है!",
+    "localNetworkSharingInstructions": "किसी अन्य डिवाइस को उसी Wi-Fi नेटवर्क से कनेक्ट करें और वेब ब्राउज़र में निम्न URL खोलें:",
+    "localNetworkSharingDetails": "यहां आप अपने टीवी की सेटिंग्स/लेआउट डाउनलोड कर सकते हैं या बैकअप फ़ाइल को इस टीवी पर वापस अपलोड कर सकते हैं।",
+    "failedToStartServer": "साझाकरण सर्वर प्रारंभ करने में विफल: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "सूचना घंटी",
+    "autoHideNotificationBell": "सूचना घंटी को स्वचालित रूप से छिपाएं",
+    "continueWatching": "देखना जारी रखें",
+    "showContinueWatchingOnHome": "होम पर 'देखना जारी रखें' दिखाएं",
+    "permissionDeniedContinueWatching": "'देखना जारी रखें' दिखाने के लिए अनुमति आवश्यक है",
+    "interface": "इंटरफ़ेस",
+    "system": "सिस्टम",
+    "accentColor": "एक्सेंट रंग",
+    "miscellaneous": "विविध",
+    "brightnessScheduler": "चमक शेड्यूलर",
+    "screensaverSettings": "स्क्रीनसेवर सेटिंग्स",
+    "screensaverClockStyle": "स्क्रीनसेवर घड़ी शैली",
+    "dataUsagePeriod": "डेटा उपयोग अवधि",
+    "notificationAccess": "सूचना पहुंच",
+    "granted": "प्रदान किया गया",
+    "permissionRequired": "अनुमति आवश्यक है",
+    "systemWidePopupAlert": "सिस्टम-वाइड पॉपअप अलर्ट",
+    "overlayPermissionRequired": "ओवरले अनुमति आवश्यक है",
+    "enabled": "सक्षम",
+    "disabled": "अक्षम",
+    "showAppNamesBelowIcons": "आइकन के नीचे ऐप नाम दिखाएं",
+    "dataUsage": "डेटा उपयोग",
+    "networkIndicator": "नेटवर्क संकेतक",
+    "homeButtonFix": "होम बटन फिक्स (Google TV)",
+    "appLanguage": "भाषा",
+    "systemDefault": "सिस्टम डिफ़ॉल्ट",
+    "english": "अंग्रेज़ी",
+    "spanish": "स्पेनिश",
+    "ukrainian": "यूक्रेनियन",
+    "chinese": "चीनी",
+    "french": "फ्रेंच",
+    "german": "जर्मन",
+    "japanese": "जापानी",
+    "portuguese": "पुर्तगाली",
+    "russian": "रूसी",
+    "italian": "इतालवी",
+    "hindi": "हिन्दी",
+    "korean": "कोरियाई",
+    "arabic": "अरबी",
+    "turkish": "तुर्की"
+}

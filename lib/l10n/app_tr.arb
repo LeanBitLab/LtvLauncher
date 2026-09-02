@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "LTvLauncher Hakkında",
+    "addCategory": "Kategori ekle",
+    "addSection": "Bölüm ekle",
+    "alphabetical": "Alfabetik",
+    "appCardHighlightAnimation": "Uygulama kartı vurgulama animasyonu",
+    "appInfo": "Uygulama bilgisi",
+    "appKeyClick": "Tuşa basıldığında tıklama sesi",
+    "applications": "Uygulamalar",
+    "autoHideAppBar": "Durum çubuğunu otomatik gizle",
+    "backButtonAction": "Geri düğmesi eylemi",
+    "category": "Kategori",
+    "categories": "Kategoriler",
+    "columnCount": "Sütun sayısı",
+    "date": "Tarih",
+    "dateAndTimeFormat": "Tarih ve saat biçimi",
+    "delete": "Sil",
+    "dialogOptionBackButtonActionDoNothing": "Hiçbir şey yapma",
+    "dialogOptionBackButtonActionShowScreensaver": "Ekran koruyucuyu göster",
+    "dialogOptionBackButtonActionShowClock": "Saati göster",
+    "dialogTextNoFileExplorer": "Resim seçmek için lütfen bir dosya gezgini yükleyin.",
+    "dialogTitleBackButtonAction": "Geri düğmesi eylemini seçin",
+    "disambiguateCategoryTitle": "{title} (Kategori)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Biçimlendirilmiş tarih: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Biçimlendirilmiş saat: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Gradyan",
+    "favoriteApps": "Favori Uygulamalar",
+    "grid": "Izgara",
+    "height": "Yükseklik",
+    "hide": "Gizle",
+    "hiddenApplications": "Gizli Uygulamalar",
+    "launcherSections": "Bölümler",
+    "layout": "Düzen",
+    "loading": "Yükleniyor",
+    "manual": "Manuel",
+    "modifySection": "Bölümü değiştir",
+    "mustNotBeEmpty": "Boş bırakılamaz",
+    "name": "Ad",
+    "newSection": "Yeni bölüm",
+    "noDateFormatSpecified": "Tarih biçimi belirtilmedi",
+    "noTimeFormatSpecified": "Saat biçimi belirtilmedi",
+    "nonTvApplications": "TV Dışı Uygulamalar",
+    "open": "Aç",
+    "orSelectFormatSpecifiers": "Veya biçim belirteçlerini seçin",
+    "picture": "Resim",
+    "removeFrom": "{name} öğesinden kaldır",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Kategoriyi yeniden adlandır",
+    "reorder": "Yeniden sırala",
+    "row": "Satır",
+    "rowHeight": "Satır yüksekliği",
+    "save": "Kaydet",
+    "spacer": "Ayırıcı",
+    "spacerMaxHeightRequirement": "0'dan büyük ve 500'den küçük veya eşit olmalıdır",
+    "statusBar": "Durum çubuğu",
+    "settings": "Ayarlar",
+    "show": "Göster",
+    "showCategoryTitles": "Kategori başlıklarını göster",
+    "themes": "Temalar",
+    "hideHighlightOutlineOnHomescreen": "Ana ekranda vurgu anahattını gizle",
+    "appSelectorTransitionAnimation": "Uygulama seçici geçiş animasyonu",
+    "sort": "Sırala",
+    "systemSettings": "Sistem ayarları",
+    "textAboutDialog": "LTvLauncher, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nLeanBitLab tarafından geliştirilmiştir.\nKaynak kodu {repoUrl} adresinde mevcuttur.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Bu kategori boş.",
+    "time": "Saat",
+    "titleStatusBarSettingsPage": "Durum çubuğunda neyin görüntüleneceğini seçin",
+    "tvApplications": "TV Uygulamaları",
+    "type": "Tür",
+    "typeInTheDateFormat": "Tarih biçimini yazın",
+    "typeInTheHourFormat": "Saat biçimini yazın",
+    "uninstall": "Kaldır",
+    "wallpaper": "Duvar kağıdı",
+    "withEllipsisAddTo": "Şuraya ekle...",
+    "timeBasedWallpaper": "Zamana dayalı duvar kağıdı",
+    "pickDayWallpaper": "Gündüz duvar kağıdını seç",
+    "pickNightWallpaper": "Gece duvar kağıdını seç",
+    "accessibility": "Erişilebilirlik",
+    "defaultLauncherIsDefault": "LTvLauncher varsayılan başlatıcıdır",
+    "defaultLauncherNotDefault": "LTvLauncher varsayılan başlatıcı değildir",
+    "setAsDefaultLauncher": "Varsayılan başlatıcı olarak ayarla",
+    "defaultLauncherDescription": "Varsayılan başlatıcı olarak ayarlandığında, Ana Sayfa düğmesi her zaman LTvLauncher'a döner. TV de doğrudan LTvLauncher'da başlar.",
+    "inputs": "Girişler",
+    "inputSources": "Giriş Kaynakları",
+    "backupAndRestore": "Yedekleme ve Geri Yükleme",
+    "exportBackup": "Yedeği Dışa Aktar",
+    "importBackup": "Yedeği İçe Aktar",
+    "exportSuccess": "Yedek başarıyla {path} konumuna dışa aktarıldı",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Yedek başarıyla içe aktarıldı",
+    "importConfirm": "Yedeği içe aktarmak istediğinizden emin misiniz? Bu işlem mevcut ayarlarınızın ve düzeninizin üzerine yazacaktır.",
+    "importError": "Yedek içe aktarılamadı: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Yedek dışa aktarılamadı: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Yedeği Paylaş",
+    "shareBackupDescription": "Yedeği yerel ağdaki diğer cihazlarla paylaş",
+    "stopSharing": "Paylaşımı Durdur",
+    "localNetworkSharingActive": "Yerel ağ paylaşımı etkin!",
+    "localNetworkSharingInstructions": "Başka bir cihazı aynı Wi-Fi ağına bağlayın ve bir web tarayıcısında aşağıdaki URL'yi açın:",
+    "localNetworkSharingDetails": "Buradan TV ayarlarınızı/düzeninizi indirebilir veya bir yedek dosyasını bu TV'ye geri yükleyebilirsiniz.",
+    "failedToStartServer": "Paylaşım sunucusu başlatılamadı: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Bildirim Zili",
+    "autoHideNotificationBell": "Bildirim Zilini otomatik gizle",
+    "continueWatching": "İzlemeye Devam Et",
+    "showContinueWatchingOnHome": "Ana Ekranda İzlemeye Devam Et'i göster",
+    "permissionDeniedContinueWatching": "İzlemeye Devam Et'i göstermek için izin gerekli",
+    "interface": "Arayüz",
+    "system": "Sistem",
+    "accentColor": "Vurgu Rengi",
+    "miscellaneous": "Çeşitli",
+    "brightnessScheduler": "Parlaklık Zamanlayıcısı",
+    "screensaverSettings": "Ekran Koruyucu Ayarları",
+    "screensaverClockStyle": "Ekran Koruyucu Saat Stili",
+    "dataUsagePeriod": "Veri Kullanım Dönemi",
+    "notificationAccess": "Bildirim Erişimi",
+    "granted": "Verildi",
+    "permissionRequired": "İzin Gerekli",
+    "systemWidePopupAlert": "Sistem Geneli Açılır Pencere Uyarısı",
+    "overlayPermissionRequired": "Kaplama İzni Gerekli",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "showAppNamesBelowIcons": "Uygulama adlarını simgelerin altında göster",
+    "dataUsage": "Veri Kullanımı",
+    "networkIndicator": "Ağ Göstergesi",
+    "homeButtonFix": "Ana Sayfa Düğmesi Düzeltmesi (Google TV)",
+    "appLanguage": "Dil",
+    "systemDefault": "Sistem Varsayılanı",
+    "english": "İngilizce",
+    "spanish": "İspanyolca",
+    "ukrainian": "Ukraynaca",
+    "chinese": "Çince",
+    "french": "Fransızca",
+    "german": "Almanca",
+    "japanese": "Japonca",
+    "portuguese": "Portekizce",
+    "russian": "Rusça",
+    "italian": "İtalyanca",
+    "hindi": "Hintçe",
+    "korean": "Korece",
+    "arabic": "Arapça",
+    "turkish": "Türkçe"
+}

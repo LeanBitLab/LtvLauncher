@@ -71,17 +71,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '$title (Category)';
+    return '${title} (Category)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Formatted date: $dateString';
+    return 'Formatted date: ${dateString}';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Formatted time: $timeString';
+    return 'Formatted time: ${timeString}';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Remove from $name';
+    return 'Remove from ${name}';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by LeanBitLab.\nSource code available at $repoUrl.';
+    return 'LTvLauncher is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by LeanBitLab.\nSource code available at ${repoUrl}.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Backup exported successfully to $path';
+    return 'Backup exported successfully to ${path}';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Failed to import backup: $error';
+    return 'Failed to import backup: ${error}';
   }
 
   @override
   String exportError(String error) {
-    return 'Failed to export backup: $error';
+    return 'Failed to export backup: ${error}';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Failed to start sharing server: $error';
+    return 'Failed to start sharing server: ${error}';
   }
 
   @override
@@ -404,4 +404,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chinese => 'Chinese';
+
+  @override
+  String get french => 'French';
+
+  @override
+  String get german => 'German';
+
+  @override
+  String get japanese => 'Japanese';
+
+  @override
+  String get portuguese => 'Portuguese';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get italian => 'Italian';
+
+  @override
+  String get hindi => 'Hindi';
+
+  @override
+  String get korean => 'Korean';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get turkish => 'Turkish';
 }

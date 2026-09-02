@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "О программе LTvLauncher",
+    "addCategory": "Добавить категорию",
+    "addSection": "Добавить раздел",
+    "alphabetical": "По алфавиту",
+    "appCardHighlightAnimation": "Анимация выделения карточки приложения",
+    "appInfo": "Информация о приложении",
+    "appKeyClick": "Звук нажатия клавиши",
+    "applications": "Приложения",
+    "autoHideAppBar": "Автоскрытие строки состояния",
+    "backButtonAction": "Действие кнопки назад",
+    "category": "Категория",
+    "categories": "Категории",
+    "columnCount": "Количество столбцов",
+    "date": "Дата",
+    "dateAndTimeFormat": "Формат даты и времени",
+    "delete": "Удалить",
+    "dialogOptionBackButtonActionDoNothing": "Ничего не делать",
+    "dialogOptionBackButtonActionShowScreensaver": "Показать заставку",
+    "dialogOptionBackButtonActionShowClock": "Показать часы",
+    "dialogTextNoFileExplorer": "Пожалуйста, установите файловый менеджер, чтобы выбрать изображение.",
+    "dialogTitleBackButtonAction": "Выберите действие кнопки назад",
+    "disambiguateCategoryTitle": "{title} (Категория)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Форматированная дата: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Форматированное время: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Градиент",
+    "favoriteApps": "Избранные приложения",
+    "grid": "Сетка",
+    "height": "Высота",
+    "hide": "Скрыть",
+    "hiddenApplications": "Скрытые приложения",
+    "launcherSections": "Разделы",
+    "layout": "Макет",
+    "loading": "Загрузка",
+    "manual": "Вручную",
+    "modifySection": "Изменить раздел",
+    "mustNotBeEmpty": "Не должно быть пустым",
+    "name": "Имя",
+    "newSection": "Новый раздел",
+    "noDateFormatSpecified": "Формат даты не указан",
+    "noTimeFormatSpecified": "Формат времени не указан",
+    "nonTvApplications": "Приложения не для ТВ",
+    "open": "Открыть",
+    "orSelectFormatSpecifiers": "Или выберите спецификаторы формата",
+    "picture": "Изображение",
+    "removeFrom": "Удалить из {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Переименовать категорию",
+    "reorder": "Изменить порядок",
+    "row": "Строка",
+    "rowHeight": "Высота строки",
+    "save": "Сохранить",
+    "spacer": "Разделитель",
+    "spacerMaxHeightRequirement": "Должно быть больше 0 и меньше или равно 500",
+    "statusBar": "Строка состояния",
+    "settings": "Настройки",
+    "show": "Показать",
+    "showCategoryTitles": "Показывать заголовки категорий",
+    "themes": "Темы",
+    "hideHighlightOutlineOnHomescreen": "Скрыть контур выделения на главном экране",
+    "appSelectorTransitionAnimation": "Анимация перехода селектора приложений",
+    "sort": "Сортировать",
+    "systemSettings": "Системные настройки",
+    "textAboutDialog": "LTvLauncher — это настраиваемый лаунчер с открытым исходным кодом для Android TV, основанный на FLauncher.\n\nРазработан LeanBitLab.\nИсходный код доступен по адресу {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Эта категория пуста.",
+    "time": "Время",
+    "titleStatusBarSettingsPage": "Выберите, что отображать в строке состояния",
+    "tvApplications": "ТВ-приложения",
+    "type": "Тип",
+    "typeInTheDateFormat": "Введите формат даты",
+    "typeInTheHourFormat": "Введите формат времени",
+    "uninstall": "Удалить",
+    "wallpaper": "Обои",
+    "withEllipsisAddTo": "Добавить в...",
+    "timeBasedWallpaper": "Обои в зависимости от времени",
+    "pickDayWallpaper": "Выбрать дневные обои",
+    "pickNightWallpaper": "Выбрать ночные обои",
+    "accessibility": "Специальные возможности",
+    "defaultLauncherIsDefault": "LTvLauncher является лаунчером по умолчанию",
+    "defaultLauncherNotDefault": "LTvLauncher не является лаунчером по умолчанию",
+    "setAsDefaultLauncher": "Установить как лаунчер по умолчанию",
+    "defaultLauncherDescription": "При установке в качестве лаунчера по умолчанию кнопка «Домой» всегда будет возвращать к LTvLauncher. ТВ также будет загружаться напрямую в LTvLauncher.",
+    "inputs": "Входы",
+    "inputSources": "Источники ввода",
+    "backupAndRestore": "Резервное копирование и восстановление",
+    "exportBackup": "Экспорт резервной копии",
+    "importBackup": "Импорт резервной копии",
+    "exportSuccess": "Резервная копия успешно экспортирована в {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Резервная копия успешно импортирована",
+    "importConfirm": "Вы уверены, что хотите импортировать резервную копию? Это перезапишет ваши текущие настройки и макет.",
+    "importError": "Не удалось импортировать резервную копию: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Не удалось экспортировать резервную копию: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Поделиться резервной копией",
+    "shareBackupDescription": "Поделиться резервной копией с другими устройствами в локальной сети",
+    "stopSharing": "Остановить доступ",
+    "localNetworkSharingActive": "Доступ в локальной сети активен!",
+    "localNetworkSharingInstructions": "Подключите другое устройство к той же сети Wi-Fi и откройте следующий URL-адрес в веб-браузере:",
+    "localNetworkSharingDetails": "Здесь вы можете скачать настройки/макет вашего ТВ или загрузить файл резервной копии обратно на этот ТВ.",
+    "failedToStartServer": "Не удалось запустить сервер общего доступа: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Колокольчик уведомлений",
+    "autoHideNotificationBell": "Автоскрытие колокольчика уведомлений",
+    "continueWatching": "Продолжить просмотр",
+    "showContinueWatchingOnHome": "Показывать «Продолжить просмотр» на главном экране",
+    "permissionDeniedContinueWatching": "Требуется разрешение для показа «Продолжить просмотр»",
+    "interface": "Интерфейс",
+    "system": "Система",
+    "accentColor": "Акцентный цвет",
+    "miscellaneous": "Разное",
+    "brightnessScheduler": "Планировщик яркости",
+    "screensaverSettings": "Настройки заставки",
+    "screensaverClockStyle": "Стиль часов заставки",
+    "dataUsagePeriod": "Период использования данных",
+    "notificationAccess": "Доступ к уведомлениям",
+    "granted": "Предоставлено",
+    "permissionRequired": "Требуется разрешение",
+    "systemWidePopupAlert": "Системное всплывающее предупреждение",
+    "overlayPermissionRequired": "Требуется разрешение на наложение",
+    "enabled": "Включено",
+    "disabled": "Отключено",
+    "showAppNamesBelowIcons": "Показывать названия приложений под значками",
+    "dataUsage": "Использование данных",
+    "networkIndicator": "Индикатор сети",
+    "homeButtonFix": "Исправление кнопки «Домой» (Google TV)",
+    "appLanguage": "Язык",
+    "systemDefault": "Системный по умолчанию",
+    "english": "Английский",
+    "spanish": "Испанский",
+    "ukrainian": "Украинский",
+    "chinese": "Китайский",
+    "french": "Французский",
+    "german": "Немецкий",
+    "japanese": "Японский",
+    "portuguese": "Португальский",
+    "russian": "Русский",
+    "italian": "Итальянский",
+    "hindi": "Хинди",
+    "korean": "Корейский",
+    "arabic": "Арабский",
+    "turkish": "Турецкий"
+}

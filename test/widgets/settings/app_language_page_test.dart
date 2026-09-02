@@ -44,8 +44,8 @@ void main() {
     expect(find.text('System Default'), findsOneWidget);
     expect(find.text('English'), findsOneWidget);
     expect(find.text('Spanish'), findsOneWidget);
-    expect(find.text('Ukrainian'), findsOneWidget);
-    expect(find.text('Chinese'), findsOneWidget);
+    expect(find.text('French'), findsOneWidget);
+    expect(find.text('German'), findsOneWidget);
   });
 
   testWidgets('tapping Spanish option updates appLanguage preference to es', (WidgetTester tester) async {
@@ -59,14 +59,26 @@ void main() {
     expect(settingsService.appLocale, equals(const Locale('es')));
   });
 
-  testWidgets('tapping Chinese option updates appLanguage preference to zh', (WidgetTester tester) async {
+  testWidgets('tapping French option updates appLanguage preference to fr', (WidgetTester tester) async {
     await tester.pumpWidget(buildSubject());
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Chinese'));
+    await tester.tap(find.text('French'));
     await tester.pumpAndSettle();
 
-    expect(settingsService.appLanguage, 'zh');
-    expect(settingsService.appLocale, equals(const Locale('zh')));
+    expect(settingsService.appLanguage, 'fr');
+    expect(settingsService.appLocale, equals(const Locale('fr')));
+  });
+
+  testWidgets('tapping Japanese option updates appLanguage preference to ja', (WidgetTester tester) async {
+    await tester.pumpWidget(buildSubject());
+    await tester.pumpAndSettle();
+
+    await tester.scrollUntilVisible(find.text('Japanese'), 100);
+    await tester.tap(find.text('Japanese'));
+    await tester.pumpAndSettle();
+
+    expect(settingsService.appLanguage, 'ja');
+    expect(settingsService.appLocale, equals(const Locale('ja')));
   });
 }

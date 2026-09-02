@@ -71,17 +71,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '$title (Categoría)';
+    return '${title} (Categoría)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Fecha con formato: $dateString';
+    return 'Fecha con formato: ${dateString}';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Hora con formato: $timeString';
+    return 'Hora con formato: ${timeString}';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Eliminar de $name';
+    return 'Eliminar de ${name}';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por LeanBitLab.\nCódigo fuente disponible en $repoUrl.';
+    return 'LTvLauncher es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por LeanBitLab.\nCódigo fuente disponible en ${repoUrl}.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Copia de seguridad exportada con éxito a $path';
+    return 'Copia de seguridad exportada con éxito a ${path}';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Error al importar la copia de seguridad: $error';
+    return 'Error al importar la copia de seguridad: ${error}';
   }
 
   @override
   String exportError(String error) {
-    return 'Error al exportar la copia de seguridad: $error';
+    return 'Error al exportar la copia de seguridad: ${error}';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Error al iniciar el servidor de uso compartido: $error';
+    return 'Error al iniciar el servidor de uso compartido: ${error}';
   }
 
   @override
@@ -404,4 +404,34 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get chinese => 'Chino';
+
+  @override
+  String get french => 'Francés';
+
+  @override
+  String get german => 'Alemán';
+
+  @override
+  String get japanese => 'Japonés';
+
+  @override
+  String get portuguese => 'Portugués';
+
+  @override
+  String get russian => 'Ruso';
+
+  @override
+  String get italian => 'Italiano';
+
+  @override
+  String get hindi => 'Hindi';
+
+  @override
+  String get korean => 'Coreano';
+
+  @override
+  String get arabic => 'Árabe';
+
+  @override
+  String get turkish => 'Turco';
 }

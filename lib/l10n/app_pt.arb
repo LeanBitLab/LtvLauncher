@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "Sobre o LTvLauncher",
+    "addCategory": "Adicionar categoria",
+    "addSection": "Adicionar seção",
+    "alphabetical": "Alfabético",
+    "appCardHighlightAnimation": "Animação de destaque do cartão do app",
+    "appInfo": "Informações do app",
+    "appKeyClick": "Som de clique ao pressionar tecla",
+    "applications": "Aplicativos",
+    "autoHideAppBar": "Ocultar barra de status automaticamente",
+    "backButtonAction": "Ação do botão voltar",
+    "category": "Categoria",
+    "categories": "Categorias",
+    "columnCount": "Contagem de colunas",
+    "date": "Data",
+    "dateAndTimeFormat": "Formato de data e hora",
+    "delete": "Excluir",
+    "dialogOptionBackButtonActionDoNothing": "Não fazer nada",
+    "dialogOptionBackButtonActionShowScreensaver": "Mostrar protetor de tela",
+    "dialogOptionBackButtonActionShowClock": "Mostrar relógio",
+    "dialogTextNoFileExplorer": "Por favor, instale um explorador de arquivos para escolher uma imagem.",
+    "dialogTitleBackButtonAction": "Escolha a ação do botão voltar",
+    "disambiguateCategoryTitle": "{title} (Categoria)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "Data formatada: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "Hora formatada: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "Gradiente",
+    "favoriteApps": "Apps favoritos",
+    "grid": "Grade",
+    "height": "Altura",
+    "hide": "Ocultar",
+    "hiddenApplications": "Apps ocultos",
+    "launcherSections": "Seções",
+    "layout": "Layout",
+    "loading": "Carregando",
+    "manual": "Manual",
+    "modifySection": "Modificar seção",
+    "mustNotBeEmpty": "Não pode estar vazio",
+    "name": "Nome",
+    "newSection": "Nova seção",
+    "noDateFormatSpecified": "Nenhum formato de data especificado",
+    "noTimeFormatSpecified": "Nenhum formato de hora especificado",
+    "nonTvApplications": "Apps não-TV",
+    "open": "Abrir",
+    "orSelectFormatSpecifiers": "Ou selecione especificadores de formato",
+    "picture": "Imagem",
+    "removeFrom": "Remover de {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "Renomear categoria",
+    "reorder": "Reordenar",
+    "row": "Linha",
+    "rowHeight": "Altura da linha",
+    "save": "Salvar",
+    "spacer": "Espaçador",
+    "spacerMaxHeightRequirement": "Deve ser maior que 0 e menor ou igual a 500",
+    "statusBar": "Barra de status",
+    "settings": "Configurações",
+    "show": "Mostrar",
+    "showCategoryTitles": "Mostrar títulos das categorias",
+    "themes": "Temas",
+    "hideHighlightOutlineOnHomescreen": "Ocultar contorno de destaque na tela inicial",
+    "appSelectorTransitionAnimation": "Animação de transição do seletor de apps",
+    "sort": "Ordenar",
+    "systemSettings": "Configurações do sistema",
+    "textAboutDialog": "O LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "Esta categoria está vazia.",
+    "time": "Hora",
+    "titleStatusBarSettingsPage": "Escolha o que exibir na barra de status",
+    "tvApplications": "Apps de TV",
+    "type": "Tipo",
+    "typeInTheDateFormat": "Digite o formato de data",
+    "typeInTheHourFormat": "Digite o formato de hora",
+    "uninstall": "Desinstalar",
+    "wallpaper": "Papel de parede",
+    "withEllipsisAddTo": "Adicionar a...",
+    "timeBasedWallpaper": "Papel de parede baseado no tempo",
+    "pickDayWallpaper": "Escolher papel de parede diurno",
+    "pickNightWallpaper": "Escolher papel de parede noturno",
+    "accessibility": "Acessibilidade",
+    "defaultLauncherIsDefault": "LTvLauncher é o launcher padrão",
+    "defaultLauncherNotDefault": "LTvLauncher não é o launcher padrão",
+    "setAsDefaultLauncher": "Definir como launcher padrão",
+    "defaultLauncherDescription": "Quando definido como launcher padrão, o botão Home sempre retornará ao LTvLauncher. A TV também iniciará diretamente no LTvLauncher.",
+    "inputs": "Entradas",
+    "inputSources": "Fontes de entrada",
+    "backupAndRestore": "Backup e Restauração",
+    "exportBackup": "Exportar Backup",
+    "importBackup": "Importar Backup",
+    "exportSuccess": "Backup exportado com sucesso para {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "Backup importado com sucesso",
+    "importConfirm": "Tem certeza de que deseja importar o backup? Isso substituirá suas configurações e layout atuais.",
+    "importError": "Falha ao importar backup: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "Falha ao exportar backup: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "Compartilhar Backup",
+    "shareBackupDescription": "Compartilhar backup com outros dispositivos na rede local",
+    "stopSharing": "Parar Compartilhamento",
+    "localNetworkSharingActive": "O compartilhamento na rede local está ativo!",
+    "localNetworkSharingInstructions": "Conecte outro dispositivo à mesma rede Wi-Fi e abra a seguinte URL em um navegador da web:",
+    "localNetworkSharingDetails": "Aqui você pode baixar as configurações/layout da sua TV ou enviar um arquivo de backup de volta para esta TV.",
+    "failedToStartServer": "Falha ao iniciar o servidor de compartilhamento: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "Sino de Notificação",
+    "autoHideNotificationBell": "Ocultar Sino de Notificação automaticamente",
+    "continueWatching": "Continuar assistindo",
+    "showContinueWatchingOnHome": "Mostrar Continuar assistindo na tela inicial",
+    "permissionDeniedContinueWatching": "Permissão necessária para mostrar Continuar assistindo",
+    "interface": "Interface",
+    "system": "Sistema",
+    "accentColor": "Cor de destaque",
+    "miscellaneous": "Diversos",
+    "brightnessScheduler": "Agendador de brilho",
+    "screensaverSettings": "Configurações do protetor de tela",
+    "screensaverClockStyle": "Estilo de relógio do protetor de tela",
+    "dataUsagePeriod": "Período de uso de dados",
+    "notificationAccess": "Acesso a notificações",
+    "granted": "Concedido",
+    "permissionRequired": "Permissão Necessária",
+    "systemWidePopupAlert": "Alerta pop-up de todo o sistema",
+    "overlayPermissionRequired": "Permissão de sobreposição necessária",
+    "enabled": "Ativado",
+    "disabled": "Desativado",
+    "showAppNamesBelowIcons": "Mostrar nomes dos apps abaixo dos ícones",
+    "dataUsage": "Uso de dados",
+    "networkIndicator": "Indicador de rede",
+    "homeButtonFix": "Correção do botão Home (Google TV)",
+    "appLanguage": "Idioma",
+    "systemDefault": "Padrão do sistema",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "ukrainian": "Ucraniano",
+    "chinese": "Chinês",
+    "french": "Francês",
+    "german": "Alemão",
+    "japanese": "Japonês",
+    "portuguese": "Português",
+    "russian": "Russo",
+    "italian": "Italiano",
+    "hindi": "Hindi",
+    "korean": "Coreano",
+    "arabic": "Árabe",
+    "turkish": "Turco"
+}

@@ -1,0 +1,202 @@
+{
+    "aboutFlauncher": "حول LTvLauncher",
+    "addCategory": "إضافة فئة",
+    "addSection": "إضافة قسم",
+    "alphabetical": "أبجدي",
+    "appCardHighlightAnimation": "رسوم متحركة لإبراز بطاقة التطبيق",
+    "appInfo": "معلومات التطبيق",
+    "appKeyClick": "صوت نقر عند الضغط على المفتاح",
+    "applications": "التطبيقات",
+    "autoHideAppBar": "إخفاء شريط الحالة تلقائياً",
+    "backButtonAction": "إجراء زر الرجوع",
+    "category": "فئة",
+    "categories": "الفئات",
+    "columnCount": "عدد الأعمدة",
+    "date": "التاريخ",
+    "dateAndTimeFormat": "تنسيق التاريخ والوقت",
+    "delete": "حذف",
+    "dialogOptionBackButtonActionDoNothing": "عدم القيام بشيء",
+    "dialogOptionBackButtonActionShowScreensaver": "إظهار شاشة التوقف",
+    "dialogOptionBackButtonActionShowClock": "إظهار الساعة",
+    "dialogTextNoFileExplorer": "يرجى تثبيت مستكشف الملفات لاختيار صورة.",
+    "dialogTitleBackButtonAction": "اختر إجراء زر الرجوع",
+    "disambiguateCategoryTitle": "{title} (فئة)",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "التاريخ المنسق: {dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "الوقت المنسق: {timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "تدرج لوني",
+    "favoriteApps": "التطبيقات المفضلة",
+    "grid": "شبكة",
+    "height": "الارتفاع",
+    "hide": "إخفاء",
+    "hiddenApplications": "التطبيقات المخفية",
+    "launcherSections": "الأقسام",
+    "layout": "التخطيط",
+    "loading": "جارٍ التحميل",
+    "manual": "يدوي",
+    "modifySection": "تعديل القسم",
+    "mustNotBeEmpty": "يجب ألا يكون فارغاً",
+    "name": "الاسم",
+    "newSection": "قسم جديد",
+    "noDateFormatSpecified": "لم يتم تحديد تنسيق التاريخ",
+    "noTimeFormatSpecified": "لم يتم تحديد تنسيق الوقت",
+    "nonTvApplications": "تطبيقات غير تلفزيونية",
+    "open": "فتح",
+    "orSelectFormatSpecifiers": "أو حدد محددات التنسيق",
+    "picture": "صورة",
+    "removeFrom": "إزالة من {name}",
+    "@removeFrom": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "renameCategory": "إعادة تسمية الفئة",
+    "reorder": "إعادة ترتيب",
+    "row": "صف",
+    "rowHeight": "ارتفاع الصف",
+    "save": "حفظ",
+    "spacer": "فاصل",
+    "spacerMaxHeightRequirement": "يجب أن يكون أكبر من 0 وأقل من أو يساوي 500",
+    "statusBar": "شريط الحالة",
+    "settings": "الإعدادات",
+    "show": "إظهار",
+    "showCategoryTitles": "إظهار عناوين الفئات",
+    "themes": "السمات",
+    "hideHighlightOutlineOnHomescreen": "إخفاء مخطط التمييز على الشاشة الرئيسية",
+    "appSelectorTransitionAnimation": "رسوم متحركة لانتقال محدد التطبيقات",
+    "sort": "فرز",
+    "systemSettings": "إعدادات النظام",
+    "textAboutDialog": "LTvLauncher هو مشغل مفتوح المصدر ومخصص لتلفزيون أندرويد، مبني على FLauncher.\n\nتم تطويره بواسطة LeanBitLab.\nالكود المصدري متاح على {repoUrl}.",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "هذه الفئة فارغة.",
+    "time": "الوقت",
+    "titleStatusBarSettingsPage": "اختر ما سيتم عرضه في شريط الحالة",
+    "tvApplications": "تطبيقات التلفزيون",
+    "type": "النوع",
+    "typeInTheDateFormat": "اكتب تنسيق التاريخ",
+    "typeInTheHourFormat": "اكتب تنسيق الوقت",
+    "uninstall": "إلغاء التثبيت",
+    "wallpaper": "خلفية",
+    "withEllipsisAddTo": "إضافة إلى...",
+    "timeBasedWallpaper": "خلفية تعتمد على الوقت",
+    "pickDayWallpaper": "اختيار خلفية النهار",
+    "pickNightWallpaper": "اختيار خلفية الليل",
+    "accessibility": "إمكانية الوصول",
+    "defaultLauncherIsDefault": "LTvLauncher هو المشغل الافتراضي",
+    "defaultLauncherNotDefault": "LTvLauncher ليس المشغل الافتراضي",
+    "setAsDefaultLauncher": "تعيين كمشغل افتراضي",
+    "defaultLauncherDescription": "عند تعيينه كمشغل افتراضي، سيعود زر الصفحة الرئيسية دائماً إلى LTvLauncher. سيتم أيضاً تشغيل التلفزيون مباشرة في LTvLauncher.",
+    "inputs": "المدخلات",
+    "inputSources": "مصادر الإدخال",
+    "backupAndRestore": "النسخ الاحتياطي والاستعادة",
+    "exportBackup": "تصدير النسخ الاحتياطي",
+    "importBackup": "استيراد النسخ الاحتياطي",
+    "exportSuccess": "تم تصدير النسخ الاحتياطي بنجاح إلى {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "تم استيراد النسخ الاحتياطي بنجاح",
+    "importConfirm": "هل أنت متأكد أنك تريد استيراد النسخ الاحتياطي؟ سيؤدي هذا إلى الكتابة فوق إعداداتك وتخطيطك الحاليين.",
+    "importError": "فشل استيراد النسخ الاحتياطي: {error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "فشل تصدير النسخ الاحتياطي: {error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "مشاركة النسخ الاحتياطي",
+    "shareBackupDescription": "مشاركة النسخ الاحتياطي مع الأجهزة الأخرى على الشبكة المحلية",
+    "stopSharing": "إيقاف المشاركة",
+    "localNetworkSharingActive": "مشاركة الشبكة المحلية نشطة!",
+    "localNetworkSharingInstructions": "قم بتوصيل جهاز آخر بنفس شبكة Wi-Fi وافتح عنوان URL التالي في متصفح الويب:",
+    "localNetworkSharingDetails": "هنا يمكنك تنزيل إعدادات/تخطيط التلفزيون الخاص بك أو رفع ملف نسخ احتياطي مرة أخرى إلى هذا التلفزيون.",
+    "failedToStartServer": "فشل بدء خادم المشاركة: {error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "جرس الإشعارات",
+    "autoHideNotificationBell": "إخفاء جرس الإشعارات تلقائياً",
+    "continueWatching": "متابعة المشاهدة",
+    "showContinueWatchingOnHome": "إظهار متابعة المشاهدة على الصفحة الرئيسية",
+    "permissionDeniedContinueWatching": "الإذن مطلوب لإظهار متابعة المشاهدة",
+    "interface": "الواجهة",
+    "system": "النظام",
+    "accentColor": "لون التمييز",
+    "miscellaneous": "متنوع",
+    "brightnessScheduler": "مجدول السطوع",
+    "screensaverSettings": "إعدادات شاشة التوقف",
+    "screensaverClockStyle": "نمط ساعة شاشة التوقف",
+    "dataUsagePeriod": "فترة استخدام البيانات",
+    "notificationAccess": "الوصول إلى الإشعارات",
+    "granted": "مُمنوح",
+    "permissionRequired": "الإذن مطلوب",
+    "systemWidePopupAlert": "تنبيه منبثق على مستوى النظام",
+    "overlayPermissionRequired": "إذن التراكب مطلوب",
+    "enabled": "مفعّل",
+    "disabled": "معطّل",
+    "showAppNamesBelowIcons": "إظهار أسماء التطبيقات أسفل الأيقونات",
+    "dataUsage": "استخدام البيانات",
+    "networkIndicator": "مؤشر الشبكة",
+    "homeButtonFix": "إصلاح زر الصفحة الرئيسية (Google TV)",
+    "appLanguage": "اللغة",
+    "systemDefault": "افتراضي النظام",
+    "english": "الإنجليزية",
+    "spanish": "الإسبانية",
+    "ukrainian": "الأوكرانية",
+    "chinese": "الصينية",
+    "french": "الفرنسية",
+    "german": "الألمانية",
+    "japanese": "اليابانية",
+    "portuguese": "البرتغالية",
+    "russian": "الروسية",
+    "italian": "الإيطالية",
+    "hindi": "الهندية",
+    "korean": "الكورية",
+    "arabic": "العربية",
+    "turkish": "التركية"
+}

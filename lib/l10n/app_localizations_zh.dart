@@ -71,17 +71,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '$title（类别）';
+    return '${title}（类别）';
   }
 
   @override
   String formattedDate(String dateString) {
-    return '格式化日期：$dateString';
+    return '格式化日期：${dateString}';
   }
 
   @override
   String formattedTime(String timeString) {
-    return '格式化时间：$timeString';
+    return '格式化时间：${timeString}';
   }
 
   @override
@@ -404,4 +404,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get chinese => '中文';
+
+  @override
+  String get french => '法语';
+
+  @override
+  String get german => '德语';
+
+  @override
+  String get japanese => '日语';
+
+  @override
+  String get portuguese => '葡萄牙语';
+
+  @override
+  String get russian => '俄语';
+
+  @override
+  String get italian => '意大利语';
+
+  @override
+  String get hindi => '印地语';
+
+  @override
+  String get korean => '韩语';
+
+  @override
+  String get arabic => '阿拉伯语';
+
+  @override
+  String get turkish => '土耳其语';
 }
