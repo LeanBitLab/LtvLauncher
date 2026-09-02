@@ -206,5 +206,11 @@
     "unblockAppNotifications": "إلغاء حظر الإشعارات",
     "noBlockedApps": "لا توجد تطبيقات محظورة",
     "persistentNotification": "دائم",
-    "unblockAll": "إلغاء حظر الكل"
+    "unblockAll": "إلغاء حظر الكل",
+    "weather": "الطقس",
+    "showWeatherWarnings": "إظهار تحذيرات الطقس والأمطار",
+    "temperatureUnit": "وحدة درجة الحرارة",
+    "celsius": "مئوية (°C)",
+    "fahrenheit": "فهرنهايت (°F)",
+    "breezyWeatherSetupHint": "قم بتثبيت تطبيق Breezy Weather وتفعيل 'مشاركة البيانات المحلية' في إعداداته لعرض الطقس وتحذيرات الأمطار."
 }

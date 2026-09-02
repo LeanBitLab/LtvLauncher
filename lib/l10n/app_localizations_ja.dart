@@ -458,4 +458,22 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get unblockAll => 'すべてブロック解除';
+
+  @override
+  String get weather => '天気';
+
+  @override
+  String get showWeatherWarnings => '天気と雨の警告を表示';
+
+  @override
+  String get temperatureUnit => '温度単位';
+
+  @override
+  String get celsius => '摂氏 (°C)';
+
+  @override
+  String get fahrenheit => '華氏 (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Breezy Weather をインストールし、設定で「ローカルデータ共有」/「Gadgetbridge」を有効にすると、天気と雨の警告が表示されます。';
 }

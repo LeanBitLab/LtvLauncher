@@ -988,6 +988,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unblock All'**
   String get unblockAll;
+
+  /// No description provided for @weather.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather'**
+  String get weather;
+
+  /// No description provided for @showWeatherWarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Weather & Rain Warnings'**
+  String get showWeatherWarnings;
+
+  /// No description provided for @temperatureUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature Unit'**
+  String get temperatureUnit;
+
+  /// No description provided for @celsius.
+  ///
+  /// In en, this message translates to:
+  /// **'Celsius (°C)'**
+  String get celsius;
+
+  /// No description provided for @fahrenheit.
+  ///
+  /// In en, this message translates to:
+  /// **'Fahrenheit (°F)'**
+  String get fahrenheit;
+
+  /// No description provided for @breezyWeatherSetupHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Install Breezy Weather and enable \'Local data sharing\' / \'Gadgetbridge\' in its settings to see weather and rain warnings.'**
+  String get breezyWeatherSetupHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

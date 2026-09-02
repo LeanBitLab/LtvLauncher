@@ -74,6 +74,7 @@ public class MainActivity extends FlutterActivity {
     private final String APPS_EVENT_CHANNEL = "me.efesser.flauncher/event_apps";
     private final String NETWORK_EVENT_CHANNEL = "me.efesser.flauncher/event_network";
     private final String NOTIFICATIONS_EVENT_CHANNEL = "me.efesser.flauncher/event_notifications";
+    private final String WEATHER_EVENT_CHANNEL = "me.efesser.flauncher/event_weather";
     private MethodChannel.Result pendingPermissionResult;
 
     @Override
@@ -174,6 +175,9 @@ public class MainActivity extends FlutterActivity {
                     String intentUri = call.argument("intentUri");
                     result.success(launchWatchNextProgram(intentUri));
                 }
+                case "getLatestWeatherData" -> result.success(getLatestWeatherData());
+                case "isBreezyWeatherInstalled" -> result.success(isBreezyWeatherInstalled());
+                case "openBreezyWeather" -> result.success(openBreezyWeather());
                 case "getPackageName" -> result.success(getPackageName());
                 case "playClickSound" -> {
                     getWindow().getDecorView().playSoundEffect(android.view.SoundEffectConstants.CLICK);
@@ -215,6 +219,32 @@ public class MainActivity extends FlutterActivity {
                             LauncherNotificationListenerService.unregisterListener(listener);
                             listener = null;
                         }
+                    }
+                }
+        );
+
+        new EventChannel(messenger, WEATHER_EVENT_CHANNEL).setStreamHandler(
+                new EventChannel.StreamHandler() {
+                    @Override
+                    public void onListen(Object arguments, EventChannel.EventSink events) {
+                        WeatherReceiver.setListener(weatherJson -> {
+                            runOnUiThread(() -> {
+                                try {
+                                    events.success(weatherJson);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        });
+                        String latest = getLatestWeatherData();
+                        if (latest != null) {
+                            events.success(latest);
+                        }
+                    }
+
+                    @Override
+                    public void onCancel(Object arguments) {
+                        WeatherReceiver.setListener(null);
                     }
                 }
         );
@@ -1248,6 +1278,34 @@ public class MainActivity extends FlutterActivity {
     }
 
 
+
+    private String getLatestWeatherData() {
+        android.content.SharedPreferences prefs = getSharedPreferences(WeatherReceiver.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(WeatherReceiver.KEY_WEATHER_JSON, null);
+    }
+
+    private boolean isBreezyWeatherInstalled() {
+        try {
+            getPackageManager().getPackageInfo("org.breezyweather", 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    private boolean openBreezyWeather() {
+        try {
+            Intent launchIntent = getPackageManager().getLaunchIntentForPackage("org.breezyweather");
+            if (launchIntent != null) {
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(launchIntent);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

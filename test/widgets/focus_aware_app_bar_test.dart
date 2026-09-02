@@ -1,3 +1,4 @@
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flauncher/widgets/focus_aware_app_bar.dart';
@@ -12,28 +13,37 @@ void main() {
   late MockSettingsService mockSettingsService;
   late MockTvInputsService mockTvInputsService;
   late MockNotificationsService mockNotificationsService;
+  late MockWeatherService mockWeatherService;
+
+  void setupSettingsDefaults(MockSettingsService service) {
+    when(service.autoHideAppBarEnabled).thenReturn(false);
+    when(service.showNetworkIndicatorInStatusBar).thenReturn(false);
+    when(service.showDataWidgetInStatusBar).thenReturn(false);
+    when(service.showDateInStatusBar).thenReturn(true);
+    when(service.showTimeInStatusBar).thenReturn(true);
+    when(service.showInputsWidgetInStatusBar).thenReturn(true);
+    when(service.showNotificationsWidgetInStatusBar).thenReturn(true);
+    when(service.autoHideNotificationsWidget).thenReturn(false);
+    when(service.dateFormat).thenReturn(SettingsService.defaultDateFormat);
+    when(service.timeFormat).thenReturn(SettingsService.defaultTimeFormat);
+    when(service.showWeatherInStatusBar).thenReturn(false);
+    when(service.showWeatherWarnings).thenReturn(false);
+    when(service.useFahrenheit).thenReturn(false);
+  }
 
   setUp(() {
     mockSettingsService = MockSettingsService();
     mockTvInputsService = MockTvInputsService();
     mockNotificationsService = MockNotificationsService();
+    mockWeatherService = MockWeatherService();
 
-    // Default mock setup
-    when(mockSettingsService.autoHideAppBarEnabled).thenReturn(false);
-    when(mockSettingsService.showNetworkIndicatorInStatusBar).thenReturn(false);
-    when(mockSettingsService.showDataWidgetInStatusBar).thenReturn(false);
-    when(mockSettingsService.showDateInStatusBar).thenReturn(true);
-    when(mockSettingsService.showTimeInStatusBar).thenReturn(true);
-    when(mockSettingsService.showInputsWidgetInStatusBar).thenReturn(true);
-    when(mockSettingsService.showNotificationsWidgetInStatusBar).thenReturn(true);
-    when(mockSettingsService.autoHideNotificationsWidget).thenReturn(false);
-    when(mockSettingsService.dateFormat).thenReturn(SettingsService.defaultDateFormat);
-    when(mockSettingsService.timeFormat).thenReturn(SettingsService.defaultTimeFormat);
+    setupSettingsDefaults(mockSettingsService);
 
     when(mockTvInputsService.hasInputs).thenReturn(false);
-
     when(mockNotificationsService.hasPermission).thenReturn(false);
     when(mockNotificationsService.notifications).thenReturn([]);
+    when(mockWeatherService.hasWeather).thenReturn(false);
+    when(mockWeatherService.weatherData).thenReturn(null);
   });
 
   Widget createWidgetUnderTest() {
@@ -52,6 +62,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )
@@ -71,6 +82,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )
@@ -102,6 +114,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )
@@ -114,16 +127,8 @@ void main() {
     await tester.pumpAndSettle();
 
     final mockSettingsService2 = MockSettingsService();
-    when(mockSettingsService2.autoHideAppBarEnabled).thenReturn(false);
-    when(mockSettingsService2.showNetworkIndicatorInStatusBar).thenReturn(false);
-    when(mockSettingsService2.showDataWidgetInStatusBar).thenReturn(false);
-    when(mockSettingsService2.showDateInStatusBar).thenReturn(true);
-    when(mockSettingsService2.showTimeInStatusBar).thenReturn(true);
+    setupSettingsDefaults(mockSettingsService2);
     when(mockSettingsService2.showInputsWidgetInStatusBar).thenReturn(false);
-    when(mockSettingsService2.showNotificationsWidgetInStatusBar).thenReturn(true);
-    when(mockSettingsService2.autoHideNotificationsWidget).thenReturn(false);
-    when(mockSettingsService2.dateFormat).thenReturn(SettingsService.defaultDateFormat);
-    when(mockSettingsService2.timeFormat).thenReturn(SettingsService.defaultTimeFormat);
 
     await tester.pumpWidget(
       MultiProvider(
@@ -131,6 +136,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService2),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )
@@ -152,6 +158,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )
@@ -180,6 +187,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: mockSettingsService),
           ChangeNotifierProvider<TvInputsService>.value(value: mockTvInputsService),
           ChangeNotifierProvider<NotificationsService>.value(value: mockNotificationsService),
+          ChangeNotifierProvider<WeatherService>.value(value: mockWeatherService),
         ],
         child: createWidgetUnderTest(),
       )

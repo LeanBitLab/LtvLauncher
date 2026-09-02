@@ -3,13 +3,14 @@ import 'package:flauncher/widgets/settings/inputs_panel.dart';
 import 'package:flauncher/widgets/settings/notifications_panel.dart';
 import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
+import 'package:flauncher/providers/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/settings_service.dart';
 import 'daily_data_usage_widget.dart';
 import 'date_time_widget.dart';
 import 'network_widget.dart';
+import 'weather_status_bar_widget.dart';
 
 class FocusAwareAppBar extends StatefulWidget implements PreferredSizeWidget
 {
@@ -30,10 +31,12 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
   late FocusNode _settingsFocusNode;
   late FocusNode _inputsFocusNode;
   late FocusNode _notificationsFocusNode;
+  late FocusNode _weatherFocusNode;
 
   FocusNode get settingsFocusNode => _settingsFocusNode;
   FocusNode get inputsFocusNode => _inputsFocusNode;
   FocusNode get notificationsFocusNode => _notificationsFocusNode;
+  FocusNode get weatherFocusNode => _weatherFocusNode;
 
   @override
   void initState() {
@@ -41,6 +44,7 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
     _settingsFocusNode = FocusNode();
     _inputsFocusNode = FocusNode();
     _notificationsFocusNode = FocusNode();
+    _weatherFocusNode = FocusNode();
   }
 
   @override
@@ -48,6 +52,7 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
     _settingsFocusNode.dispose();
     _inputsFocusNode.dispose();
     _notificationsFocusNode.dispose();
+    _weatherFocusNode.dispose();
     super.dispose();
   }
 
@@ -188,71 +193,78 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
               ),
             ],
           ),
-          // Right side: Date/Time only
+          // Right side: Weather and Date/Time
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 32),
-              child: Selector<SettingsService,
-                  ({
-                    bool showDateInStatusBar,
-                    bool showTimeInStatusBar,
-                    String dateFormat,
-                    String timeFormat })>(
-                selector: (context, service) => (
-                showDateInStatusBar: service.showDateInStatusBar,
-                showTimeInStatusBar: service.showTimeInStatusBar,
-                dateFormat: service.dateFormat,
-                timeFormat: service.timeFormat),
-                builder: (context, dateTimeSettings, _) {
-                  // Define standard text style
-                  const textStyle = TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                    shadows: [
-                      Shadow(color: Colors.black54, offset: Offset(0, 2), blurRadius: 4)
-                    ],
-                  );
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  WeatherStatusBarWidget(focusNode: _weatherFocusNode),
+                  const SizedBox(width: 12),
+                  Selector<SettingsService,
+                      ({
+                        bool showDateInStatusBar,
+                        bool showTimeInStatusBar,
+                        String dateFormat,
+                        String timeFormat })>(
+                    selector: (context, service) => (
+                    showDateInStatusBar: service.showDateInStatusBar,
+                    showTimeInStatusBar: service.showTimeInStatusBar,
+                    dateFormat: service.dateFormat,
+                    timeFormat: service.timeFormat),
+                    builder: (context, dateTimeSettings, _) {
+                      // Define standard text style
+                      const textStyle = TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(color: Colors.black54, offset: Offset(0, 2), blurRadius: 4)
+                        ],
+                      );
 
-                  if (!dateTimeSettings.showDateInStatusBar && !dateTimeSettings.showTimeInStatusBar) {
-                    return const SizedBox.shrink();
-                  }
+                      if (!dateTimeSettings.showDateInStatusBar && !dateTimeSettings.showTimeInStatusBar) {
+                        return const SizedBox.shrink();
+                      }
 
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.12),
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // Date
-                        if (dateTimeSettings.showDateInStatusBar)
-                          DateTimeWidget(
-                            dateTimeSettings.dateFormat,
-                            key: const Key("statusbar_date"),
-                            textStyle: textStyle,
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.12),
+                            width: 1,
                           ),
-                        
-                        if (dateTimeSettings.showDateInStatusBar && dateTimeSettings.showTimeInStatusBar)
-                            const SizedBox(width: 12),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Date
+                            if (dateTimeSettings.showDateInStatusBar)
+                              DateTimeWidget(
+                                dateTimeSettings.dateFormat,
+                                key: const Key("statusbar_date"),
+                                textStyle: textStyle,
+                              ),
+                            
+                            if (dateTimeSettings.showDateInStatusBar && dateTimeSettings.showTimeInStatusBar)
+                                const SizedBox(width: 12),
 
-                        // Clock
-                        if (dateTimeSettings.showTimeInStatusBar)
-                          DateTimeWidget(
-                            dateTimeSettings.timeFormat,
-                            key: const Key("statusbar_clock"),
-                            textStyle: textStyle.copyWith(fontWeight: FontWeight.bold),
-                          ),
-                      ],
-                    ),
-                  );
-                },
+                            // Clock
+                            if (dateTimeSettings.showTimeInStatusBar)
+                              DateTimeWidget(
+                                dateTimeSettings.timeFormat,
+                                key: const Key("statusbar_clock"),
+                                textStyle: textStyle.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ],

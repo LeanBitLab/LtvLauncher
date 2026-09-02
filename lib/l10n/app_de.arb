@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Benachrichtigungen freigeben",
     "noBlockedApps": "Keine blockierten Apps",
     "persistentNotification": "Dauerhaft",
-    "unblockAll": "Alle freigeben"
+    "unblockAll": "Alle freigeben",
+    "weather": "Wetter",
+    "showWeatherWarnings": "Wetter- & Regenwarnungen anzeigen",
+    "temperatureUnit": "Temperatureinheit",
+    "celsius": "Celsius (°C)",
+    "fahrenheit": "Fahrenheit (°F)",
+    "breezyWeatherSetupHint": "Installieren Sie Breezy Weather und aktivieren Sie 'Lokale Datenfreigabe' / 'Gadgetbridge' in den Einstellungen, um Wetter und Regenwarnungen anzuzeigen."
 }

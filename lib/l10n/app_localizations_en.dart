@@ -458,4 +458,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unblockAll => 'Unblock All';
+
+  @override
+  String get weather => 'Weather';
+
+  @override
+  String get showWeatherWarnings => 'Show Weather & Rain Warnings';
+
+  @override
+  String get temperatureUnit => 'Temperature Unit';
+
+  @override
+  String get celsius => 'Celsius (°C)';
+
+  @override
+  String get fahrenheit => 'Fahrenheit (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Install Breezy Weather and enable \'Local data sharing\' / \'Gadgetbridge\' in its settings to see weather and rain warnings.';
 }

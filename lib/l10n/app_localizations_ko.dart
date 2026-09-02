@@ -458,4 +458,22 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get unblockAll => '모두 차단 해제';
+
+  @override
+  String get weather => '날씨';
+
+  @override
+  String get showWeatherWarnings => '날씨 및 강우 경보 표시';
+
+  @override
+  String get temperatureUnit => '온도 단위';
+
+  @override
+  String get celsius => '섭씨 (°C)';
+
+  @override
+  String get fahrenheit => '화씨 (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Breezy Weather를 설치하고 설정에서 \'로컬 데이터 공유\' / \'Gadgetbridge\'를 활성화하면 날씨 및 강우 경보가 표시됩니다.';
 }

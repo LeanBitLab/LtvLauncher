@@ -458,4 +458,22 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get unblockAll => 'Розблокувати все';
+
+  @override
+  String get weather => 'Погода';
+
+  @override
+  String get showWeatherWarnings => 'Показувати сповіщення про погоду та дощ';
+
+  @override
+  String get temperatureUnit => 'Одиниця температури';
+
+  @override
+  String get celsius => 'Цельсій (°C)';
+
+  @override
+  String get fahrenheit => 'Фаренгейт (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Встановіть Breezy Weather та увімкніть \'Локальний обмін даними\' / \'Gadgetbridge\' у налаштуваннях для перегляду погоди та попереджень про дощ.';
 }

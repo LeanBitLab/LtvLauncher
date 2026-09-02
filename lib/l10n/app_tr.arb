@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Bildirim Engelini Kaldır",
     "noBlockedApps": "Engellenen uygulama yok",
     "persistentNotification": "Kalıcı",
-    "unblockAll": "Tümünün Engelini Kaldır"
+    "unblockAll": "Tümünün Engelini Kaldır",
+    "weather": "Hava Durumu",
+    "showWeatherWarnings": "Hava Durumu ve Yağmur Uyarılarını Göster",
+    "temperatureUnit": "Sıcaklık Birimi",
+    "celsius": "Celsius (°C)",
+    "fahrenheit": "Fahrenheit (°F)",
+    "breezyWeatherSetupHint": "Hava durumu ve yağmur uyarılarını görmek için Breezy Weather'ı yükleyin ve ayarlarından 'Yerel veri paylaşımı' / 'Gadgetbridge' özelliğini etkinleştirin."
 }

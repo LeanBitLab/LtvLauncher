@@ -458,4 +458,22 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get unblockAll => 'सभी अनब्लॉक करें';
+
+  @override
+  String get weather => 'मौसम';
+
+  @override
+  String get showWeatherWarnings => 'मौसम और बारिश की चेतावनी दिखाएं';
+
+  @override
+  String get temperatureUnit => 'तापमान इकाई';
+
+  @override
+  String get celsius => 'सेल्सियस (°C)';
+
+  @override
+  String get fahrenheit => 'फ़ारेनहाइट (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'मौसम और बारिश की चेतावनी देखने के लिए Breezy Weather इंस्टॉल करें और उसकी सेटिंग्स में \'स्थानीय डेटा साझाकरण\' सक्षम करें।';
 }

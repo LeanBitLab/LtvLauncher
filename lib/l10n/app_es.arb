@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Desbloquear notificaciones",
     "noBlockedApps": "No hay aplicaciones bloqueadas",
     "persistentNotification": "Persistente",
-    "unblockAll": "Desbloquear todo"
+    "unblockAll": "Desbloquear todo",
+    "weather": "Clima",
+    "showWeatherWarnings": "Mostrar alertas de lluvia y clima",
+    "temperatureUnit": "Unidad de temperatura",
+    "celsius": "Celsius (°C)",
+    "fahrenheit": "Fahrenheit (°F)",
+    "breezyWeatherSetupHint": "Instala Breezy Weather y activa 'Compartir datos locales' / 'Gadgetbridge' en sus ajustes para ver el clima y avisos de lluvia."
 }

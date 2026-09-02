@@ -206,5 +206,11 @@
     "unblockAppNotifications": "取消屏蔽通知",
     "noBlockedApps": "暂无已屏蔽的应用",
     "persistentNotification": "常驻",
-    "unblockAll": "全部取消屏蔽"
+    "unblockAll": "全部取消屏蔽",
+    "weather": "天气",
+    "showWeatherWarnings": "显示降雨及天气预警",
+    "temperatureUnit": "温度单位",
+    "celsius": "摄氏度 (°C)",
+    "fahrenheit": "华氏度 (°F)",
+    "breezyWeatherSetupHint": "安装 Breezy Weather 并在其设置中开启“本地数据共享”/“Gadgetbridge”以显示天气和降雨预警。"
 }

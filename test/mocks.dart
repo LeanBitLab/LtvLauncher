@@ -27,6 +27,7 @@ import 'package:flauncher/providers/wallpaper_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/providers/watch_next_service.dart';
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
@@ -44,6 +45,7 @@ import 'package:flauncher/models/category.dart';
   NotificationsService,
   TvInputsService,
   WatchNextService,
+  WeatherService,
 ], customMocks: [
   MockSpec<FLauncherDatabase>(unsupportedMembers: {#alias}),
   MockSpec<ImageProvider>(unsupportedMembers: {#alias, #resolve, #createStream, #loadBuffer, #loadImage}),

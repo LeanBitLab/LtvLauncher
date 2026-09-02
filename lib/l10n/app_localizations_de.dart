@@ -458,4 +458,22 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get unblockAll => 'Alle freigeben';
+
+  @override
+  String get weather => 'Wetter';
+
+  @override
+  String get showWeatherWarnings => 'Wetter- & Regenwarnungen anzeigen';
+
+  @override
+  String get temperatureUnit => 'Temperatureinheit';
+
+  @override
+  String get celsius => 'Celsius (°C)';
+
+  @override
+  String get fahrenheit => 'Fahrenheit (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Installieren Sie Breezy Weather und aktivieren Sie \'Lokale Datenfreigabe\' / \'Gadgetbridge\' in den Einstellungen, um Wetter und Regenwarnungen anzuzeigen.';
 }

@@ -458,4 +458,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unblockAll => 'إلغاء حظر الكل';
+
+  @override
+  String get weather => 'الطقس';
+
+  @override
+  String get showWeatherWarnings => 'إظهار تحذيرات الطقس والأمطار';
+
+  @override
+  String get temperatureUnit => 'وحدة درجة الحرارة';
+
+  @override
+  String get celsius => 'مئوية (°C)';
+
+  @override
+  String get fahrenheit => 'فهرنهايت (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'قم بتثبيت تطبيق Breezy Weather وتفعيل \'مشاركة البيانات المحلية\' في إعداداته لعرض الطقس وتحذيرات الأمطار.';
 }

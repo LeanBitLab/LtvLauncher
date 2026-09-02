@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Unblock Notifications",
     "noBlockedApps": "No blocked apps",
     "persistentNotification": "Persistent",
-    "unblockAll": "Unblock All"
+    "unblockAll": "Unblock All",
+    "weather": "Weather",
+    "showWeatherWarnings": "Show Weather & Rain Warnings",
+    "temperatureUnit": "Temperature Unit",
+    "celsius": "Celsius (°C)",
+    "fahrenheit": "Fahrenheit (°F)",
+    "breezyWeatherSetupHint": "Install Breezy Weather and enable 'Local data sharing' / 'Gadgetbridge' in its settings to see weather and rain warnings."
 }

@@ -458,4 +458,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get unblockAll => '全部取消屏蔽';
+
+  @override
+  String get weather => '天气';
+
+  @override
+  String get showWeatherWarnings => '显示降雨及天气预警';
+
+  @override
+  String get temperatureUnit => '温度单位';
+
+  @override
+  String get celsius => '摄氏度 (°C)';
+
+  @override
+  String get fahrenheit => '华氏度 (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => '安装 Breezy Weather 并在其设置中开启“本地数据共享”/“Gadgetbridge”以显示天气和降雨预警。';
 }

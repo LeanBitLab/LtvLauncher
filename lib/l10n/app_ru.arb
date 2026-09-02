@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Разблокировать уведомления",
     "noBlockedApps": "Нет заблокированных приложений",
     "persistentNotification": "Постоянное",
-    "unblockAll": "Разблокировать все"
+    "unblockAll": "Разблокировать все",
+    "weather": "Погода",
+    "showWeatherWarnings": "Показывать предупреждения о погоде и дожде",
+    "temperatureUnit": "Единица температуры",
+    "celsius": "Цельсий (°C)",
+    "fahrenheit": "Фаренгейт (°F)",
+    "breezyWeatherSetupHint": "Установите Breezy Weather и включите 'Локальный обмен данными' / 'Gadgetbridge' в его настройках для отображения погоды и предупреждений."
 }

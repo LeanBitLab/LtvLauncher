@@ -212,4 +212,29 @@ void main() async {
       expect(service2.showContinueWatching, isFalse);
     });
   });
+
+  group("weather settings", () {
+    test("default weather preferences", () async {
+      final sp = await SharedPreferences.getInstance();
+      final service = SettingsService(sp);
+      expect(service.showWeatherInStatusBar, isTrue);
+      expect(service.showWeatherWarnings, isTrue);
+      expect(service.temperatureUnit, TEMPERATURE_UNIT_CELSIUS);
+      expect(service.useFahrenheit, isFalse);
+    });
+
+    test("set and update weather preferences", () async {
+      final sp = await SharedPreferences.getInstance();
+      final service = SettingsService(sp);
+
+      await service.setShowWeatherInStatusBar(false);
+      await service.setShowWeatherWarnings(false);
+      await service.setTemperatureUnit(TEMPERATURE_UNIT_FAHRENHEIT);
+
+      expect(service.showWeatherInStatusBar, isFalse);
+      expect(service.showWeatherWarnings, isFalse);
+      expect(service.temperatureUnit, TEMPERATURE_UNIT_FAHRENHEIT);
+      expect(service.useFahrenheit, isTrue);
+    });
+  });
 }

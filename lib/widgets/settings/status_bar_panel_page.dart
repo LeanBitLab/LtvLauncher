@@ -16,7 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
+import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
@@ -90,6 +92,62 @@ class StatusBarPanelPage extends StatelessWidget {
                     title: Text(localizations.autoHideNotificationBell),
                     secondary: Icon(Icons.notifications_paused_outlined),
                   ),
+                Divider(),
+                RoundedSwitchListTile(
+                  value: settingsService.showWeatherInStatusBar,
+                  onChanged: (value) => settingsService.setShowWeatherInStatusBar(value),
+                  title: Text(localizations.weather),
+                  secondary: Icon(Icons.wb_sunny_outlined),
+                ),
+                if (settingsService.showWeatherInStatusBar) ...[
+                  RoundedSwitchListTile(
+                    value: settingsService.showWeatherWarnings,
+                    onChanged: (value) => settingsService.setShowWeatherWarnings(value),
+                    title: Text(localizations.showWeatherWarnings),
+                    secondary: Icon(Icons.thunderstorm_outlined),
+                  ),
+                  FocusableSettingsTile(
+                    leading: const Icon(Icons.thermostat_outlined),
+                    title: Text(
+                      "${localizations.temperatureUnit}: ${settingsService.useFahrenheit ? localizations.fahrenheit : localizations.celsius}",
+                    ),
+                    onPressed: () {
+                      final next = settingsService.useFahrenheit
+                          ? TEMPERATURE_UNIT_CELSIUS
+                          : TEMPERATURE_UNIT_FAHRENHEIT;
+                      settingsService.setTemperatureUnit(next);
+                    },
+                  ),
+                  Consumer<WeatherService>(
+                    builder: (context, weatherService, _) {
+                      if (!weatherService.hasWeather) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.05),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.info_outline, size: 20, color: Colors.white70),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    localizations.breezyWeatherSetupHint,
+                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white70),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
+                  ),
+                ],
               ],
             ),
           ),

@@ -458,4 +458,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get unblockAll => 'Tümünün Engelini Kaldır';
+
+  @override
+  String get weather => 'Hava Durumu';
+
+  @override
+  String get showWeatherWarnings => 'Hava Durumu ve Yağmur Uyarılarını Göster';
+
+  @override
+  String get temperatureUnit => 'Sıcaklık Birimi';
+
+  @override
+  String get celsius => 'Celsius (°C)';
+
+  @override
+  String get fahrenheit => 'Fahrenheit (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Hava durumu ve yağmur uyarılarını görmek için Breezy Weather\'ı yükleyin ve ayarlarından \'Yerel veri paylaşımı\' / \'Gadgetbridge\' özelliğini etkinleştirin.';
 }

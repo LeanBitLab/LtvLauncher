@@ -206,5 +206,11 @@
     "unblockAppNotifications": "सूचनाएं अनब्लॉक करें",
     "noBlockedApps": "कोई अवरुद्ध ऐप नहीं",
     "persistentNotification": "स्थायी",
-    "unblockAll": "सभी अनब्लॉक करें"
+    "unblockAll": "सभी अनब्लॉक करें",
+    "weather": "मौसम",
+    "showWeatherWarnings": "मौसम और बारिश की चेतावनी दिखाएं",
+    "temperatureUnit": "तापमान इकाई",
+    "celsius": "सेल्सियस (°C)",
+    "fahrenheit": "फ़ारेनहाइट (°F)",
+    "breezyWeatherSetupHint": "मौसम और बारिश की चेतावनी देखने के लिए Breezy Weather इंस्टॉल करें और उसकी सेटिंग्स में 'स्थानीय डेटा साझाकरण' सक्षम करें।"
 }

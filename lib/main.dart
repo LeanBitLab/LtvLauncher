@@ -29,6 +29,7 @@ import 'package:flauncher/providers/wallpaper_service.dart';
 import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flauncher/providers/watch_next_service.dart';
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flauncher/providers/backup_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -108,6 +109,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => TvInputsService(fLauncherChannel)),
         ChangeNotifierProvider(create: (_) => NotificationsService(fLauncherChannel)),
         ChangeNotifierProvider(create: (_) => WatchNextService(fLauncherChannel)),
+        ChangeNotifierProvider(create: (_) => WeatherService(fLauncherChannel)),
       ],
       child: FLauncherApp()
     )

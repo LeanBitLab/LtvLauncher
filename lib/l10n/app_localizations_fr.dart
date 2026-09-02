@@ -458,4 +458,22 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get unblockAll => 'Tout débloquer';
+
+  @override
+  String get weather => 'Météo';
+
+  @override
+  String get showWeatherWarnings => 'Afficher les alertes météo et pluie';
+
+  @override
+  String get temperatureUnit => 'Unité de température';
+
+  @override
+  String get celsius => 'Celsius (°C)';
+
+  @override
+  String get fahrenheit => 'Fahrenheit (°F)';
+
+  @override
+  String get breezyWeatherSetupHint => 'Installez Breezy Weather et activez le \'Partage local des données\' / \'Gadgetbridge\' dans ses paramètres pour afficher la météo et les alertes de pluie.';
 }

@@ -206,5 +206,11 @@
     "unblockAppNotifications": "通知のブロックを解除",
     "noBlockedApps": "ブロックされたアプリはありません",
     "persistentNotification": "常駐",
-    "unblockAll": "すべてブロック解除"
+    "unblockAll": "すべてブロック解除",
+    "weather": "天気",
+    "showWeatherWarnings": "天気と雨の警告を表示",
+    "temperatureUnit": "温度単位",
+    "celsius": "摂氏 (°C)",
+    "fahrenheit": "華氏 (°F)",
+    "breezyWeatherSetupHint": "Breezy Weather をインストールし、設定で「ローカルデータ共有」/「Gadgetbridge」を有効にすると、天気と雨の警告が表示されます。"
 }

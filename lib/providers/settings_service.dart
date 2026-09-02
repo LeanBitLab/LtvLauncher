@@ -48,6 +48,12 @@ const String _showContinueWatchingKey = "show_continue_watching";
 const String _showNotificationsWidgetInStatusBarKey = "show_notifications_widget_in_status_bar";
 const String _autoHideNotificationsWidgetKey = "auto_hide_notifications_widget";
 const String _appLanguageKey = "app_language";
+const String _showWeatherInStatusBarKey = "show_weather_in_status_bar";
+const String _showWeatherWarningsKey = "show_weather_warnings";
+const String _temperatureUnitKey = "temperature_unit";
+
+const String TEMPERATURE_UNIT_CELSIUS = "celsius";
+const String TEMPERATURE_UNIT_FAHRENHEIT = "fahrenheit";
 
 // WiFi usage period options
 const String DATA_USAGE_DAILY = "daily";
@@ -101,6 +107,9 @@ class SettingsService extends ChangeNotifier {
   late bool _showNotificationsWidgetInStatusBar;
   late bool _autoHideNotificationsWidget;
   late String _appLanguage;
+  late bool _showWeatherInStatusBar;
+  late bool _showWeatherWarnings;
+  late String _temperatureUnit;
 
   bool get appHighlightAnimationEnabled => _appHighlightAnimationEnabled;
 
@@ -140,6 +149,10 @@ class SettingsService extends ChangeNotifier {
   bool get showContinueWatching => _showContinueWatching;
   bool get showNotificationsWidgetInStatusBar => _showNotificationsWidgetInStatusBar;
   bool get autoHideNotificationsWidget => _autoHideNotificationsWidget;
+  bool get showWeatherInStatusBar => _showWeatherInStatusBar;
+  bool get showWeatherWarnings => _showWeatherWarnings;
+  String get temperatureUnit => _temperatureUnit;
+  bool get useFahrenheit => _temperatureUnit == TEMPERATURE_UNIT_FAHRENHEIT;
 
   String get appLanguage => _appLanguage;
 
@@ -189,6 +202,9 @@ class SettingsService extends ChangeNotifier {
     _showNotificationsWidgetInStatusBar = _sharedPreferences.getBool(_showNotificationsWidgetInStatusBarKey) ?? true;
     _autoHideNotificationsWidget = _sharedPreferences.getBool(_autoHideNotificationsWidgetKey) ?? false;
     _appLanguage = _sharedPreferences.getString(_appLanguageKey) ?? "";
+    _showWeatherInStatusBar = _sharedPreferences.getBool(_showWeatherInStatusBarKey) ?? true;
+    _showWeatherWarnings = _sharedPreferences.getBool(_showWeatherWarningsKey) ?? true;
+    _temperatureUnit = _sharedPreferences.getString(_temperatureUnitKey) ?? TEMPERATURE_UNIT_CELSIUS;
     notifyListeners();
   }
 
@@ -219,6 +235,9 @@ class SettingsService extends ChangeNotifier {
       _showNotificationsWidgetInStatusBarKey: _showNotificationsWidgetInStatusBar,
       _autoHideNotificationsWidgetKey: _autoHideNotificationsWidget,
       _appLanguageKey: _appLanguage,
+      _showWeatherInStatusBarKey: _showWeatherInStatusBar,
+      _showWeatherWarningsKey: _showWeatherWarnings,
+      _temperatureUnitKey: _temperatureUnit,
     };
   }
 
@@ -388,6 +407,24 @@ class SettingsService extends ChangeNotifier {
   Future<void> setAutoHideNotificationsWidget(bool value) async {
     await _sharedPreferences.setBool(_autoHideNotificationsWidgetKey, value);
     _autoHideNotificationsWidget = value;
+    notifyListeners();
+  }
+
+  Future<void> setShowWeatherInStatusBar(bool show) async {
+    await _sharedPreferences.setBool(_showWeatherInStatusBarKey, show);
+    _showWeatherInStatusBar = show;
+    notifyListeners();
+  }
+
+  Future<void> setShowWeatherWarnings(bool show) async {
+    await _sharedPreferences.setBool(_showWeatherWarningsKey, show);
+    _showWeatherWarnings = show;
+    notifyListeners();
+  }
+
+  Future<void> setTemperatureUnit(String unit) async {
+    await _sharedPreferences.setString(_temperatureUnitKey, unit);
+    _temperatureUnit = unit;
     notifyListeners();
   }
 }

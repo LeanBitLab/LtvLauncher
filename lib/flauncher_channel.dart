@@ -25,6 +25,7 @@ class FLauncherChannel {
   static const _appsEventChannel = EventChannel('me.efesser.flauncher/event_apps');
   static const _networkEventChannel = EventChannel('me.efesser.flauncher/event_network');
   static const _notificationsEventChannel = EventChannel('me.efesser.flauncher/event_notifications');
+  static const _weatherEventChannel = EventChannel('me.efesser.flauncher/event_weather');
 
   Future<List<Map<dynamic, dynamic>>> getApplications() async {
     List<Map<dynamic, dynamic>>? applications = await _methodChannel.invokeListMethod("getApplications");
@@ -258,4 +259,34 @@ class FLauncherChannel {
       return false;
     }
   }
+
+  Future<String?> getLatestWeatherData() async {
+    try {
+      final String? json = await _methodChannel.invokeMethod("getLatestWeatherData");
+      return json;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<bool> isBreezyWeatherInstalled() async {
+    try {
+      final bool? installed = await _methodChannel.invokeMethod<bool>("isBreezyWeatherInstalled");
+      return installed ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<bool> openBreezyWeather() async {
+    try {
+      final bool? opened = await _methodChannel.invokeMethod<bool>("openBreezyWeather");
+      return opened ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  StreamSubscription<dynamic> addWeatherChangedListener(void Function(dynamic) onEvent) =>
+      _weatherEventChannel.receiveBroadcastStream().listen(onEvent);
 }

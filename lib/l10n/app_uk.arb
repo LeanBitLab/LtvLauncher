@@ -206,5 +206,11 @@
     "unblockAppNotifications": "Розблокувати сповіщення",
     "noBlockedApps": "Немає заблокованих додатків",
     "persistentNotification": "Постійне",
-    "unblockAll": "Розблокувати все"
+    "unblockAll": "Розблокувати все",
+    "weather": "Погода",
+    "showWeatherWarnings": "Показувати сповіщення про погоду та дощ",
+    "temperatureUnit": "Одиниця температури",
+    "celsius": "Цельсій (°C)",
+    "fahrenheit": "Фаренгейт (°F)",
+    "breezyWeatherSetupHint": "Встановіть Breezy Weather та увімкніть 'Локальний обмін даними' / 'Gadgetbridge' у налаштуваннях для перегляду погоди та попереджень про дощ."
 }
