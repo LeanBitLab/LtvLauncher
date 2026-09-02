@@ -61,6 +61,68 @@ void main() {
       verify(mockChannel.getWatchNextPrograms()).called(1);
       verify(mockChannel.getWatchNextPoster('content://netflix/poster/1')).called(1);
     });
+    test('handles missing permission by setting hasPermission to false and clearing programs', () async {
+      when(mockChannel.checkWatchNextPermission()).thenAnswer((_) async => false);
+
+      watchNextService = WatchNextService(mockChannel);
+      while (!watchNextService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      expect(watchNextService.hasPermission, isFalse);
+      expect(watchNextService.programs, isEmpty);
+      verify(mockChannel.checkWatchNextPermission()).called(1);
+      verifyNever(mockChannel.getWatchNextPrograms());
+    });
+
+    test('handles channel getWatchNextPrograms error gracefully without throwing', () async {
+      when(mockChannel.getWatchNextPrograms()).thenThrow(Exception('Channel failure'));
+
+      watchNextService = WatchNextService(mockChannel);
+      while (!watchNextService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      expect(watchNextService.programs, isEmpty);
+      verify(mockChannel.getWatchNextPrograms()).called(1);
+    });
+  });
+
+  group('WatchNextService Permissions', () {
+    test('checkPermission queries channel directly', () async {
+      when(mockChannel.checkWatchNextPermission()).thenAnswer((_) async => false);
+      watchNextService = WatchNextService(mockChannel);
+      while (!watchNextService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      final result = await watchNextService.checkPermission();
+      expect(result, isFalse);
+    });
+
+    test('requestPermission requests channel permission and refreshes on grant', () async {
+      when(mockChannel.requestWatchNextPermission()).thenAnswer((_) async => true);
+      watchNextService = WatchNextService(mockChannel);
+      while (!watchNextService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      final granted = await watchNextService.requestPermission();
+      expect(granted, isTrue);
+      verify(mockChannel.requestWatchNextPermission()).called(1);
+    });
+
+    test('requestPermission returns false when denied', () async {
+      when(mockChannel.requestWatchNextPermission()).thenAnswer((_) async => false);
+      watchNextService = WatchNextService(mockChannel);
+      while (!watchNextService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      final granted = await watchNextService.requestPermission();
+      expect(granted, isFalse);
+      verify(mockChannel.requestWatchNextPermission()).called(1);
+    });
   });
 
   group('WatchNextService launch', () {

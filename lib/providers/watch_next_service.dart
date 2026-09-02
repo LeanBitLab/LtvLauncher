@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flauncher/flauncher_channel.dart';
 import '../models/watch_next_program.dart';
@@ -79,17 +78,10 @@ class WatchNextService extends ChangeNotifier with WidgetsBindingObserver {
       try {
         list = await _channel.getWatchNextPrograms();
       } catch (e) {
-        if (kReleaseMode) {
-          rethrow;
-        } else {
-          list = const [];
-        }
+        log('Failed to fetch watch next programs', name: 'WatchNextService', error: e);
+        list = const [];
       }
       if (callSnapshot != _callCount) return;
-
-      if (!kReleaseMode && !_isTest && list.isEmpty) {
-        list = _getMockPrograms();
-      }
 
       // Phase 1: Emit programs immediately with cached posters where available
       final List<WatchNextProgram> newPrograms = [];
@@ -135,35 +127,6 @@ class WatchNextService extends ChangeNotifier with WidgetsBindingObserver {
     }
   }
 
-  List<Map<dynamic, dynamic>> _getMockPrograms() {
-    return [
-      {
-        'id': 9991,
-        'packageName': 'com.google.android.youtube',
-        'title': 'Mock Video 1 (YouTube)',
-        'description': 'Description for mock video 1',
-        'watchNextType': 0,
-        'lastEngagementTime': DateTime.now().millisecondsSinceEpoch,
-        'playbackPosition': 500000,
-        'duration': 1000000,
-        'intentUri': 'https://www.youtube.com',
-        'posterArtUri': '',
-      },
-      {
-        'id': 9992,
-        'packageName': 'com.netflix.mediaclient',
-        'title': 'Mock Show 2 (Netflix)',
-        'description': 'S1 E2 • Episode Title',
-        'watchNextType': 1,
-        'lastEngagementTime': DateTime.now().millisecondsSinceEpoch - 100000,
-        'playbackPosition': 200000,
-        'duration': 1800000,
-        'intentUri': 'https://www.netflix.com',
-        'posterArtUri': '',
-      },
-    ];
-  }
-
   WatchNextProgram? _findExisting(int id) {
     for (final p in _programs) {
       if (p.id == id) return p;
@@ -172,12 +135,10 @@ class WatchNextService extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   Future<bool> checkPermission() async {
-    if (!kReleaseMode && !_isTest) return true;
     return await _channel.checkWatchNextPermission();
   }
 
   Future<bool> requestPermission() async {
-    if (!kReleaseMode && !_isTest) return true;
     final bool granted = await _channel.requestWatchNextPermission();
     if (granted) {
       await refresh();
