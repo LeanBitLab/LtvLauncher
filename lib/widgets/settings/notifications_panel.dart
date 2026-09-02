@@ -105,6 +105,7 @@ class NotificationsPanel extends StatelessWidget {
                               ),
                             )
                           : ListView.builder(
+                              cacheExtent: 1000,
                               itemCount: notifications.length,
                               itemBuilder: (context, index) {
                                 final notification = notifications[index];

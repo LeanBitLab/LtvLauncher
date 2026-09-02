@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:flauncher/models/category.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/widgets/settings/launcher_sections_panel_page.dart';
 import 'package:flauncher/widgets/settings/launcher_section_panel_page.dart';
@@ -101,6 +102,26 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byKey(Key("LauncherSectionPanelPage")), findsOneWidget);
+  });
+
+  testWidgets("Can navigate down past 6 sections using D-pad down", (tester) async {
+    final appsService = MockAppsService();
+    final List<LauncherSection> sections = List.generate(10, (i) => fakeCategory(name: "Section $i", order: i));
+    when(appsService.launcherSections).thenReturn(sections);
+    await _pumpWidgetWithProviders(tester, appsService);
+
+    // Request focus on Section 0
+    Focus.of(tester.element(find.text("Section 0"))).requestFocus();
+    await tester.pumpAndSettle();
+
+    // Navigate down through all 10 sections
+    for (int i = 0; i < 9; i++) {
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pumpAndSettle();
+    }
+
+    // Section 9 should now be visible and in the tree
+    expect(find.text("Section 9"), findsOneWidget);
   });
 }
 

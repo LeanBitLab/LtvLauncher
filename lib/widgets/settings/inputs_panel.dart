@@ -50,6 +50,7 @@ class InputsPanel extends StatelessWidget {
                               ),
                             )
                           : ListView.builder(
+                              cacheExtent: 1000,
                               itemCount: inputs.length,
                               itemBuilder: (context, index) {
                                 final input = inputs[index];

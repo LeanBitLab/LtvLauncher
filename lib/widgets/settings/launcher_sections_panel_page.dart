@@ -64,6 +64,7 @@ class _LauncherSectionsPanelPageState extends State<LauncherSectionsPanelPage> {
             return Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.only(bottom: 80),
+                cacheExtent: 1000,
                 itemCount: sections.length,
                 itemBuilder: (context, index) {
                   final section = sections[index];
@@ -106,6 +107,15 @@ class _LauncherSectionsPanelPageState extends State<LauncherSectionsPanelPage> {
       key: ObjectKey(section),
       padding: const EdgeInsets.only(bottom: 12),
       child: Focus(
+        onFocusChange: (focused) {
+          if (focused) {
+            Scrollable.ensureVisible(
+              context,
+              alignment: 0.5,
+              duration: const Duration(milliseconds: 100),
+            );
+          }
+        },
         onKeyEvent: (node, event) {
           if (event is! KeyDownEvent) return KeyEventResult.ignored;
 

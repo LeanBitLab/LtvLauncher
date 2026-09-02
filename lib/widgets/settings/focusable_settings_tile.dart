@@ -35,7 +35,16 @@ class _FocusableSettingsTileState extends State<FocusableSettingsTile> {
           },
           child: Focus(
             autofocus: widget.autofocus,
-            onFocusChange: (hasFocus) => setState(() => _focused = hasFocus),
+            onFocusChange: (hasFocus) {
+              setState(() => _focused = hasFocus);
+              if (hasFocus) {
+                Scrollable.ensureVisible(
+                  context,
+                  alignment: 0.5,
+                  duration: const Duration(milliseconds: 100),
+                );
+              }
+            },
             child: InkWell(
               onTap: widget.onPressed,
               borderRadius: BorderRadius.circular(12),

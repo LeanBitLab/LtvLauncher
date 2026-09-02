@@ -163,6 +163,7 @@ class BackupRestorePage extends StatelessWidget {
                 }
                 return ListView.builder(
                   shrinkWrap: true,
+                  cacheExtent: 1000,
                   itemCount: entries.length,
                   itemBuilder: (context, index) {
                     final entry = entries[index];

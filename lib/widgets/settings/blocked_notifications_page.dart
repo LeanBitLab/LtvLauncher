@@ -80,6 +80,7 @@ class BlockedNotificationsPage extends StatelessWidget {
                       ),
                     )
                   : ListView.builder(
+                      cacheExtent: 1000,
                       itemCount: apps.length,
                       itemBuilder: (context, index) {
                         final app = apps[index];
