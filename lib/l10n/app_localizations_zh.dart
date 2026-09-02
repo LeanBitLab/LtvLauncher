@@ -146,7 +146,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '从$name中移除';
+    return '从${name}中移除';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher 是一款基于 FLauncher 定制的开源 Android TV 桌面启动器。\n\n由 LeanBitLab 开发。\n源代码可在 $repoUrl 获取。';
+    return 'LTvLauncher 是一款基于 FLauncher 定制的开源 Android TV 桌面启动器。\n\n由 LeanBitLab 开发。\n源代码可在 ${repoUrl} 获取。';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return '备份已成功导出到 $path';
+    return '备份已成功导出到 ${path}';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return '导入备份失败：$error';
+    return '导入备份失败：${error}';
   }
 
   @override
   String exportError(String error) {
-    return '导出备份失败：$error';
+    return '导出备份失败：${error}';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return '启动共享服务失败：$error';
+    return '启动共享服务失败：${error}';
   }
 
   @override
