@@ -29,6 +29,7 @@ import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/providers/wallpaper_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flauncher/providers/watch_next_service.dart';
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flauncher/widgets/application_info_panel.dart';
 import 'package:flauncher/widgets/apps_grid.dart';
 import 'package:flauncher/widgets/category_row.dart';
@@ -605,6 +606,9 @@ SettingsService mkSettingsService() {
   when(settingsService.showContinueWatching).thenReturn(false);
   when(settingsService.showNotificationsWidgetInStatusBar).thenReturn(true);
   when(settingsService.autoHideNotificationsWidget).thenReturn(false);
+  when(settingsService.showWeatherInStatusBar).thenReturn(false);
+  when(settingsService.showWeatherWarnings).thenReturn(false);
+  when(settingsService.useFahrenheit).thenReturn(false);
   return settingsService;
 }
 
@@ -634,6 +638,14 @@ WatchNextService mkWatchNextService() {
   final watchNextService = MockWatchNextService();
   when(watchNextService.programs).thenReturn([]);
   return watchNextService;
+}
+
+WeatherService mkWeatherService() {
+  final weatherService = MockWeatherService();
+  when(weatherService.hasWeather).thenReturn(false);
+  when(weatherService.weatherData).thenReturn(null);
+  when(weatherService.isBreezyInstalled).thenReturn(false);
+  return weatherService;
 }
 
 AppsService mkAppService() {
@@ -672,6 +684,7 @@ Future<void> _pumpWidgetWithProviders(
         ChangeNotifierProvider<TvInputsService>.value(value: mkTvInputsService()),
         ChangeNotifierProvider<NotificationsService>.value(value: mkNotificationsService()),
         ChangeNotifierProvider<WatchNextService>.value(value: mkWatchNextService()),
+        ChangeNotifierProvider<WeatherService>.value(value: mkWeatherService()),
         ChangeNotifierProvider(create: (_) => LauncherState()),
         ChangeNotifierProvider(create: (_) => NetworkService(FLauncherChannel())),
       ],

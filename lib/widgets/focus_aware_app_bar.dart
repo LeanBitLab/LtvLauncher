@@ -4,6 +4,7 @@ import 'package:flauncher/widgets/settings/notifications_panel.dart';
 import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
+import 'package:flauncher/providers/weather_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -200,8 +201,25 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  WeatherStatusBarWidget(focusNode: _weatherFocusNode),
-                  const SizedBox(width: 12),
+                  Consumer<WeatherService>(
+                    builder: (context, weatherService, _) {
+                      return Selector<SettingsService, bool>(
+                        selector: (_, settings) => settings.showWeatherInStatusBar,
+                        builder: (context, showWeather, _) {
+                          if (showWeather && weatherService.hasWeather) {
+                            return Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                WeatherStatusBarWidget(focusNode: _weatherFocusNode),
+                                const SizedBox(width: 12),
+                              ],
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        },
+                      );
+                    },
+                  ),
                   Selector<SettingsService,
                       ({
                         bool showDateInStatusBar,
