@@ -4,6 +4,7 @@ import 'package:drift/drift.dart';
 import 'package:flauncher/database.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flauncher/models/category.dart';
+import 'package:flauncher/providers/settings_service.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,43 +49,116 @@ class BackupService {
     return file.parent;
   }
 
-  /// Gets the list of available backup files.
-  Future<List<BackupFileEntry>> getBackupFiles() async {
-    final Directory dir = await getBackupDirectory();
-    if (!await dir.exists()) {
-      return [];
-    }
-    final List<BackupFileEntry> entries = [];
-    await for (final entity in dir.list()) {
-      if (entity is File) {
-        final name = path.basename(entity.path);
-        if (name.startsWith('ltv_backup') && name.endsWith('.json')) {
-          final lastModified = await entity.lastModified();
-          final size = await entity.length();
-          entries.add(BackupFileEntry(
-            file: entity,
-            name: name,
-            lastModified: lastModified,
-            size: size,
-          ));
-        }
+  /// Discovers all possible directories where backup files may reside:
+  /// - App private and external storage
+  /// - Standard Android /sdcard/Download directories
+  /// - Mounted USB drives (/storage/*)
+  Future<List<Directory>> getSearchDirectories() async {
+    final Set<String> paths = {};
+    final List<Directory> dirs = [];
+
+    void addDir(Directory? dir) {
+      if (dir != null && paths.add(dir.path)) {
+        dirs.add(dir);
       }
     }
+
+    try {
+      addDir(await getDownloadsDirectory());
+    } catch (_) {}
+    try {
+      addDir(await getExternalStorageDirectory());
+    } catch (_) {}
+    try {
+      addDir(await getApplicationDocumentsDirectory());
+    } catch (_) {}
+
+    final standardPaths = [
+      '/storage/emulated/0/Download',
+      '/storage/emulated/0/Downloads',
+      '/sdcard/Download',
+      '/sdcard/Downloads',
+      '/storage/emulated/0',
+      '/sdcard',
+    ];
+
+    for (final p in standardPaths) {
+      final d = Directory(p);
+      if (d.existsSync()) {
+        addDir(d);
+      }
+    }
+
+    // Scan mounted USB drives and external volumes in /storage
+    try {
+      final storageDir = Directory('/storage');
+      if (storageDir.existsSync()) {
+        for (final entity in storageDir.listSync()) {
+          if (entity is Directory) {
+            final name = path.basename(entity.path);
+            if (name != 'self' && name != 'emulated' && name != 'knox-emulated') {
+              addDir(entity);
+              final usbDownload = Directory(path.join(entity.path, 'Download'));
+              if (usbDownload.existsSync()) {
+                addDir(usbDownload);
+              }
+            }
+          }
+        }
+      }
+    } catch (_) {}
+
+    return dirs;
+  }
+
+  /// Gets the list of available backup files across all search locations.
+  Future<List<BackupFileEntry>> getBackupFiles() async {
+    final List<Directory> searchDirs = await getSearchDirectories();
+    final List<BackupFileEntry> entries = [];
+    final Set<String> seenPaths = {};
+
+    for (final dir in searchDirs) {
+      if (!await dir.exists()) continue;
+      try {
+        await for (final entity in dir.list()) {
+          if (entity is File && seenPaths.add(entity.path)) {
+            final name = path.basename(entity.path);
+            if ((name.startsWith('ltv_backup') || name.startsWith('flauncher_backup')) && name.endsWith('.json')) {
+              try {
+                final lastModified = await entity.lastModified();
+                final size = await entity.length();
+                entries.add(BackupFileEntry(
+                  file: entity,
+                  name: name,
+                  lastModified: lastModified,
+                  size: size,
+                ));
+              } catch (_) {}
+            }
+          }
+        }
+      } catch (_) {}
+    }
+
     // Sort by modification date (newest first)
     entries.sort((a, b) => b.lastModified.compareTo(a.lastModified));
     return entries;
   }
 
   /// Exports categories, apps, spacers, and settings to a JSON file.
-  Future<String> exportBackup() async {
+  Future<String> exportBackup([SettingsService? settingsService]) async {
     final Directory dir = await getBackupDirectory();
     final now = DateTime.now();
     final timestamp = "${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}_"
         "${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}";
-    final File file = File(path.join(dir.path, 'ltv_backup_$timestamp.json'));
+    final filename = 'ltv_backup_$timestamp.json';
+    final File file = File(path.join(dir.path, filename));
 
-    // 1. Fetch SharedPreferences settings
+    // 1. Fetch complete settings
     final Map<String, dynamic> settingsMap = {};
+    if (settingsService != null) {
+      settingsMap.addAll(settingsService.exportSettingsMap());
+    }
     final Set<String> keys = _sharedPreferences.getKeys();
     for (final key in keys) {
       final value = _sharedPreferences.get(key);
@@ -133,12 +207,22 @@ class BackupService {
 
     final String jsonStr = const JsonEncoder.withIndent('  ').convert(backupData);
     await file.writeAsString(jsonStr);
+
+    // Also attempt writing a copy to public Download folder if accessible
+    try {
+      final downloadDir = Directory('/storage/emulated/0/Download');
+      if (downloadDir.existsSync() && downloadDir.path != dir.path) {
+        final publicFile = File(path.join(downloadDir.path, filename));
+        await publicFile.writeAsString(jsonStr);
+      }
+    } catch (_) {}
+
     return file.path;
   }
 
   /// Imports categories, apps, spacers, and settings from the JSON file.
   /// If [file] is not provided, tries to import the latest backup file.
-  Future<void> importBackup([File? file]) async {
+  Future<void> importBackup([File? file, SettingsService? settingsService]) async {
     File? backupFile = file;
     if (backupFile == null) {
       final List<BackupFileEntry> backups = await getBackupFiles();
@@ -160,19 +244,23 @@ class BackupService {
 
     // 1. Restore SharedPreferences
     final Map<String, dynamic> settingsMap = Map<String, dynamic>.from(backupData["settings"] as Map);
-    for (final entry in settingsMap.entries) {
-      final key = entry.key;
-      final value = entry.value;
-      if (value is bool) {
-        await _sharedPreferences.setBool(key, value);
-      } else if (value is int) {
-        await _sharedPreferences.setInt(key, value);
-      } else if (value is double) {
-        await _sharedPreferences.setDouble(key, value);
-      } else if (value is String) {
-        await _sharedPreferences.setString(key, value);
-      } else if (value is List) {
-        await _sharedPreferences.setStringList(key, value.cast<String>());
+    if (settingsService != null) {
+      await settingsService.importSettingsMap(settingsMap);
+    } else {
+      for (final entry in settingsMap.entries) {
+        final key = entry.key;
+        final value = entry.value;
+        if (value is bool) {
+          await _sharedPreferences.setBool(key, value);
+        } else if (value is int) {
+          await _sharedPreferences.setInt(key, value);
+        } else if (value is double) {
+          await _sharedPreferences.setDouble(key, value);
+        } else if (value is String) {
+          await _sharedPreferences.setString(key, value);
+        } else if (value is List) {
+          await _sharedPreferences.setStringList(key, value.cast<String>());
+        }
       }
     }
 

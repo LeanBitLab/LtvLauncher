@@ -26,7 +26,7 @@ import 'package:drift/drift.dart';
 import 'package:flauncher/database.dart';
 import 'package:flauncher/flauncher_channel.dart';
 import 'package:flutter/foundation.dart' hide Category;
-import 'package:flutter/widgets.dart' hide Category;
+import 'package:flutter/widgets.dart';
 import 'package:pool/pool.dart';
 
 import '../models/app.dart';
@@ -347,6 +347,22 @@ class AppsService extends ChangeNotifier {
               }
             }
           }
+        } else if (_categoriesById.isNotEmpty) {
+          final targetCategory = _categoriesById.values.firstWhere(
+            (c) => c.name.toLowerCase() == 'applications' || c.name.toLowerCase() == 'apps',
+            orElse: () => _categoriesById.values.first,
+          );
+          if (!application.hidden) {
+            targetCategory.applications.add(application);
+          }
+        }
+      } else if (_categoriesById.isNotEmpty) {
+        final targetCategory = _categoriesById.values.firstWhere(
+          (c) => c.name.toLowerCase() == 'applications' || c.name.toLowerCase() == 'apps',
+          orElse: () => _categoriesById.values.first,
+        );
+        if (!application.hidden) {
+          targetCategory.applications.add(application);
         }
       }
     }

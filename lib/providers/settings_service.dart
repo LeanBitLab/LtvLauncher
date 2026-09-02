@@ -192,6 +192,55 @@ class SettingsService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Map<String, dynamic> exportSettingsMap() {
+    return {
+      _appHighlightAnimationEnabledKey: _appHighlightAnimationEnabled,
+      _appKeyClickEnabledKey: _appKeyClickEnabled,
+      _autoHideAppBarKey: _autoHideAppBarEnabled,
+      _showCategoryTitlesKey: _showCategoryTitles,
+      _showAppNamesBelowIconsKey: _showAppNamesBelowIcons,
+      _themesKey: _themes,
+      _hideHighlightOutlineOnHomescreenKey: _hideHighlightOutlineOnHomescreen,
+      _appSelectorTransitionAnimationEnabledKey: _appSelectorTransitionAnimationEnabled,
+      _showDateInStatusBarKey: _showDateInStatusBar,
+      _showTimeInStatusBarKey: _showTimeInStatusBar,
+      if (_gradientUuid != null) _gradientUuidKey: _gradientUuid,
+      _backButtonActionKey: _backButtonAction,
+      _dateFormatKey: _dateFormat,
+      _timeFormatKey: _timeFormat,
+      _dataUsagePeriodKey: _dataUsagePeriod,
+      _showDataWidgetInStatusBarKey: _showDataWidgetInStatusBar,
+      _showNetworkIndicatorInStatusBarKey: _showNetworkIndicatorInStatusBar,
+      _accentColorKey: _accentColorHex,
+      _screensaverClockStyleKey: _screensaverClockStyle,
+      _timeBasedWallpaperEnabledKey: _timeBasedWallpaperEnabled,
+      _showInputsWidgetInStatusBarKey: _showInputsWidgetInStatusBar,
+      _showContinueWatchingKey: _showContinueWatching,
+      _showNotificationsWidgetInStatusBarKey: _showNotificationsWidgetInStatusBar,
+      _autoHideNotificationsWidgetKey: _autoHideNotificationsWidget,
+      _appLanguageKey: _appLanguage,
+    };
+  }
+
+  Future<void> importSettingsMap(Map<String, dynamic> settingsMap) async {
+    for (final entry in settingsMap.entries) {
+      final key = entry.key;
+      final value = entry.value;
+      if (value is bool) {
+        await _sharedPreferences.setBool(key, value);
+      } else if (value is int) {
+        await _sharedPreferences.setInt(key, value);
+      } else if (value is double) {
+        await _sharedPreferences.setDouble(key, value);
+      } else if (value is String) {
+        await _sharedPreferences.setString(key, value);
+      } else if (value is List) {
+        await _sharedPreferences.setStringList(key, value.cast<String>());
+      }
+    }
+    reload();
+  }
+
   Future<void> setAppLanguage(String value) async {
     await _sharedPreferences.setString(_appLanguageKey, value);
     _appLanguage = value;

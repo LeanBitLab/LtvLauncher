@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/backup_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
@@ -51,7 +50,8 @@ class BackupRestorePage extends StatelessWidget {
 
   Future<void> _share(BuildContext context, AppLocalizations localizations) async {
     try {
-      final pathStr = await context.read<BackupService>().exportBackup();
+      final settingsService = context.read<SettingsService>();
+      final pathStr = await context.read<BackupService>().exportBackup(settingsService);
       await Share.shareXFiles([XFile(pathStr)], text: 'LTvLauncher Backup');
     } catch (e) {
       if (context.mounted) {
@@ -74,7 +74,8 @@ class BackupRestorePage extends StatelessWidget {
 
   Future<void> _export(BuildContext context, AppLocalizations localizations) async {
     try {
-      final path = await context.read<BackupService>().exportBackup();
+      final settingsService = context.read<SettingsService>();
+      final path = await context.read<BackupService>().exportBackup(settingsService);
       if (context.mounted) {
         showDialog(
           context: context,
@@ -225,18 +226,21 @@ class BackupRestorePage extends StatelessWidget {
             onPressed: () async {
               Navigator.of(dialogContext).pop();
               try {
-                await backupService.importBackup(entry.file);
+                await backupService.importBackup(entry.file, settingsService);
                 settingsService.reload();
                 await appsService.refreshState();
                 if (context.mounted) {
                   showDialog(
                     context: context,
-                    builder: (dialogContext) => AlertDialog(
+                    builder: (successDialogContext) => AlertDialog(
                       title: const Text("Import Success"),
                       content: Text(localizations.importSuccess),
                       actions: [
                         TextButton(
-                          onPressed: () => Navigator.of(dialogContext).pop(),
+                          onPressed: () {
+                            Navigator.of(successDialogContext).pop();
+                            Navigator.of(context).pop();
+                          },
                           child: const Text("OK"),
                         ),
                       ],

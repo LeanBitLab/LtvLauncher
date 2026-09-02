@@ -29,7 +29,6 @@ import 'package:shared_preferences_platform_interface/shared_preferences_platfor
 void main() async {
   SharedPreferencesStorePlatform.instance = InMemorySharedPreferencesStore.empty();
   final sharedPreferences = await SharedPreferences.getInstance();
-  final settingsService = SettingsService(sharedPreferences);
 
   setUp(() async {
     await sharedPreferences.clear();
@@ -173,6 +172,44 @@ void main() async {
       });
       await settingsService.setAppLanguage("en");
       expect(notified, isTrue);
+    });
+  });
+
+  group("exportSettingsMap and importSettingsMap", () {
+    test("exports complete settings map and restores across another instance", () async {
+      final sp1 = await SharedPreferences.getInstance();
+      await sp1.clear();
+      final service1 = SettingsService(sp1);
+
+      await service1.setAccentColor(ACCENT_COLOR_TEAL);
+      await service1.setAppHighlightAnimationEnabled(false);
+      await service1.setAppKeyClickEnabled(false);
+      await service1.setAutoHideAppBarEnabled(true);
+      await service1.setThemes("legacy");
+      await service1.setAppLanguage("fr");
+      await service1.setScreensaverClockStyle("analog");
+      await service1.setShowContinueWatching(false);
+
+      final exported = service1.exportSettingsMap();
+      expect(exported["accent_color"], ACCENT_COLOR_TEAL);
+      expect(exported["app_highlight_animation_enabled"], false);
+      expect(exported["app_banner_shape"], "legacy");
+      expect(exported["app_language"], "fr");
+      expect(exported["screensaver_clock_style"], "analog");
+      expect(exported["show_continue_watching"], false);
+
+      // Now create a target instance
+      final service2 = SettingsService(sp1);
+      await service2.importSettingsMap(exported);
+
+      expect(service2.accentColorHex, ACCENT_COLOR_TEAL);
+      expect(service2.appHighlightAnimationEnabled, isFalse);
+      expect(service2.appKeyClickEnabled, isFalse);
+      expect(service2.autoHideAppBarEnabled, isTrue);
+      expect(service2.themes, "legacy");
+      expect(service2.appLanguage, "fr");
+      expect(service2.screensaverClockStyle, "analog");
+      expect(service2.showContinueWatching, isFalse);
     });
   });
 }
