@@ -183,6 +183,7 @@
     "dataUsage": "Utilisation des données",
     "networkIndicator": "Indicateur réseau",
     "homeButtonFix": "Correction du bouton Accueil (Google TV)",
+    "startOnBoot": "Lancer au démarrage (Google TV / Fire TV)",
     "appLanguage": "Langue",
     "systemDefault": "Système par défaut",
     "english": "Anglais",

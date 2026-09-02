@@ -183,6 +183,7 @@
     "dataUsage": "Data Usage",
     "networkIndicator": "Network Indicator",
     "homeButtonFix": "Home Button Fix (Google TV)",
+    "startOnBoot": "Start on boot (Google TV / Fire TV)",
     "appLanguage": "Language",
     "systemDefault": "System Default",
     "english": "English",

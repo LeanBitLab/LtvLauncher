@@ -183,6 +183,7 @@
     "dataUsage": "データ使用量",
     "networkIndicator": "ネットワークインジケーター",
     "homeButtonFix": "ホームボタン修正 (Google TV)",
+    "startOnBoot": "起動時に開始 (Google TV / Fire TV)",
     "appLanguage": "言語",
     "systemDefault": "システムのデフォルト",
     "english": "英語",

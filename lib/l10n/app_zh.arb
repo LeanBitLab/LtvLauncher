@@ -183,6 +183,7 @@
     "dataUsage": "数据使用",
     "networkIndicator": "网络指示器",
     "homeButtonFix": "Home 键修复（Google TV）",
+    "startOnBoot": "开机时启动 (Google TV / Fire TV)",
     "appLanguage": "语言",
     "systemDefault": "跟随系统",
     "english": "英语",

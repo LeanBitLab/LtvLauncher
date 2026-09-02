@@ -2,6 +2,7 @@ import 'package:flauncher/flauncher_channel.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
+import 'package:flauncher/providers/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,6 +58,7 @@ class _AccessibilityPageState extends State<AccessibilityPage> with WidgetsBindi
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
     LauncherState launcherState = context.watch<LauncherState>();
+    SettingsService settingsService = context.watch<SettingsService>();
     bool isDefault = launcherState.isDefaultLauncher;
 
     return Column(
@@ -127,6 +129,24 @@ class _AccessibilityPageState extends State<AccessibilityPage> with WidgetsBindi
                       _showAccessibilityPermissionGuide(context);
                     }
                   },
+                ),
+                const SizedBox(height: 8),
+                FocusableSettingsTile(
+                  leading: Icon(
+                    Icons.power_settings_new,
+                    color: settingsService.startOnBoot ? Colors.green : Colors.white54,
+                  ),
+                  title: Text(
+                    localizations.startOnBoot,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  trailing: Text(
+                    settingsService.startOnBoot ? localizations.enabled : localizations.disabled,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: settingsService.startOnBoot ? Colors.green : Colors.white54,
+                        ),
+                  ),
+                  onPressed: () => settingsService.setStartOnBoot(!settingsService.startOnBoot),
                 ),
                 const SizedBox(height: 16),
                 Padding(

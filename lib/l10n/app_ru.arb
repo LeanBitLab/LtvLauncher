@@ -183,6 +183,7 @@
     "dataUsage": "Использование данных",
     "networkIndicator": "Индикатор сети",
     "homeButtonFix": "Исправление кнопки «Домой» (Google TV)",
+    "startOnBoot": "Запускать при включении (Google TV / Fire TV)",
     "appLanguage": "Язык",
     "systemDefault": "Системный по умолчанию",
     "english": "Английский",
