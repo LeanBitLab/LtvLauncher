@@ -198,5 +198,13 @@
     "hindi": "ヒンディー語",
     "korean": "韓国語",
     "arabic": "アラビア語",
-    "turkish": "トルコ語"
+    "turkish": "トルコ語",
+    "hidePersistentNotifications": "常駐通知を非表示",
+    "hidePersistentNotificationsDesc": "バックグラウンドサービスやシステムの常駐通知を非表示",
+    "blockedNotificationApps": "ブロックされたアプリ",
+    "blockAppNotifications": "通知をブロック",
+    "unblockAppNotifications": "通知のブロックを解除",
+    "noBlockedApps": "ブロックされたアプリはありません",
+    "persistentNotification": "常駐",
+    "unblockAll": "すべてブロック解除"
 }

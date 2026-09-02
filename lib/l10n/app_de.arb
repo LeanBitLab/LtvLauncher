@@ -198,5 +198,13 @@
     "hindi": "Hindi",
     "korean": "Koreanisch",
     "arabic": "Arabisch",
-    "turkish": "Türkisch"
+    "turkish": "Türkisch",
+    "hidePersistentNotifications": "Dauerhafte Benachrichtigungen ausblenden",
+    "hidePersistentNotificationsDesc": "Hintergrunddienst- und Systembenachrichtigungen ausblenden",
+    "blockedNotificationApps": "Blockierte Apps",
+    "blockAppNotifications": "Benachrichtigungen blockieren",
+    "unblockAppNotifications": "Benachrichtigungen freigeben",
+    "noBlockedApps": "Keine blockierten Apps",
+    "persistentNotification": "Dauerhaft",
+    "unblockAll": "Alle freigeben"
 }

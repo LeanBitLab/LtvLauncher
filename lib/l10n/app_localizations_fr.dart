@@ -71,17 +71,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Catégorie)';
+    return '$title (Catégorie)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Date formatée : ${dateString}';
+    return 'Date formatée : $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Heure formatée : ${timeString}';
+    return 'Heure formatée : $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Retirer de ${name}';
+    return 'Retirer de $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur ${repoUrl}.';
+    return 'LTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Sauvegarde exportée avec succès vers ${path}';
+    return 'Sauvegarde exportée avec succès vers $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Échec de l\'importation de la sauvegarde : ${error}';
+    return 'Échec de l\'importation de la sauvegarde : $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Échec de l\'exportation de la sauvegarde : ${error}';
+    return 'Échec de l\'exportation de la sauvegarde : $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Échec du démarrage du serveur de partage : ${error}';
+    return 'Échec du démarrage du serveur de partage : $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get turkish => 'Turc';
+
+  @override
+  String get hidePersistentNotifications => 'Masquer les notifications persistantes';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Masquer les notifications des services d\'arrière-plan et du système';
+
+  @override
+  String get blockedNotificationApps => 'Applications bloquées';
+
+  @override
+  String get blockAppNotifications => 'Bloquer les notifications';
+
+  @override
+  String get unblockAppNotifications => 'Débloquer les notifications';
+
+  @override
+  String get noBlockedApps => 'Aucune application bloquée';
+
+  @override
+  String get persistentNotification => 'Persistante';
+
+  @override
+  String get unblockAll => 'Tout débloquer';
 }

@@ -198,5 +198,13 @@
     "hindi": "Hintçe",
     "korean": "Korece",
     "arabic": "Arapça",
-    "turkish": "Türkçe"
+    "turkish": "Türkçe",
+    "hidePersistentNotifications": "Kalıcı Bildirimleri Gizle",
+    "hidePersistentNotificationsDesc": "Arka plan servisi ve sistem bildirimlerini gizle",
+    "blockedNotificationApps": "Engellenen Uygulamalar",
+    "blockAppNotifications": "Bildirimleri Engelle",
+    "unblockAppNotifications": "Bildirim Engelini Kaldır",
+    "noBlockedApps": "Engellenen uygulama yok",
+    "persistentNotification": "Kalıcı",
+    "unblockAll": "Tümünün Engelini Kaldır"
 }

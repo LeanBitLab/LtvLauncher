@@ -71,17 +71,17 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Categoria)';
+    return '$title (Categoria)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Data formattata: ${dateString}';
+    return 'Data formattata: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Ora formattata: ${timeString}';
+    return 'Ora formattata: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Rimuovi da ${name}';
+    return 'Rimuovi da $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher è un launcher open-source personalizzato per Android TV, basato su FLauncher.\n\nSviluppato da LeanBitLab.\nCodice sorgente disponibile su ${repoUrl}.';
+    return 'LTvLauncher è un launcher open-source personalizzato per Android TV, basato su FLauncher.\n\nSviluppato da LeanBitLab.\nCodice sorgente disponibile su $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Backup esportato con successo in ${path}';
+    return 'Backup esportato con successo in $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Impossibile importare il backup: ${error}';
+    return 'Impossibile importare il backup: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Impossibile esportare il backup: ${error}';
+    return 'Impossibile esportare il backup: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Impossibile avviare il server di condivisione: ${error}';
+    return 'Impossibile avviare il server di condivisione: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get turkish => 'Turco';
+
+  @override
+  String get hidePersistentNotifications => 'Nascondi notifiche persistenti';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Nascondi le notifiche dei servizi in background e di sistema';
+
+  @override
+  String get blockedNotificationApps => 'App bloccate';
+
+  @override
+  String get blockAppNotifications => 'Blocca notifiche';
+
+  @override
+  String get unblockAppNotifications => 'Sblocca notifiche';
+
+  @override
+  String get noBlockedApps => 'Nessuna app bloccata';
+
+  @override
+  String get persistentNotification => 'Persistente';
+
+  @override
+  String get unblockAll => 'Sblocca tutto';
 }

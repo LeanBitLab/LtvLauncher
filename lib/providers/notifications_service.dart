@@ -34,9 +34,12 @@ class NotificationsService extends ChangeNotifier with WidgetsBindingObserver {
   final FLauncherChannel _channel;
   Map<String, int> _notificationCounts = {};
   List<NotificationItem> _notifications = [];
+  List<Map<dynamic, dynamic>> _rawList = [];
   bool _hasPermission = false;
   bool _hasOverlayPermission = false;
   bool _systemPopupEnabled = false;
+  bool _hidePersistentNotifications = false;
+  Set<String> _blockedPackages = {};
   bool _initialized = false;
   StreamSubscription? _subscription;
   int _callCount = 0;
@@ -52,7 +55,11 @@ class NotificationsService extends ChangeNotifier with WidgetsBindingObserver {
   bool get hasPermission => _hasPermission;
   bool get hasOverlayPermission => _hasOverlayPermission;
   bool get systemPopupEnabled => _systemPopupEnabled;
+  bool get hidePersistentNotifications => _hidePersistentNotifications;
+  Set<String> get blockedPackages => Set.unmodifiable(_blockedPackages);
   bool get initialized => _initialized;
+
+  bool isPackageBlocked(String packageName) => _blockedPackages.contains(packageName);
 
   int getNotificationCount(String packageName) {
     return _notificationCounts[packageName] ?? 0;
@@ -64,6 +71,9 @@ class NotificationsService extends ChangeNotifier with WidgetsBindingObserver {
     if (localCallCount != _callCount) return;
 
     _systemPopupEnabled = _prefs?.getBool('system_notifications_popup') ?? false;
+    _hidePersistentNotifications = _prefs?.getBool('hide_persistent_notifications') ?? false;
+    final blockedList = _prefs?.getStringList('blocked_notification_packages') ?? [];
+    _blockedPackages = blockedList.toSet();
 
     final bool allowed = await _channel.checkNotificationListenerPermission();
     if (localCallCount != _callCount) return;
@@ -112,30 +122,42 @@ class NotificationsService extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   void _updateNotificationCounts(List<Map<dynamic, dynamic>> list) {
+    _rawList = list;
+    _processNotifications();
+  }
+
+  void _processNotifications() {
     final Map<String, int> newCounts = {};
     final List<NotificationItem> newNotifications = [];
 
-    for (final item in list) {
+    for (final item in _rawList) {
       final String? pkg = item['packageName'] as String?;
       final int? count = item['count'] as int?;
-      if (pkg != null) {
-        if (count != null) {
-          newCounts[pkg] = count;
-          for (int i = 0; i < count; i++) {
-            newNotifications.add(NotificationItem(
-              key: '${pkg}_$i',
-              packageName: pkg,
-              title: 'Notification',
-              text: 'Content',
-              isClearable: true,
-            ));
-          }
-        } else {
-          final notification = NotificationItem.fromMap(item);
-          newNotifications.add(notification);
-          if (notification.isClearable) {
-            newCounts[pkg] = (newCounts[pkg] ?? 0) + 1;
-          }
+      if (pkg == null) continue;
+
+      if (_blockedPackages.contains(pkg)) {
+        continue;
+      }
+
+      if (count != null) {
+        newCounts[pkg] = count;
+        for (int i = 0; i < count; i++) {
+          newNotifications.add(NotificationItem(
+            key: '${pkg}_$i',
+            packageName: pkg,
+            title: 'Notification',
+            text: 'Content',
+            isClearable: true,
+          ));
+        }
+      } else {
+        final notification = NotificationItem.fromMap(item);
+        if (_hidePersistentNotifications && !notification.isClearable) {
+          continue;
+        }
+        newNotifications.add(notification);
+        if (notification.isClearable) {
+          newCounts[pkg] = (newCounts[pkg] ?? 0) + 1;
         }
       }
     }
@@ -169,10 +191,50 @@ class NotificationsService extends ChangeNotifier with WidgetsBindingObserver {
       }
     }
 
-    if (changed) {
+    if (changed || !_initialized) {
       _notificationCounts = newCounts;
       _notifications = newNotifications;
       notifyListeners();
+    }
+  }
+
+  Future<void> setHidePersistentNotifications(bool hide) async {
+    _hidePersistentNotifications = hide;
+    await _prefs?.setBool('hide_persistent_notifications', hide);
+    _processNotifications();
+  }
+
+  Future<void> toggleBlockPackage(String packageName) async {
+    if (_blockedPackages.contains(packageName)) {
+      _blockedPackages.remove(packageName);
+    } else {
+      _blockedPackages.add(packageName);
+    }
+    await _prefs?.setStringList('blocked_notification_packages', _blockedPackages.toList());
+    _processNotifications();
+  }
+
+  Future<void> blockPackage(String packageName) async {
+    if (!_blockedPackages.contains(packageName)) {
+      _blockedPackages.add(packageName);
+      await _prefs?.setStringList('blocked_notification_packages', _blockedPackages.toList());
+      _processNotifications();
+    }
+  }
+
+  Future<void> unblockPackage(String packageName) async {
+    if (_blockedPackages.contains(packageName)) {
+      _blockedPackages.remove(packageName);
+      await _prefs?.setStringList('blocked_notification_packages', _blockedPackages.toList());
+      _processNotifications();
+    }
+  }
+
+  Future<void> unblockAllPackages() async {
+    if (_blockedPackages.isNotEmpty) {
+      _blockedPackages.clear();
+      await _prefs?.setStringList('blocked_notification_packages', []);
+      _processNotifications();
     }
   }
 

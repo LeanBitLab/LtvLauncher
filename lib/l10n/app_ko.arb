@@ -198,5 +198,13 @@
     "hindi": "힌디어",
     "korean": "한국어",
     "arabic": "아랍어",
-    "turkish": "터키어"
+    "turkish": "터키어",
+    "hidePersistentNotifications": "고정 알림 숨기기",
+    "hidePersistentNotificationsDesc": "백그라운드 서비스 및 시스템 고정 알림 숨기기",
+    "blockedNotificationApps": "차단된 앱",
+    "blockAppNotifications": "알림 차단",
+    "unblockAppNotifications": "알림 차단 해제",
+    "noBlockedApps": "차단된 앱이 없습니다",
+    "persistentNotification": "고정",
+    "unblockAll": "모두 차단 해제"
 }

@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/notifications_service.dart';
 import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
@@ -13,6 +14,7 @@ class NotificationsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.black54, // Dim background
@@ -24,7 +26,7 @@ class NotificationsPanel extends StatelessWidget {
             child: Container(color: Colors.transparent),
           ),
           SidePanelDialog(
-            width: 400,
+            width: 420,
             isRightSide: false,
             child: Consumer2<NotificationsService, AppsService>(
               builder: (context, notificationsService, appsService, _) {
@@ -43,18 +45,40 @@ class NotificationsPanel extends StatelessWidget {
                             "Notifications",
                             style: theme.textTheme.titleLarge,
                           ),
-                          if (hasClearable)
-                            TextButton.icon(
-                              onPressed: () async {
-                                await notificationsService.dismissAll();
-                              },
-                              icon: const Icon(Icons.clear_all, size: 18),
-                              label: const Text("Clear All"),
-                              style: TextButton.styleFrom(
-                                foregroundColor: theme.colorScheme.primary,
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  notificationsService.hidePersistentNotifications
+                                      ? Icons.notifications_paused
+                                      : Icons.notifications_paused_outlined,
+                                  size: 20,
+                                  color: notificationsService.hidePersistentNotifications
+                                      ? theme.colorScheme.primary
+                                      : Colors.grey,
+                                ),
+                                tooltip: localizations.hidePersistentNotifications,
+                                onPressed: () {
+                                  notificationsService.setHidePersistentNotifications(
+                                    !notificationsService.hidePersistentNotifications,
+                                  );
+                                },
                               ),
-                            ),
+                              if (hasClearable)
+                                TextButton.icon(
+                                  onPressed: () async {
+                                    await notificationsService.dismissAll();
+                                  },
+                                  icon: const Icon(Icons.clear_all, size: 18),
+                                  label: const Text("Clear All"),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: theme.colorScheme.primary,
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  ),
+                                ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -126,12 +150,33 @@ class NotificationsPanel extends StatelessWidget {
                                         title: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              appName,
-                                              style: theme.textTheme.labelMedium?.copyWith(
-                                                color: theme.colorScheme.primary,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            Row(
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    appName,
+                                                    style: theme.textTheme.labelMedium?.copyWith(
+                                                      color: theme.colorScheme.primary,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                    overflow: TextOverflow.ellipsis,
+                                                  ),
+                                                ),
+                                                if (!notification.isClearable) ...[
+                                                  const SizedBox(width: 6),
+                                                  Container(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white10,
+                                                      borderRadius: BorderRadius.circular(4),
+                                                    ),
+                                                    child: Text(
+                                                      localizations.persistentNotification,
+                                                      style: const TextStyle(fontSize: 10, color: Colors.grey),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ],
                                             ),
                                             const SizedBox(height: 2),
                                             if (notification.title.isNotEmpty)
@@ -155,7 +200,26 @@ class NotificationsPanel extends StatelessWidget {
                                               ),
                                           ],
                                         ),
-                                        trailing: null,
+                                        trailing: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            if (notification.isClearable)
+                                              IconButton(
+                                                icon: const Icon(Icons.close, size: 18),
+                                                tooltip: "Dismiss",
+                                                padding: EdgeInsets.zero,
+                                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                                onPressed: () => notificationsService.dismiss(notification.key),
+                                              ),
+                                            IconButton(
+                                              icon: const Icon(Icons.block, size: 18),
+                                              tooltip: "${localizations.blockAppNotifications} ($appName)",
+                                              padding: EdgeInsets.zero,
+                                              constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                              onPressed: () => notificationsService.blockPackage(notification.packageName),
+                                            ),
+                                          ],
+                                        ),
                                         onPressed: () {
                                           if (app != null) {
                                             Navigator.of(context).pop();

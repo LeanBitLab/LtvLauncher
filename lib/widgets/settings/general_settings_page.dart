@@ -30,6 +30,7 @@ import 'data_usage_period_page.dart';
 import 'screensaver_clock_style_page.dart';
 import 'backup_restore_page.dart';
 import 'app_language_page.dart';
+import 'blocked_notifications_page.dart';
 
 
 class GeneralSettingsPage extends StatelessWidget {
@@ -114,7 +115,29 @@ class GeneralSettingsPage extends StatelessWidget {
                             }
                           },
                         ),
-                        if (service.hasPermission)
+                        if (service.hasPermission) ...[
+                          FocusableSettingsTile(
+                            leading: const Icon(Icons.notifications_paused_outlined),
+                            title: Text(localizations.hidePersistentNotifications, style: Theme.of(context).textTheme.bodyMedium),
+                            trailing: Text(
+                              service.hidePersistentNotifications ? localizations.enabled : localizations.disabled,
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: service.hidePersistentNotifications ? Colors.green : Colors.grey,
+                              ),
+                            ),
+                            onPressed: () => service.setHidePersistentNotifications(!service.hidePersistentNotifications),
+                          ),
+                          FocusableSettingsTile(
+                            leading: const Icon(Icons.block),
+                            title: Text(localizations.blockedNotificationApps, style: Theme.of(context).textTheme.bodyMedium),
+                            trailing: Text(
+                              service.blockedPackages.isEmpty ? '0' : '${service.blockedPackages.length}',
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: service.blockedPackages.isNotEmpty ? Colors.orange : Colors.grey,
+                              ),
+                            ),
+                            onPressed: () => Navigator.of(context).pushNamed(BlockedNotificationsPage.routeName),
+                          ),
                           FocusableSettingsTile(
                             leading: const Icon(Icons.picture_in_picture_alt_outlined),
                             title: Text(localizations.systemWidePopupAlert, style: Theme.of(context).textTheme.bodyMedium),
@@ -140,6 +163,7 @@ class GeneralSettingsPage extends StatelessWidget {
                               }
                             },
                           ),
+                        ],
                       ],
                     );
                   },

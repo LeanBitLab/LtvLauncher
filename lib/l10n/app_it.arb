@@ -198,5 +198,13 @@
     "hindi": "Hindi",
     "korean": "Coreano",
     "arabic": "Arabo",
-    "turkish": "Turco"
+    "turkish": "Turco",
+    "hidePersistentNotifications": "Nascondi notifiche persistenti",
+    "hidePersistentNotificationsDesc": "Nascondi le notifiche dei servizi in background e di sistema",
+    "blockedNotificationApps": "App bloccate",
+    "blockAppNotifications": "Blocca notifiche",
+    "unblockAppNotifications": "Sblocca notifiche",
+    "noBlockedApps": "Nessuna app bloccata",
+    "persistentNotification": "Persistente",
+    "unblockAll": "Sblocca tutto"
 }

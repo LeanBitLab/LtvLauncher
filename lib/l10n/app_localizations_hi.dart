@@ -71,17 +71,17 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (श्रेणी)';
+    return '$title (श्रेणी)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'फ़ॉर्मेट किया गया दिनांक: ${dateString}';
+    return 'फ़ॉर्मेट किया गया दिनांक: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'फ़ॉर्मेट किया गया समय: ${timeString}';
+    return 'फ़ॉर्मेट किया गया समय: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '${name} से हटाएं';
+    return '$name से हटाएं';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher FLauncher पर आधारित Android TV के लिए एक अनुकूलित ओपन-सोर्स लॉन्चर है।\n\nLeanBitLab द्वारा विकसित।\nस्रोत कोड ${repoUrl} पर उपलब्ध है।';
+    return 'LTvLauncher FLauncher पर आधारित Android TV के लिए एक अनुकूलित ओपन-सोर्स लॉन्चर है।\n\nLeanBitLab द्वारा विकसित।\nस्रोत कोड $repoUrl पर उपलब्ध है।';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'बैकअप सफलतापूर्वक ${path} में निर्यात किया गया';
+    return 'बैकअप सफलतापूर्वक $path में निर्यात किया गया';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'बैकअप आयात करने में विफल: ${error}';
+    return 'बैकअप आयात करने में विफल: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'बैकअप निर्यात करने में विफल: ${error}';
+    return 'बैकअप निर्यात करने में विफल: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'साझाकरण सर्वर प्रारंभ करने में विफल: ${error}';
+    return 'साझाकरण सर्वर प्रारंभ करने में विफल: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get turkish => 'तुर्की';
+
+  @override
+  String get hidePersistentNotifications => 'स्थायी सूचनाएं छिपाएं';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'पृष्ठभूमि सेवा और सिस्टम सूचनाएं छिपाएं';
+
+  @override
+  String get blockedNotificationApps => 'अवरुद्ध ऐप्स';
+
+  @override
+  String get blockAppNotifications => 'सूचनाएं अवरुद्ध करें';
+
+  @override
+  String get unblockAppNotifications => 'सूचनाएं अनब्लॉक करें';
+
+  @override
+  String get noBlockedApps => 'कोई अवरुद्ध ऐप नहीं';
+
+  @override
+  String get persistentNotification => 'स्थायी';
+
+  @override
+  String get unblockAll => 'सभी अनब्लॉक करें';
 }

@@ -71,17 +71,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (فئة)';
+    return '$title (فئة)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'التاريخ المنسق: ${dateString}';
+    return 'التاريخ المنسق: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'الوقت المنسق: ${timeString}';
+    return 'الوقت المنسق: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'إزالة من ${name}';
+    return 'إزالة من $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher هو مشغل مفتوح المصدر ومخصص لتلفزيون أندرويد، مبني على FLauncher.\n\nتم تطويره بواسطة LeanBitLab.\nالكود المصدري متاح على ${repoUrl}.';
+    return 'LTvLauncher هو مشغل مفتوح المصدر ومخصص لتلفزيون أندرويد، مبني على FLauncher.\n\nتم تطويره بواسطة LeanBitLab.\nالكود المصدري متاح على $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'تم تصدير النسخ الاحتياطي بنجاح إلى ${path}';
+    return 'تم تصدير النسخ الاحتياطي بنجاح إلى $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'فشل استيراد النسخ الاحتياطي: ${error}';
+    return 'فشل استيراد النسخ الاحتياطي: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'فشل تصدير النسخ الاحتياطي: ${error}';
+    return 'فشل تصدير النسخ الاحتياطي: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'فشل بدء خادم المشاركة: ${error}';
+    return 'فشل بدء خادم المشاركة: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get turkish => 'التركية';
+
+  @override
+  String get hidePersistentNotifications => 'إخفاء الإشعارات الدائمة';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'إخفاء إشعارات خدمات الخلفية والنظام';
+
+  @override
+  String get blockedNotificationApps => 'التطبيقات المحظورة';
+
+  @override
+  String get blockAppNotifications => 'حظر الإشعارات';
+
+  @override
+  String get unblockAppNotifications => 'إلغاء حظر الإشعارات';
+
+  @override
+  String get noBlockedApps => 'لا توجد تطبيقات محظورة';
+
+  @override
+  String get persistentNotification => 'دائم';
+
+  @override
+  String get unblockAll => 'إلغاء حظر الكل';
 }

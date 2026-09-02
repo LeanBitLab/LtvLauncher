@@ -198,5 +198,13 @@
     "hindi": "الهندية",
     "korean": "الكورية",
     "arabic": "العربية",
-    "turkish": "التركية"
+    "turkish": "التركية",
+    "hidePersistentNotifications": "إخفاء الإشعارات الدائمة",
+    "hidePersistentNotificationsDesc": "إخفاء إشعارات خدمات الخلفية والنظام",
+    "blockedNotificationApps": "التطبيقات المحظورة",
+    "blockAppNotifications": "حظر الإشعارات",
+    "unblockAppNotifications": "إلغاء حظر الإشعارات",
+    "noBlockedApps": "لا توجد تطبيقات محظورة",
+    "persistentNotification": "دائم",
+    "unblockAll": "إلغاء حظر الكل"
 }

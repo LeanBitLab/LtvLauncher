@@ -71,17 +71,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Категория)';
+    return '$title (Категория)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Форматированная дата: ${dateString}';
+    return 'Форматированная дата: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Форматированное время: ${timeString}';
+    return 'Форматированное время: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Удалить из ${name}';
+    return 'Удалить из $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher — это настраиваемый лаунчер с открытым исходным кодом для Android TV, основанный на FLauncher.\n\nРазработан LeanBitLab.\nИсходный код доступен по адресу ${repoUrl}.';
+    return 'LTvLauncher — это настраиваемый лаунчер с открытым исходным кодом для Android TV, основанный на FLauncher.\n\nРазработан LeanBitLab.\nИсходный код доступен по адресу $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Резервная копия успешно экспортирована в ${path}';
+    return 'Резервная копия успешно экспортирована в $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Не удалось импортировать резервную копию: ${error}';
+    return 'Не удалось импортировать резервную копию: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Не удалось экспортировать резервную копию: ${error}';
+    return 'Не удалось экспортировать резервную копию: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Не удалось запустить сервер общего доступа: ${error}';
+    return 'Не удалось запустить сервер общего доступа: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get turkish => 'Турецкий';
+
+  @override
+  String get hidePersistentNotifications => 'Скрыть постоянные уведомления';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Скрывать фоновые и системные уведомления';
+
+  @override
+  String get blockedNotificationApps => 'Заблокированные приложения';
+
+  @override
+  String get blockAppNotifications => 'Блокировать уведомления';
+
+  @override
+  String get unblockAppNotifications => 'Разблокировать уведомления';
+
+  @override
+  String get noBlockedApps => 'Нет заблокированных приложений';
+
+  @override
+  String get persistentNotification => 'Постоянное';
+
+  @override
+  String get unblockAll => 'Разблокировать все';
 }

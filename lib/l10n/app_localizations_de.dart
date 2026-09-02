@@ -71,17 +71,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Kategorie)';
+    return '$title (Kategorie)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Formatiertes Datum: ${dateString}';
+    return 'Formatiertes Datum: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Formatierte Zeit: ${timeString}';
+    return 'Formatierte Zeit: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Entfernen aus ${name}';
+    return 'Entfernen aus $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher ist ein angepasster Open-Source-Launcher für Android TV, basierend auf FLauncher.\n\nEntwickelt von LeanBitLab.\nQuellcode verfügbar unter ${repoUrl}.';
+    return 'LTvLauncher ist ein angepasster Open-Source-Launcher für Android TV, basierend auf FLauncher.\n\nEntwickelt von LeanBitLab.\nQuellcode verfügbar unter $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Sicherung erfolgreich exportiert nach ${path}';
+    return 'Sicherung erfolgreich exportiert nach $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Importieren der Sicherung fehlgeschlagen: ${error}';
+    return 'Importieren der Sicherung fehlgeschlagen: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Exportieren der Sicherung fehlgeschlagen: ${error}';
+    return 'Exportieren der Sicherung fehlgeschlagen: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Starten des Freigabeservers fehlgeschlagen: ${error}';
+    return 'Starten des Freigabeservers fehlgeschlagen: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get turkish => 'Türkisch';
+
+  @override
+  String get hidePersistentNotifications => 'Dauerhafte Benachrichtigungen ausblenden';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Hintergrunddienst- und Systembenachrichtigungen ausblenden';
+
+  @override
+  String get blockedNotificationApps => 'Blockierte Apps';
+
+  @override
+  String get blockAppNotifications => 'Benachrichtigungen blockieren';
+
+  @override
+  String get unblockAppNotifications => 'Benachrichtigungen freigeben';
+
+  @override
+  String get noBlockedApps => 'Keine blockierten Apps';
+
+  @override
+  String get persistentNotification => 'Dauerhaft';
+
+  @override
+  String get unblockAll => 'Alle freigeben';
 }

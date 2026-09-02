@@ -71,17 +71,17 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (카테고리)';
+    return '$title (카테고리)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return '포맷된 날짜: ${dateString}';
+    return '포맷된 날짜: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return '포맷된 시간: ${timeString}';
+    return '포맷된 시간: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '${name}에서 제거';
+    return '$name에서 제거';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher는 FLauncher를 기반으로 한 Android TV용 맞춤형 오픈 소스 런처입니다.\n\nLeanBitLab에서 개발했습니다.\n소스 코드는 ${repoUrl}에서 사용할 수 있습니다.';
+    return 'LTvLauncher는 FLauncher를 기반으로 한 Android TV용 맞춤형 오픈 소스 런처입니다.\n\nLeanBitLab에서 개발했습니다.\n소스 코드는 $repoUrl에서 사용할 수 있습니다.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return '백업이 ${path}로 성공적으로 내보내졌습니다';
+    return '백업이 $path로 성공적으로 내보내졌습니다';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return '백업 가져오기 실패: ${error}';
+    return '백업 가져오기 실패: $error';
   }
 
   @override
   String exportError(String error) {
-    return '백업 내보내기 실패: ${error}';
+    return '백업 내보내기 실패: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return '공유 서버 시작 실패: ${error}';
+    return '공유 서버 시작 실패: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get turkish => '터키어';
+
+  @override
+  String get hidePersistentNotifications => '고정 알림 숨기기';
+
+  @override
+  String get hidePersistentNotificationsDesc => '백그라운드 서비스 및 시스템 고정 알림 숨기기';
+
+  @override
+  String get blockedNotificationApps => '차단된 앱';
+
+  @override
+  String get blockAppNotifications => '알림 차단';
+
+  @override
+  String get unblockAppNotifications => '알림 차단 해제';
+
+  @override
+  String get noBlockedApps => '차단된 앱이 없습니다';
+
+  @override
+  String get persistentNotification => '고정';
+
+  @override
+  String get unblockAll => '모두 차단 해제';
 }

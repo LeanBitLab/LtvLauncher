@@ -38,6 +38,7 @@ import 'package:flauncher/widgets/settings/themes_page.dart';
 import 'package:flauncher/widgets/settings/accessibility_page.dart';
 import 'package:flauncher/widgets/settings/backup_restore_page.dart';
 import 'package:flauncher/widgets/settings/app_language_page.dart';
+import 'package:flauncher/widgets/settings/blocked_notifications_page.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flutter/material.dart';
 
@@ -116,6 +117,8 @@ class _SettingsPanelState extends State<SettingsPanel> {
                       return _FastPageRoute(builder: (_) => const BackupRestorePage());
                     case AppLanguagePage.routeName:
                       return _FastPageRoute(builder: (_) => const AppLanguagePage());
+                    case BlockedNotificationsPage.routeName:
+                      return _FastPageRoute(builder: (_) => const BlockedNotificationsPage());
                     case AppDetailsPage.routeName:
                       return _FastPageRoute(
                           builder: (_) => AppDetailsPage(application: settings.arguments as App));

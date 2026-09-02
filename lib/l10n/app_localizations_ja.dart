@@ -71,17 +71,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (カテゴリ)';
+    return '$title (カテゴリ)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return '書式化された日付: ${dateString}';
+    return '書式化された日付: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return '書式化された時刻: ${timeString}';
+    return '書式化された時刻: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '${name}から削除';
+    return '$nameから削除';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncherはFLauncherをベースにしたAndroid TV用のカスタムオープンソースランチャーです。\n\nLeanBitLabによって開発されています。\nソースコードは${repoUrl}で入手できます。';
+    return 'LTvLauncherはFLauncherをベースにしたAndroid TV用のカスタムオープンソースランチャーです。\n\nLeanBitLabによって開発されています。\nソースコードは$repoUrlで入手できます。';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'バックアップが${path}に正常にエクスポートされました';
+    return 'バックアップが$pathに正常にエクスポートされました';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'バックアップのインポートに失敗しました: ${error}';
+    return 'バックアップのインポートに失敗しました: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'バックアップのエクスポートに失敗しました: ${error}';
+    return 'バックアップのエクスポートに失敗しました: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return '共有サーバーの起動に失敗しました: ${error}';
+    return '共有サーバーの起動に失敗しました: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get turkish => 'トルコ語';
+
+  @override
+  String get hidePersistentNotifications => '常駐通知を非表示';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'バックグラウンドサービスやシステムの常駐通知を非表示';
+
+  @override
+  String get blockedNotificationApps => 'ブロックされたアプリ';
+
+  @override
+  String get blockAppNotifications => '通知をブロック';
+
+  @override
+  String get unblockAppNotifications => '通知のブロックを解除';
+
+  @override
+  String get noBlockedApps => 'ブロックされたアプリはありません';
+
+  @override
+  String get persistentNotification => '常駐';
+
+  @override
+  String get unblockAll => 'すべてブロック解除';
 }

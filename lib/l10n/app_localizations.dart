@@ -940,6 +940,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Turkish'**
   String get turkish;
+
+  /// No description provided for @hidePersistentNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Persistent Notifications'**
+  String get hidePersistentNotifications;
+
+  /// No description provided for @hidePersistentNotificationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide ongoing background service and system notifications'**
+  String get hidePersistentNotificationsDesc;
+
+  /// No description provided for @blockedNotificationApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked Apps'**
+  String get blockedNotificationApps;
+
+  /// No description provided for @blockAppNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Block Notifications'**
+  String get blockAppNotifications;
+
+  /// No description provided for @unblockAppNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock Notifications'**
+  String get unblockAppNotifications;
+
+  /// No description provided for @noBlockedApps.
+  ///
+  /// In en, this message translates to:
+  /// **'No blocked apps'**
+  String get noBlockedApps;
+
+  /// No description provided for @persistentNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Persistent'**
+  String get persistentNotification;
+
+  /// No description provided for @unblockAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock All'**
+  String get unblockAll;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -24,11 +24,11 @@ void main() {
     when(mockChannel.checkNotificationListenerPermission())
         .thenAnswer((_) async => false);
     when(mockChannel.requestNotificationListenerPermission())
-        .thenAnswer((_) async => null);
+        .thenAnswer((_) async => false);
     when(mockChannel.checkOverlayPermission())
         .thenAnswer((_) async => false);
     when(mockChannel.requestOverlayPermission())
-        .thenAnswer((_) async => null);
+        .thenAnswer((_) async => false);
     when(mockChannel.getActiveNotifications())
         .thenAnswer((_) async => []);
     when(mockChannel.addNotificationsChangedListener(any))
@@ -253,6 +253,70 @@ void main() {
       verify(mockChannel.dismissAllNotifications()).called(1);
       verify(mockChannel.getActiveNotifications()).called(2); // Initial + refresh
       expect(notificationsService.notifications, isEmpty);
+    });
+  });
+
+  group('Persistent Notification & App Blocking', () {
+    test('hidePersistentNotifications filters out non-clearable notifications', () async {
+      when(mockChannel.checkNotificationListenerPermission())
+          .thenAnswer((_) async => true);
+      when(mockChannel.getActiveNotifications())
+          .thenAnswer((_) async => [
+                {'packageName': 'com.tcl.tv', 'key': 'tcl_bg', 'title': 'TCL Service', 'isClearable': false},
+                {'packageName': 'com.google.android.youtube', 'key': 'yt_1', 'title': 'Video', 'isClearable': true},
+              ]);
+
+      notificationsService = NotificationsService(mockChannel);
+      while (!notificationsService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      expect(notificationsService.hidePersistentNotifications, false);
+      expect(notificationsService.notifications.length, 2);
+
+      await notificationsService.setHidePersistentNotifications(true);
+
+      expect(notificationsService.hidePersistentNotifications, true);
+      expect(notificationsService.notifications.length, 1);
+      expect(notificationsService.notifications.first.packageName, 'com.google.android.youtube');
+
+      await notificationsService.setHidePersistentNotifications(false);
+      expect(notificationsService.notifications.length, 2);
+    });
+
+    test('blockPackage and unblockPackage filters out notifications from blocked apps', () async {
+      when(mockChannel.checkNotificationListenerPermission())
+          .thenAnswer((_) async => true);
+      when(mockChannel.getActiveNotifications())
+          .thenAnswer((_) async => [
+                {'packageName': 'com.sony.dtv', 'key': 'sony_1', 'title': 'Sony', 'isClearable': false},
+                {'packageName': 'com.llamalab.automate', 'key': 'auto_1', 'title': 'Automate', 'isClearable': false},
+                {'packageName': 'com.netflix.ninja', 'key': 'net_1', 'title': 'Netflix', 'isClearable': true},
+              ]);
+
+      notificationsService = NotificationsService(mockChannel);
+      while (!notificationsService.initialized) {
+        await Future.delayed(Duration.zero);
+      }
+
+      expect(notificationsService.notifications.length, 3);
+      expect(notificationsService.isPackageBlocked('com.sony.dtv'), false);
+
+      await notificationsService.blockPackage('com.sony.dtv');
+      expect(notificationsService.isPackageBlocked('com.sony.dtv'), true);
+      expect(notificationsService.notifications.length, 2);
+      expect(notificationsService.notifications.any((n) => n.packageName == 'com.sony.dtv'), false);
+
+      await notificationsService.blockPackage('com.llamalab.automate');
+      expect(notificationsService.notifications.length, 1);
+      expect(notificationsService.notifications.first.packageName, 'com.netflix.ninja');
+
+      await notificationsService.unblockPackage('com.sony.dtv');
+      expect(notificationsService.notifications.length, 2);
+
+      await notificationsService.unblockAllPackages();
+      expect(notificationsService.blockedPackages, isEmpty);
+      expect(notificationsService.notifications.length, 3);
     });
   });
 }

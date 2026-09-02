@@ -71,17 +71,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title}（类别）';
+    return '$title（类别）';
   }
 
   @override
   String formattedDate(String dateString) {
-    return '格式化日期：${dateString}';
+    return '格式化日期：$dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return '格式化时间：${timeString}';
+    return '格式化时间：$timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '从${name}中移除';
+    return '从$name中移除';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher 是一款基于 FLauncher 定制的开源 Android TV 桌面启动器。\n\n由 LeanBitLab 开发。\n源代码可在 ${repoUrl} 获取。';
+    return 'LTvLauncher 是一款基于 FLauncher 定制的开源 Android TV 桌面启动器。\n\n由 LeanBitLab 开发。\n源代码可在 $repoUrl 获取。';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return '备份已成功导出到 ${path}';
+    return '备份已成功导出到 $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return '导入备份失败：${error}';
+    return '导入备份失败：$error';
   }
 
   @override
   String exportError(String error) {
-    return '导出备份失败：${error}';
+    return '导出备份失败：$error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return '启动共享服务失败：${error}';
+    return '启动共享服务失败：$error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get turkish => '土耳其语';
+
+  @override
+  String get hidePersistentNotifications => '隐藏常驻通知';
+
+  @override
+  String get hidePersistentNotificationsDesc => '隐藏后台服务和系统常驻通知';
+
+  @override
+  String get blockedNotificationApps => '已屏蔽的应用';
+
+  @override
+  String get blockAppNotifications => '屏蔽通知';
+
+  @override
+  String get unblockAppNotifications => '取消屏蔽通知';
+
+  @override
+  String get noBlockedApps => '暂无已屏蔽的应用';
+
+  @override
+  String get persistentNotification => '常驻';
+
+  @override
+  String get unblockAll => '全部取消屏蔽';
 }

@@ -198,5 +198,13 @@
     "hindi": "Хинди",
     "korean": "Корейский",
     "arabic": "Арабский",
-    "turkish": "Турецкий"
+    "turkish": "Турецкий",
+    "hidePersistentNotifications": "Скрыть постоянные уведомления",
+    "hidePersistentNotificationsDesc": "Скрывать фоновые и системные уведомления",
+    "blockedNotificationApps": "Заблокированные приложения",
+    "blockAppNotifications": "Блокировать уведомления",
+    "unblockAppNotifications": "Разблокировать уведомления",
+    "noBlockedApps": "Нет заблокированных приложений",
+    "persistentNotification": "Постоянное",
+    "unblockAll": "Разблокировать все"
 }

@@ -71,17 +71,17 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Categoria)';
+    return '$title (Categoria)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Data formatada: ${dateString}';
+    return 'Data formatada: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Hora formatada: ${timeString}';
+    return 'Hora formatada: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return 'Remover de ${name}';
+    return 'Remover de $name';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'O LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em ${repoUrl}.';
+    return 'O LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em $repoUrl.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Backup exportado com sucesso para ${path}';
+    return 'Backup exportado com sucesso para $path';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Falha ao importar backup: ${error}';
+    return 'Falha ao importar backup: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Falha ao exportar backup: ${error}';
+    return 'Falha ao exportar backup: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Falha ao iniciar o servidor de compartilhamento: ${error}';
+    return 'Falha ao iniciar o servidor de compartilhamento: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get turkish => 'Turco';
+
+  @override
+  String get hidePersistentNotifications => 'Ocultar notificações persistentes';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Ocultar notificações de serviços em segundo plano e do sistema';
+
+  @override
+  String get blockedNotificationApps => 'Aplicativos bloqueados';
+
+  @override
+  String get blockAppNotifications => 'Bloquear notificações';
+
+  @override
+  String get unblockAppNotifications => 'Desbloquear notificações';
+
+  @override
+  String get noBlockedApps => 'Nenhum aplicativo bloqueado';
+
+  @override
+  String get persistentNotification => 'Persistente';
+
+  @override
+  String get unblockAll => 'Desbloquear tudo';
 }

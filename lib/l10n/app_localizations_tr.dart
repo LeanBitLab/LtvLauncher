@@ -71,17 +71,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String disambiguateCategoryTitle(String title) {
-    return '${title} (Kategori)';
+    return '$title (Kategori)';
   }
 
   @override
   String formattedDate(String dateString) {
-    return 'Biçimlendirilmiş tarih: ${dateString}';
+    return 'Biçimlendirilmiş tarih: $dateString';
   }
 
   @override
   String formattedTime(String timeString) {
-    return 'Biçimlendirilmiş saat: ${timeString}';
+    return 'Biçimlendirilmiş saat: $timeString';
   }
 
   @override
@@ -146,7 +146,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String removeFrom(String name) {
-    return '${name} öğesinden kaldır';
+    return '$name öğesinden kaldır';
   }
 
   @override
@@ -199,7 +199,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nLeanBitLab tarafından geliştirilmiştir.\nKaynak kodu ${repoUrl} adresinde mevcuttur.';
+    return 'LTvLauncher, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nLeanBitLab tarafından geliştirilmiştir.\nKaynak kodu $repoUrl adresinde mevcuttur.';
   }
 
   @override
@@ -273,7 +273,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String exportSuccess(String path) {
-    return 'Yedek başarıyla ${path} konumuna dışa aktarıldı';
+    return 'Yedek başarıyla $path konumuna dışa aktarıldı';
   }
 
   @override
@@ -284,12 +284,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String importError(String error) {
-    return 'Yedek içe aktarılamadı: ${error}';
+    return 'Yedek içe aktarılamadı: $error';
   }
 
   @override
   String exportError(String error) {
-    return 'Yedek dışa aktarılamadı: ${error}';
+    return 'Yedek dışa aktarılamadı: $error';
   }
 
   @override
@@ -312,7 +312,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String failedToStartServer(String error) {
-    return 'Paylaşım sunucusu başlatılamadı: ${error}';
+    return 'Paylaşım sunucusu başlatılamadı: $error';
   }
 
   @override
@@ -434,4 +434,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get turkish => 'Türkçe';
+
+  @override
+  String get hidePersistentNotifications => 'Kalıcı Bildirimleri Gizle';
+
+  @override
+  String get hidePersistentNotificationsDesc => 'Arka plan servisi ve sistem bildirimlerini gizle';
+
+  @override
+  String get blockedNotificationApps => 'Engellenen Uygulamalar';
+
+  @override
+  String get blockAppNotifications => 'Bildirimleri Engelle';
+
+  @override
+  String get unblockAppNotifications => 'Bildirim Engelini Kaldır';
+
+  @override
+  String get noBlockedApps => 'Engellenen uygulama yok';
+
+  @override
+  String get persistentNotification => 'Kalıcı';
+
+  @override
+  String get unblockAll => 'Tümünün Engelini Kaldır';
 }

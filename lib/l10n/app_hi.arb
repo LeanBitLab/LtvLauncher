@@ -198,5 +198,13 @@
     "hindi": "हिन्दी",
     "korean": "कोरियाई",
     "arabic": "अरबी",
-    "turkish": "तुर्की"
+    "turkish": "तुर्की",
+    "hidePersistentNotifications": "स्थायी सूचनाएं छिपाएं",
+    "hidePersistentNotificationsDesc": "पृष्ठभूमि सेवा और सिस्टम सूचनाएं छिपाएं",
+    "blockedNotificationApps": "अवरुद्ध ऐप्स",
+    "blockAppNotifications": "सूचनाएं अवरुद्ध करें",
+    "unblockAppNotifications": "सूचनाएं अनब्लॉक करें",
+    "noBlockedApps": "कोई अवरुद्ध ऐप नहीं",
+    "persistentNotification": "स्थायी",
+    "unblockAll": "सभी अनब्लॉक करें"
 }
