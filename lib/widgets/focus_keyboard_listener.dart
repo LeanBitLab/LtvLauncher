@@ -16,10 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:flauncher/widgets/app_card_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-const longPressableKeys = [LogicalKeyboardKey.select, LogicalKeyboardKey.enter, LogicalKeyboardKey.gameButtonA];
 
 class FocusKeyboardListener extends StatefulWidget {
   final WidgetBuilder builder;
@@ -74,7 +73,7 @@ class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {
   }
 
   KeyEventResult _keyDownEvent(BuildContext context, LogicalKeyboardKey key) {
-    if (!longPressableKeys.contains(key)) {
+    if (!AppCardKeys.longPressableKeys.contains(key)) {
       final result = widget.onPressed?.call(key) ?? KeyEventResult.ignored;
       if (result == KeyEventResult.handled) {
         _handledKeys.add(key);

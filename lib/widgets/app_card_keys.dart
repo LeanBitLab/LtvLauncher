@@ -22,13 +22,21 @@ abstract class AppCardKeys {
   static const List<LogicalKeyboardKey> validationKeys = [
     LogicalKeyboardKey.select,
     LogicalKeyboardKey.enter,
+    LogicalKeyboardKey.numpadEnter,
     LogicalKeyboardKey.gameButtonA,
+    LogicalKeyboardKey.gameButtonSelect,
+    LogicalKeyboardKey.gameButtonStart,
+    LogicalKeyboardKey.space,
+    LogicalKeyboardKey.accept,
   ];
 
   static const List<LogicalKeyboardKey> longPressableKeys = [
     LogicalKeyboardKey.select,
     LogicalKeyboardKey.enter,
+    LogicalKeyboardKey.numpadEnter,
     LogicalKeyboardKey.gameButtonA,
+    LogicalKeyboardKey.gameButtonSelect,
+    LogicalKeyboardKey.space,
   ];
 
   static const List<LogicalKeyboardKey> cancelKeys = [

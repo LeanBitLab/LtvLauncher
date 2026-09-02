@@ -160,4 +160,48 @@ void main() {
     // Skip testing private move state since it's hard to trigger without full framework Context.
     expect(true, isTrue);
   });
+
+  testWidgets('AppCard launches application with Enter key', (WidgetTester tester) async {
+    await tester.pumpWidget(createWidgetUnderTest());
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pump(const Duration(milliseconds: 200));
+
+    verify(mockAppsService.launchApp(mockApp)).called(1);
+    await tester.pump(const Duration(milliseconds: 600));
+  });
+
+  testWidgets('AppCard launches application with NumpadEnter key (TV Box remote)', (WidgetTester tester) async {
+    await tester.pumpWidget(createWidgetUnderTest());
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.numpadEnter);
+    await tester.pump(const Duration(milliseconds: 200));
+
+    verify(mockAppsService.launchApp(mockApp)).called(1);
+    await tester.pump(const Duration(milliseconds: 600));
+  });
+
+  testWidgets('AppCard launches application with Select key (DPad Center)', (WidgetTester tester) async {
+    await tester.pumpWidget(createWidgetUnderTest());
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.select);
+    await tester.pump(const Duration(milliseconds: 200));
+
+    verify(mockAppsService.launchApp(mockApp)).called(1);
+    await tester.pump(const Duration(milliseconds: 600));
+  });
+
+  testWidgets('AppCard launches application with Gamepad A and Gamepad Select', (WidgetTester tester) async {
+    await tester.pumpWidget(createWidgetUnderTest());
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.gameButtonA);
+    await tester.pump(const Duration(milliseconds: 200));
+
+    verify(mockAppsService.launchApp(mockApp)).called(1);
+    await tester.pump(const Duration(milliseconds: 600));
+  });
 }

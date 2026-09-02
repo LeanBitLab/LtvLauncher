@@ -20,7 +20,6 @@ import 'package:flauncher/actions.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -59,7 +58,11 @@ class FLauncherApp extends StatelessWidget
         ...WidgetsApp.defaultShortcuts,
         const SingleActivator(LogicalKeyboardKey.escape): _backIntents,
         const SingleActivator(LogicalKeyboardKey.gameButtonB): _backIntents,
-        const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent()
+        const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent(),
+        const SingleActivator(LogicalKeyboardKey.enter): const ActivateIntent(),
+        const SingleActivator(LogicalKeyboardKey.numpadEnter): const ActivateIntent(),
+        const SingleActivator(LogicalKeyboardKey.gameButtonA): const ActivateIntent(),
+        const SingleActivator(LogicalKeyboardKey.gameButtonSelect): const ActivateIntent(),
       },
       actions: {
         ...WidgetsApp.defaultActions,
