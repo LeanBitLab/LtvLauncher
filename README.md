@@ -101,6 +101,13 @@ This customized version introduces usability enhancements and some UX improvemen
 ### Method 1: Via Built-in Settings (Recommended)
 This is the easiest and native way. Go to **Settings -> Accessibility -> Set as default launcher**. This will open the system home picker or default apps settings directly where you can select **LTvLauncher** as your default home app.
 
+On Google TV this does not take effect, and no picker or `adb shell cmd package set-home-activity` can make it. The stock launcher (`com.google.android.apps.tv.launcherx`) declares its HOME intent filter with priority 2 (its recovery activity uses 1). Android resolves the Home intent by priority first and only consults the preferred activity / HOME role when the top candidates tie, and non-system apps cannot declare a priority above 0. The picker records LTvLauncher as the home app and the system keeps launching Google TV. Use Method 2. To confirm on a device:
+
+```shell
+$ adb shell dumpsys package -f resolvers activity | grep -B4 -A4 'category.HOME' | grep -E 'com\.|mPriority'
+$ adb shell dumpsys role | grep -A1 android.app.role.HOME   # shows LTvLauncher as the holder, which is ignored
+```
+
 ### Method 2: Home Button Fix (Google TV / Fire TV)
 If your device blocks changing the default launcher (common on Google TV and newer Fire TV updates), you can use our built-in Home Button Fix:
 1. Open **Settings -> Accessibility**.
