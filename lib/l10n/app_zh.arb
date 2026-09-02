@@ -1,0 +1,190 @@
+{
+    "aboutFlauncher": "关于 LTvLauncher",
+    "addCategory": "添加类别",
+    "addSection": "添加分区",
+    "alphabetical": "按字母顺序",
+    "appCardHighlightAnimation": "应用卡片高亮动画",
+    "appInfo": "应用信息",
+    "appKeyClick": "按键提示音",
+    "applications": "应用",
+    "autoHideAppBar": "自动隐藏状态栏",
+    "backButtonAction": "返回键行为",
+    "category": "类别",
+    "categories": "类别",
+    "columnCount": "列数",
+    "date": "日期",
+    "dateAndTimeFormat": "日期和时间格式",
+    "delete": "删除",
+    "dialogOptionBackButtonActionDoNothing": "无操作",
+    "dialogOptionBackButtonActionShowScreensaver": "显示屏保",
+    "dialogOptionBackButtonActionShowClock": "显示时钟",
+    "dialogTextNoFileExplorer": "请安装文件管理器以选择图片。",
+    "dialogTitleBackButtonAction": "选择返回键行为",
+    "disambiguateCategoryTitle": "{title}（类别）",
+    "@disambiguateCategoryTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedDate": "格式化日期：{dateString}",
+    "@formattedDate": {
+        "placeholders": {
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "formattedTime": "格式化时间：{timeString}",
+    "@formattedTime": {
+        "placeholders": {
+            "timeString": {
+                "type": "String"
+            }
+        }
+    },
+    "gradient": "渐变",
+    "favoriteApps": "收藏应用",
+    "grid": "网格",
+    "height": "高度",
+    "hide": "隐藏",
+    "hiddenApplications": "已隐藏应用",
+    "launcherSections": "分区",
+    "layout": "布局",
+    "loading": "加载中",
+    "manual": "手动",
+    "modifySection": "修改分区",
+    "mustNotBeEmpty": "不能为空",
+    "name": "名称",
+    "newSection": "新建分区",
+    "noDateFormatSpecified": "未指定日期格式",
+    "noTimeFormatSpecified": "未指定时间格式",
+    "nonTvApplications": "非电视应用",
+    "open": "打开",
+    "orSelectFormatSpecifiers": "或选择格式说明符",
+    "picture": "图片",
+    "removeFrom": "从{name}中移除",
+    "@removeFrom": {
+        "placeholders": {
+            "name": { "type": "String" }
+        }
+    },
+    "renameCategory": "重命名类别",
+    "reorder": "重新排序",
+    "row": "行",
+    "rowHeight": "行高",
+    "save": "保存",
+    "spacer": "间隔",
+    "spacerMaxHeightRequirement": "必须大于 0 且小于等于 500",
+    "statusBar": "状态栏",
+    "settings": "设置",
+    "show": "显示",
+    "showCategoryTitles": "显示类别标题",
+    "themes": "主题",
+    "hideHighlightOutlineOnHomescreen": "在主屏幕隐藏高亮边框",
+    "appSelectorTransitionAnimation": "应用选择器转场动画",
+    "sort": "排序",
+    "systemSettings": "系统设置",
+    "textAboutDialog": "LTvLauncher 是一款基于 FLauncher 定制的开源 Android TV 桌面启动器。\n\n由 LeanBitLab 开发。\n源代码可在 {repoUrl} 获取。",
+    "@textAboutDialog": {
+        "placeholders": {
+            "repoUrl": {
+                "type": "String"
+            }
+        }
+    },
+    "textEmptyCategory": "此类别为空。",
+    "time": "时间",
+    "titleStatusBarSettingsPage": "选择状态栏中显示的内容",
+    "tvApplications": "电视应用",
+    "type": "类型",
+    "typeInTheDateFormat": "输入日期格式",
+    "typeInTheHourFormat": "输入时间格式",
+    "uninstall": "卸载",
+    "wallpaper": "壁纸",
+    "withEllipsisAddTo": "添加到…",
+    "timeBasedWallpaper": "按时间切换壁纸",
+    "pickDayWallpaper": "选择日间壁纸",
+    "pickNightWallpaper": "选择夜间壁纸",
+    "accessibility": "无障碍",
+    "defaultLauncherIsDefault": "LTvLauncher 是默认桌面",
+    "defaultLauncherNotDefault": "LTvLauncher 不是默认桌面",
+    "setAsDefaultLauncher": "设为默认桌面",
+    "defaultLauncherDescription": "设为默认桌面后，按 Home 键将始终返回 LTvLauncher。电视开机也会直接进入 LTvLauncher。",
+    "inputs": "输入源",
+    "inputSources": "输入源",
+    "backupAndRestore": "备份与恢复",
+    "exportBackup": "导出备份",
+    "importBackup": "导入备份",
+    "exportSuccess": "备份已成功导出到 {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importSuccess": "备份导入成功",
+    "importConfirm": "确定要导入备份吗？这将会覆盖你当前的设置和布局。",
+    "importError": "导入备份失败：{error}",
+    "@importError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "exportError": "导出备份失败：{error}",
+    "@exportError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "shareBackup": "共享备份",
+    "shareBackupDescription": "与局域网中的其他设备共享备份",
+    "stopSharing": "停止共享",
+    "localNetworkSharingActive": "局域网共享已开启！",
+    "localNetworkSharingInstructions": "将另一台设备连接到同一 Wi-Fi 网络，并在浏览器中打开以下地址：",
+    "localNetworkSharingDetails": "你可以在此下载电视的设置/布局，或将备份文件上传回这台电视。",
+    "failedToStartServer": "启动共享服务失败：{error}",
+    "@failedToStartServer": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationBell": "通知铃铛",
+    "autoHideNotificationBell": "自动隐藏通知铃铛",
+    "continueWatching": "继续观看",
+    "showContinueWatchingOnHome": "在主页显示「继续观看」",
+    "permissionDeniedContinueWatching": "显示「继续观看」需要权限",
+    "interface": "界面",
+    "system": "系统",
+    "accentColor": "强调色",
+    "miscellaneous": "其他",
+    "brightnessScheduler": "亮度定时",
+    "screensaverSettings": "屏保设置",
+    "screensaverClockStyle": "屏保时钟样式",
+    "dataUsagePeriod": "数据使用周期",
+    "notificationAccess": "通知访问权限",
+    "granted": "已授予",
+    "permissionRequired": "需要权限",
+    "systemWidePopupAlert": "全局弹窗提醒",
+    "overlayPermissionRequired": "需要悬浮窗权限",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "showAppNamesBelowIcons": "在图标下方显示应用名称",
+    "dataUsage": "数据使用",
+    "networkIndicator": "网络指示器",
+    "homeButtonFix": "Home 键修复（Google TV）",
+    "appLanguage": "语言",
+    "systemDefault": "跟随系统",
+    "english": "英语",
+    "spanish": "西班牙语",
+    "ukrainian": "乌克兰语",
+    "chinese": "中文"
+}
