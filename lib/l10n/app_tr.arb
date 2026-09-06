@@ -183,6 +183,7 @@
     "dataUsage": "Veri Kullanımı",
     "networkIndicator": "Ağ Göstergesi",
     "homeButtonFix": "Ana Sayfa Düğmesi Düzeltmesi (Google TV)",
+    "startOnBoot": "Açılışta başlat (Google TV / Fire TV)",
     "appLanguage": "Dil",
     "systemDefault": "Sistem Varsayılanı",
     "english": "İngilizce",

@@ -183,6 +183,7 @@
     "dataUsage": "डेटा उपयोग",
     "networkIndicator": "नेटवर्क संकेतक",
     "homeButtonFix": "होम बटन फिक्स (Google TV)",
+    "startOnBoot": "बूट पर शुरू करें (Google TV / Fire TV)",
     "appLanguage": "भाषा",
     "systemDefault": "सिस्टम डिफ़ॉल्ट",
     "english": "अंग्रेज़ी",

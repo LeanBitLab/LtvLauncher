@@ -183,6 +183,7 @@
     "dataUsage": "Використання даних",
     "networkIndicator": "Індикатор мережі",
     "homeButtonFix": "Виправлення кнопки «Домівка» (Google TV)",
+    "startOnBoot": "Запускати після завантаження (Google TV / Fire TV)",
     "appLanguage": "Мова",
     "systemDefault": "Системна мова за замовчуванням",
     "english": "Англійська",

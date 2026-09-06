@@ -183,6 +183,7 @@
     "dataUsage": "استخدام البيانات",
     "networkIndicator": "مؤشر الشبكة",
     "homeButtonFix": "إصلاح زر الصفحة الرئيسية (Google TV)",
+    "startOnBoot": "التشغيل عند بدء الجهاز (Google TV / Fire TV)",
     "appLanguage": "اللغة",
     "systemDefault": "افتراضي النظام",
     "english": "الإنجليزية",

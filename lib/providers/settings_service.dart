@@ -45,6 +45,7 @@ const String _screensaverClockStyleKey = "screensaver_clock_style";
 const String _timeBasedWallpaperEnabledKey = "time_based_wallpaper_enabled";
 const String _showInputsWidgetInStatusBarKey = "show_inputs_widget_in_status_bar";
 const String _showContinueWatchingKey = "show_continue_watching";
+const String _startOnBootKey = "start_on_boot";
 const String _showNotificationsWidgetInStatusBarKey = "show_notifications_widget_in_status_bar";
 const String _autoHideNotificationsWidgetKey = "auto_hide_notifications_widget";
 const String _appLanguageKey = "app_language";
@@ -104,6 +105,7 @@ class SettingsService extends ChangeNotifier {
   late bool _timeBasedWallpaperEnabled;
   late bool _showInputsWidgetInStatusBar;
   late bool _showContinueWatching;
+  late bool _startOnBoot;
   late bool _showNotificationsWidgetInStatusBar;
   late bool _autoHideNotificationsWidget;
   late String _appLanguage;
@@ -147,6 +149,7 @@ class SettingsService extends ChangeNotifier {
 
   bool get showInputsWidgetInStatusBar => _showInputsWidgetInStatusBar;
   bool get showContinueWatching => _showContinueWatching;
+  bool get startOnBoot => _startOnBoot;
   bool get showNotificationsWidgetInStatusBar => _showNotificationsWidgetInStatusBar;
   bool get autoHideNotificationsWidget => _autoHideNotificationsWidget;
   bool get showWeatherInStatusBar => _showWeatherInStatusBar;
@@ -199,6 +202,7 @@ class SettingsService extends ChangeNotifier {
     _timeBasedWallpaperEnabled = _sharedPreferences.getBool(_timeBasedWallpaperEnabledKey) ?? false;
     _showInputsWidgetInStatusBar = _sharedPreferences.getBool(_showInputsWidgetInStatusBarKey) ?? true;
     _showContinueWatching = _sharedPreferences.getBool(_showContinueWatchingKey) ?? true;
+    _startOnBoot = _sharedPreferences.getBool(_startOnBootKey) ?? false;
     _showNotificationsWidgetInStatusBar = _sharedPreferences.getBool(_showNotificationsWidgetInStatusBarKey) ?? true;
     _autoHideNotificationsWidget = _sharedPreferences.getBool(_autoHideNotificationsWidgetKey) ?? false;
     _appLanguage = _sharedPreferences.getString(_appLanguageKey) ?? "";
@@ -232,6 +236,7 @@ class SettingsService extends ChangeNotifier {
       _timeBasedWallpaperEnabledKey: _timeBasedWallpaperEnabled,
       _showInputsWidgetInStatusBarKey: _showInputsWidgetInStatusBar,
       _showContinueWatchingKey: _showContinueWatching,
+      _startOnBootKey: _startOnBoot,
       _showNotificationsWidgetInStatusBarKey: _showNotificationsWidgetInStatusBar,
       _autoHideNotificationsWidgetKey: _autoHideNotificationsWidget,
       _appLanguageKey: _appLanguage,
@@ -395,6 +400,12 @@ class SettingsService extends ChangeNotifier {
   Future<void> setShowContinueWatching(bool show) async {
     await _sharedPreferences.setBool(_showContinueWatchingKey, show);
     _showContinueWatching = show;
+    notifyListeners();
+  }
+
+  Future<void> setStartOnBoot(bool enabled) async {
+    await _sharedPreferences.setBool(_startOnBootKey, enabled);
+    _startOnBoot = enabled;
     notifyListeners();
   }
 
