@@ -77,16 +77,29 @@ class _FLauncherState extends State<FLauncher> {
                 child: Consumer<AppsService>(
                   builder: (context, appsService, _) {
                     if (appsService.initialized) {
-                      return SingleChildScrollView(
-                        physics: const ClampingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const ContinueWatchingRow(),
-                            _sections(appsService.launcherSections),
-                          ],
-                        ),
-                      );
+                      return Selector<WatchNextService, bool>(
+                        selector: (_, watchNext) => watchNext.programs.isNotEmpty,
+                        builder: (context, hasContinuingPrograms, _) =>
+                            Selector<SettingsService, bool>(
+                              selector: (_, settings) => settings.showContinueWatching,
+                              builder: (context, showContinueWatching, _) =>
+                                  SingleChildScrollView(
+                                    physics: const ClampingScrollPhysics(),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const ContinueWatchingRow(),
+                                        _sections(
+                                            appsService.launcherSections,
+                                            continueWatchingActive:
+                                                showContinueWatching &&
+                                                hasContinuingPrograms),
+                                      ],
+                                    ),
+                                  ),
+                            ),
+                    );
                     }
                     else {
                       return _emptyState(context);
@@ -101,11 +114,7 @@ class _FLauncherState extends State<FLauncher> {
     ),
   );
 
-  Widget _sections(List<LauncherSection> sections) {
-    final settingsService = Provider.of<SettingsService>(context, listen: false);
-    final watchNextService = Provider.of<WatchNextService>(context, listen: false);
-    final bool continueWatchingActive = settingsService.showContinueWatching && watchNextService.programs.isNotEmpty;
-
+  Widget _sections(List<LauncherSection> sections, {bool continueWatchingActive = false}) {
     List<Widget> children = [];
     bool firstCategoryFound = continueWatchingActive;
 
