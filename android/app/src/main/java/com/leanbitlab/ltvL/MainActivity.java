@@ -1135,48 +1135,53 @@ public class MainActivity extends FlutterActivity {
 
     private List<Map<String, Object>> getWatchNextPrograms() {
         List<Map<String, Object>> list = new ArrayList<>();
-        try {
-            String[] projection = {
-                TvContract.WatchNextPrograms._ID,
-                TvContract.WatchNextPrograms.COLUMN_PACKAGE_NAME,
-                TvContract.WatchNextPrograms.COLUMN_TITLE,
-                TvContract.WatchNextPrograms.COLUMN_SHORT_DESCRIPTION,
-                TvContract.WatchNextPrograms.COLUMN_WATCH_NEXT_TYPE,
-                TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS,
-                TvContract.WatchNextPrograms.COLUMN_LAST_PLAYBACK_POSITION_MILLIS,
-                TvContract.WatchNextPrograms.COLUMN_DURATION_MILLIS,
-                TvContract.WatchNextPrograms.COLUMN_INTENT_URI,
-                TvContract.WatchNextPrograms.COLUMN_POSTER_ART_URI
-            };
 
-            android.database.Cursor cursor = getContentResolver().query(
+        String[] projection = {
+            TvContract.WatchNextPrograms._ID,
+            TvContract.WatchNextPrograms.COLUMN_PACKAGE_NAME,
+            TvContract.WatchNextPrograms.COLUMN_TITLE,
+            TvContract.WatchNextPrograms.COLUMN_SHORT_DESCRIPTION,
+            TvContract.WatchNextPrograms.COLUMN_WATCH_NEXT_TYPE,
+            TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS,
+            TvContract.WatchNextPrograms.COLUMN_LAST_PLAYBACK_POSITION_MILLIS,
+            TvContract.WatchNextPrograms.COLUMN_DURATION_MILLIS,
+            TvContract.WatchNextPrograms.COLUMN_INTENT_URI,
+            TvContract.WatchNextPrograms.COLUMN_POSTER_ART_URI
+        };
+
+        try (android.database.Cursor cursor = getContentResolver().query(
                 TvContract.WatchNextPrograms.CONTENT_URI,
                 projection,
                 null,
                 null,
-                TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS + " DESC LIMIT 20"
-            );
+                TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS + " DESC")) {
 
-            if (cursor != null) {
-                while (cursor.moveToNext()) {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("id", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms._ID)));
-                    map.put("packageName", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_PACKAGE_NAME));
-                    map.put("title", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_TITLE));
-                    map.put("description", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_SHORT_DESCRIPTION));
-                    map.put("watchNextType", cursor.getInt(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_WATCH_NEXT_TYPE)));
-                    map.put("lastEngagementTime", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS)));
-                    map.put("playbackPosition", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_LAST_PLAYBACK_POSITION_MILLIS)));
-                    map.put("duration", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_DURATION_MILLIS)));
-                    map.put("intentUri", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_INTENT_URI));
-                    map.put("posterArtUri", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_POSTER_ART_URI));
-                    list.add(map);
-                }
-                cursor.close();
+            if (cursor == null) {
+                return list;
+            }
+
+            final int limit = 20;
+            int row = 0;
+            while (row < limit && cursor.moveToNext()) {
+                row++;
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("id", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms._ID)));
+                map.put("packageName", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_PACKAGE_NAME));
+                map.put("title", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_TITLE));
+                map.put("description", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_SHORT_DESCRIPTION));
+                map.put("watchNextType", cursor.getInt(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_WATCH_NEXT_TYPE)));
+                map.put("lastEngagementTime", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_LAST_ENGAGEMENT_TIME_UTC_MILLIS)));
+                map.put("playbackPosition", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_LAST_PLAYBACK_POSITION_MILLIS)));
+                map.put("duration", cursor.getLong(cursor.getColumnIndexOrThrow(TvContract.WatchNextPrograms.COLUMN_DURATION_MILLIS)));
+                map.put("intentUri", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_INTENT_URI));
+                map.put("posterArtUri", cursorStringOrEmpty(cursor, TvContract.WatchNextPrograms.COLUMN_POSTER_ART_URI));
+                list.add(map);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return list;
     }
 
